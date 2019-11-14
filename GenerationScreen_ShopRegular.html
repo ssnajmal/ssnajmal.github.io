@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content generation: Regular Shop Business</title>
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+   <link href="https://fonts.googleapis.com/css?family=Bitter|Cabin|Cinzel|Courgette|
+   Dosis|Heebo|Inconsolata|Jomolhari|Lato|Lobster|Lora|Merriweather|Modak|Montserrat|Muli|Nunito|
+   Oswald|Pacifico|Poppins|Quicksand|Raleway|Roboto|Rubik|Satisfy|Staatliches|Stoke|Ubuntu&display=swap" rel="stylesheet">
+   <style>
+  .w3-tangerine {
+
+      font-family: 'Lato', sans-serif;
+
+      font-family: 'Oswald', sans-serif;
+
+      font-family: 'Montserrat', sans-serif;
+
+      font-family: 'Raleway', sans-serif;
+
+      font-family: 'Roboto', sans-serif;
+
+      font-family: 'Muli', sans-serif;
+
+      font-family: 'Ubuntu', sans-serif;
+
+      font-family: 'Merriweather', serif;
+
+      font-family: 'Staatliches', cursive;
+
+      font-family: 'Jomolhari', serif;
+
+      font-family: 'Poppins', sans-serif;
+
+      font-family: 'Lora', serif;
+
+      font-family: 'Stoke', serif;
+
+      font-family: 'Nunito', sans-serif;
+
+      font-family: 'Rubik', sans-serif;
+
+      font-family: 'Quicksand', sans-serif;
+
+      font-family: 'Dosis', sans-serif;
+
+      font-family: 'Inconsolata', monospace;
+
+      font-family: 'Cabin', sans-serif;
+
+      font-family: 'Heebo', sans-serif;
+
+      font-family: 'Bitter', serif;
+
+      font-family: 'Lobster', cursive;
+
+      font-family: 'Pacifico', cursive;
+
+      font-family: 'Modak', cursive;
+
+      font-family: 'Satisfy', cursive;
+
+      font-family: 'Cinzel', serif;
+
+      font-family: 'Courgette', cursive;
+
+
+  }
+      body {
+          background-color: #303641;
+      }
+  </style>
+</head>
+<!-- code4icon: <i class="material-icons lock">lock</i> -->
+<body>
+  <div class="w3-bar w3-black w3-large">
+  <a href="Home.html" class="w3-bar-item w3-button" style="width:33%">Home</a>
+    <a href="GenerationScreen.html" class="w3-bar-item w3-button w3-green" style="width:33%">Content Generator</a>
+  </div class="w3-container w3-black">
+  <h1>Generate Image from Text (.PNG)</h1>
+  <p>This means the background color will not carry forward, its not a part of the logo.</p>
+  <h2>images to be used:</h2>
+  <img id="business1" src="138198-business-collection/png/box.png" alt="The Scream" width="128" height="128">
+  <img id="business2" src="138198-business-collection/png/bag.png" alt="The Scream" width="128" height="128">
+  <img id="business3" src="138198-business-collection/png/basket.png" alt="0" width="128" height="128">
+  <img id="business4" src="138198-business-collection/png/basket-2.png" alt="The Scream" width="128" height="128">
+  <img id="business5" src="138198-business-collection/png/cart-3.png" alt="The Scream" width="128" height="128">
+  <img id="business6" src="138198-business-collection/png/cashier-1.png" alt="0" width="128" height="128">
+  <img id="business7" src="138198-business-collection/png/delivery-cart-1.png" alt="The Scream" width="128" height="128">
+  <img id="business8" src="138198-business-collection/png/grocery.png" alt="The Scream" width="128" height="128">
+  <img id="business9" src="138198-business-collection/png/credit-card-1.png" alt="0" width="128" height="128">
+<div class="w3-display-container">
+  <div class="w3-display-center w3-container">
+    <div><input id="imageText" placeholder="Image Text" class="w3-button w3-xlarge" type="text"></div>
+    <div><button type="button" class="w3-button w3-xlarge" id="imageGenerator">Generate</button>
+      <button type="button" class="w3-button w3-xlarge" id="imageClear">clear</button></div>
+  </div>
+
+  <div class=" w3-container w3-blue">
+    <div><canvas id="myCanvas" width="800" height="400"></canvas></div>
+  </div>
+
+  <div class=" w3-container w3-black">
+    <div><canvas id="myCanvas2" width="800" height="400"></canvas></div>
+  </div>
+
+  <div class="w3-container w3-grey">
+    <div><canvas id="myCanvas3" width="800" height="400"></canvas></div>
+  </div>
+
+  <div class="w3-container w3-teal">
+    <div><canvas id="myCanvas4" width="800" height="400"></canvas></div>
+  </div>
+  <div class="w3-container w3 black">
+    <div><canvas id="myCanvas5" width="800" height="400"></canvas></div>
+  </div>
+  <div class="w3-container w3-pink">
+    <div><canvas id="myCanvas6" width="800" height="400"></canvas></div>
+  </div>
+  <div class="w3-container w3-black">
+    <div><canvas id="myCanvas7" width="800" height="400"></canvas></div>
+  </div>
+  <div class="w3-container w3-deeppurple">
+    <div><canvas id="myCanvas8" width="800" height="400"></canvas></div>
+  </div>
+  <div class="w3-container w3-deeppurple">
+    <div><canvas id="myCanvas9" width="800" height="400"></canvas></div>
+  </div>
+
+  <div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from
+    <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a></div>
+</div>
+  <div>
+    <div><button type="button" id="btnDisplay" float:center;>display all in .jpeg format</button></div>
+  </div>
+  <div>
+    <div><button type="button" id="btnDownload">download all (IE) or first image (other browsers) or right click and save image as.. to download.</button></div>
+  </div>
+
+  <div>
+    <div>  <img src="" id="imgConverted" style="float: left; border: 2px solid #00f; margin-left: 10px;"></div>
+  </div>
+  <div>
+    <div>  <img src="" id="imgConverted2" style="float: left; border: 2px solid #00f; margin-left: 10px;"></div>
+  </div>
+
+  <div>
+    <div>  <img src="" id="imgConverted3" style="float: left; border: 2px solid #00f; margin-left: 10px;"></div>
+    <div>  <img src="" id="imgConverted4" style="float: left; border: 2px solid #00f; margin-left: 10px;"></div>
+  </div>
+  <div>
+    <div>  <img src="" id="imgConverted5" style="float: left; border: 2px solid #00f; margin-left: 10px;"></div>
+    <div>  <img src="" id="imgConverted6" style="float: left; border: 2px solid #00f; margin-left: 10px;"></div>
+  </div>
+
+<script>
+
+//button and final image declaration
+  const btnDisplay = document.querySelector("#btnDisplay");
+  const btnDownload =  document.querySelector("#btnDownload");
+
+  const imgConverted = document.querySelector("#imgConverted");
+  const imgConverted2 = document.querySelector("#imgConverted2");
+  const imgConverted3 = document.querySelector("#imgConverted3");
+  const imgConverted4 = document.querySelector("#imgConverted4");
+  const imgConverted5 = document.querySelector("#imgConverted5");
+  const imgConverted6 = document.querySelector("#imgConverted6");
+
+  const imageGen = document.querySelector("#imageGenerator");
+  const imageCl=document.querySelector("#imageClear")
+
+//querySelector declaration from htmlto js
+  const myCanvas = document.querySelector("#myCanvas");
+  const myCanvas2 = document.querySelector("#myCanvas2");
+  const myCanvas3 = document.querySelector("#myCanvas3");
+  const myCanvas4 = document.querySelector("#myCanvas4");
+  const myCanvas5 = document.querySelector("#myCanvas5");
+  const myCanvas6 = document.querySelector("#myCanvas6");
+  const myCanvas7 = document.querySelector("#myCanvas7");
+  const myCanvas8 = document.querySelector("#myCanvas8");
+  const myCanvas9 = document.querySelector("#myCanvas9");
+
+//declaration of canvas´s context
+  const ctx = myCanvas.getContext("2d");
+  const ctx2 = myCanvas2.getContext("2d");
+  const ctx3 = myCanvas3.getContext("2d");
+  const ctx4 = myCanvas4.getContext("2d");
+  const ctx5= myCanvas5.getContext("2d");
+  const ctx6= myCanvas6.getContext("2d");
+  const ctx7= myCanvas7.getContext("2d");
+  const ctx8= myCanvas8.getContext("2d");
+  const ctx9= myCanvas9.getContext("2d");
+
+  //icon declaration
+var businessicon1=document.getElementById("business1");
+var businessicon2=document.getElementById("business2");
+var businessicon3=document.getElementById("business3");
+var businessicon4=document.getElementById("business4");
+var businessicon5=document.getElementById("business5");
+var businessicon6=document.getElementById("business6");
+var businessicon7=document.getElementById("business7");
+var businessicon8=document.getElementById("business8");
+var businessicon9=document.getElementById("business9");
+//imageCl.addEventListener("click",function(){
+  //ctx.
+//}
+imageGen.addEventListener("click",function(){
+
+  //9th autogen
+  ctx9.beginPath();
+  ctx9.font = "100px Dosis";
+  ctx9.fillStyle = "orange";
+  ctx9.drawImage(businessicon9,250,50,128,128);
+  ctx9.fillText(document.getElementById("imageText").value, 150,250);
+
+  //eith autogen
+  ctx8.beginPath();
+  ctx8.font = "100px Inconsolata";
+  ctx8.fillStyle = "orange";
+  ctx8.drawImage(businessicon8,100,100,128,128);
+  ctx8.fillText(document.getElementById("imageText").value, 250,250);
+
+  //seventh autogen
+  ctx7.beginPath();
+  ctx7.font = "100px Courgette";
+  ctx7.fillStyle = "blue";
+  ctx7.drawImage(businessicon7,100,100,128,128);
+  ctx7.fillText(document.getElementById("imageText").value, 250,250);
+
+  //sisxth one image thing
+  ctx6.font = "80px Cinzel";
+  ctx6.beginPath();
+  ctx6.fillStyle = "orange";
+  ctx6.drawImage(businessicon6,100,100,128,128);
+  ctx6.fill();
+  ctx6.fillText(document.getElementById("imageText").value, 300,100);
+
+  //fifth autogen image
+  ctx5.beginPath();
+  ctx5.font = "100px Satisfy";
+  ctx5.fillStyle = "blue";
+  ctx5.drawImage(businessicon5,100,100,128,128);
+  ctx5.fillText(document.getElementById("imageText").value, 300,250);
+
+  //fourth autogen IMAGE
+  ctx4.font = "150px Lobster";
+  ctx4.drawImage(businessicon4,100,100,128,128);
+  ctx4.fillStyle = "green";
+  ctx4.fillText(document.getElementById("imageText").value, 200,300);
+
+//third autogen image
+  ctx3.font = "80px Modak";
+  ctx3.fillStyle = "black";
+  ctx3.drawImage(businessicon3,100,100,128,128);
+  ctx3.fillText(document.getElementById("imageText").value, 300,300);
+
+//second autogen image
+  ctx2.font = "80px Satisfy";
+  ctx2.fillStyle = "blue";
+  ctx2.beginPath();
+  ctx2.drawImage(businessicon2,100,100,128,128);
+  ctx2.fillText(document.getElementById("imageText").value, 270,220);
+
+ //first autogen image
+  ctx.font = "100px Oswald";
+  ctx.fillStyle = "red";
+  ctx.drawImage(businessicon1,100,100,128,128);
+  ctx.fillText(document.getElementById("imageText").value,200,250);
+  ctx.beginPath();
+  ctx.textAlign = "start";
+});
+
+   btnDisplay.addEventListener("click", function(){
+       const dataURI = myCanvas.toDataURL("image/jpeg");
+       const dataURI2 = myCanvas2.toDataURL("image/jpeg");
+       const dataURI3 = myCanvas3.toDataURL("image/jpeg");
+       const dataURI4 = myCanvas4.toDataURL("image/jpeg");
+       const dataURI5 = myCanvas5.toDataURL("image/jpeg");
+       const dataURI6 = myCanvas6.toDataURL("image/jpeg");
+       imgConverted.src = dataURI;
+       imgConverted2.src = dataURI2;
+       imgConverted3.src = dataURI3;
+       imgConverted4.src = dataURI4;
+       imgConverted5.src = dataURI5;
+       imgConverted6.src = dataURI6;
+     });
+     //to download using btnDownload
+     btnDownload.addEventListener("click", function(){
+       //ie/edge support(png only)
+       if(window.navigator.msSaveBlob){
+         window.navigator.msSaveBlob(myCanvas.msToBlob(),"canvas-img.png")
+         window.navigator.msSaveBlob(myCanvas2.msToBlob(),"canvas2-img.png")
+         window.navigator.msSaveBlob(myCanvas3.msToBlob(),"canvas3-img.png")
+         window.navigator.msSaveBlob(myCanvas4.msToBlob(),"canvas4-img.png")
+         window.navigator.msSaveBlob(myCanvas5.msToBlob(),"canvas5-img.png")
+         window.navigator.msSaveBlob(myCanvas6.msToBlob(),"canvas-img6.png")
+       }
+       //other browsers
+       else {
+         const a = document.createElement("a");
+         document.body.appendChild(a);
+         a.href = myCanvas.toDataURL();
+         a.download = "canvas-img.jpeg";
+         a.click();
+         document.body.removeChild(a);
+       }});
+  </script>
+</body>
+</html>
