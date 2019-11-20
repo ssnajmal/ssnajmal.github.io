@@ -61,9 +61,30 @@
 
         <div class="register">
             Do you already have an account?
-            <a href="login.html"><button id="register-link">Log In here</button></a>
+            <a href="login.html"><button id="registerlink">Log In here</button></a>
         </div>
     </div>
+   
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/7.4.0/firebase-app.js"></script>
+    
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/7.4.0/firebase-analytics.js"></script>
+    
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
+    <script>
+         const Register = document.querySelector("#registerlink");
+   Register.addEventListener("click",function(){
+       firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+});
+        }
+    }</script>
 </body>
 
 </html>
