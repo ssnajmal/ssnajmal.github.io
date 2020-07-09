@@ -52,7 +52,7 @@ border-radius: 3px;
        <a href="Map.html" class="w3-bar-item w3-button w3-white w3-tangerine" style="width:100%">New Mapping System<i class="fa fa-map"></i></a>
   </div>
 <div>
-		<div id='map' class="w3-black" style='width: 800px; height: 300px;'></div>
+		<div id='map' class="w3-black" style='width: 800px; height: 600px;'></div>
 
 		<div id="distance" class="distance-container"></div>
 </div>
@@ -64,8 +64,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidGhlY29ucXVlcm9yLWMxMzciLCJhIjoiY2s1ejM5bjhxM
     var map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/mapbox/streets-v11',
-center: [36.078420, -0.281490],
-zoom: 8
+center: [37.906193, -0.023559],
+zoom: 6
 });
 
 var distanceContainer = document.getElementById('distance');
