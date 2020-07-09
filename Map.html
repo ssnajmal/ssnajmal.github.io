@@ -160,15 +160,15 @@ return point.geometry.coordinates;
 geojson.features.push(linestring);
 
 //MY OWN SHIT
-var km5 = parseInt(turf.length(linestring).toLocaleString())/15;
-
+var km5 = parseFloat(turf.length(linestring).toLocaleString())/15;
+var cost = km5 * 80;
 
 
 // Populate the distanceContainer with total distance
 var value = document.createElement('pre');
 value.textContent =
 'Total distance: ' +
-turf.length(linestring).toLocaleString() + 'km. /n Fuel needed(15km/l):' + km5 + ' Liters' ;
+turf.length(linestring).toLocaleString() + 'km.     Fuel needed(15km/l):' + km5 + ' Litres' + '.. The cost in fuel: ' + cost + 'ksh';
 distanceContainer.appendChild(value);
 }
  
