@@ -14,10 +14,17 @@
 
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoidGhlY29ucXVlcm9yLWMxMzciLCJhIjoiY2s1ejM5bjhxMHEwdDNtbmprd2UyYXN4MyJ9.BC7tw7_-N1ltmAH4hb02eA';
-var map = new mapboxgl.Map({
+
+    var map = new mapboxgl.Map({
 container: 'map',
-style: 'mapbox://styles/mapbox/streets-v11'
+style: 'mapbox://styles/mapbox/streets-v11',
+center: [-0.281490, 36.078420],
+zoom: 8
 });
+ 
+var marker = new mapboxgl.Marker()
+.setLngLat([-0.281490, 36.078420])
+.addTo(map);
 </script>
 </body>
 </html>
