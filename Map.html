@@ -10,6 +10,7 @@
 <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
 </head>
 <body>
+
 <style>
 
 .distance-container {
@@ -50,11 +51,11 @@ border-radius: 3px;
   <div class="w3-bar w3-black w3-large" style="width:100%">
        <a href="Map.html" class="w3-bar-item w3-button w3-white w3-tangerine" style="width:100%">New Mapping System<i class="fa fa-map"></i></a>
   </div>
+<div>
+		<div id='map' class="w3-black" style='width: 800px; height: 300px;'></div>
 
-<div id='map' class="w3-black" style='width: 800px; height: 300px;'></div>
-
-<div id="distance" class="distance-container"></div>
-
+		<div id="distance" class="distance-container"></div>
+</div>
 <script src="https://npmcdn.com/@turf/turf@5.1.6/turf.min.js"></script>
 
 <script>
@@ -68,7 +69,6 @@ zoom: 8
 });
 
 var distanceContainer = document.getElementById('distance');
-	
  
 // GeoJSON object to hold our measurement features
 var geojson = {
@@ -158,7 +158,7 @@ return point.geometry.coordinates;
 });
  
 geojson.features.push(linestring);
- 
+
 //MY OWN SHIT
 var km5 = parseInt(turf.length(linestring).toLocaleString())/15;
 
@@ -171,17 +171,7 @@ value.textContent =
 turf.length(linestring).toLocaleString() + 'km. /n Fuel needed(15km/l):' + km5 + ' Liters' ;
 distanceContainer.appendChild(value);
 }
-
  
-map.getSource('geojson').setData(geojson);
-});
-});
- 
-map.on('mousemove', function(e) {
-var features = map.queryRenderedFeatures(e.point, {
-layers: ['measure-points']
-});
-
 map.getSource('geojson').setData(geojson);
 });
 });
