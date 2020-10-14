@@ -257,7 +257,7 @@ return point.geometry.coordinates;
 geojson.features.push(linestring);
 
 //some calculacable vars
-var newvar = String(e.lngLat.lng + e.lngLat.lat);	
+var newvar = String(e.lngLat.lng +' , '+ e.lngLat.lat);	
 var km5 = parseFloat(turf.length(linestring).toLocaleString())/15;
 var cost = km5 * 80;
 // Populate the distanceContainer with total distance
