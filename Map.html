@@ -76,7 +76,7 @@ center: [36.078420, -0.281490],
 zoom: 12
 });
 
-
+	
 
 map.on('mousemove', function(e) {
 document.getElementById('info').innerHTML =
@@ -86,6 +86,7 @@ JSON.stringify(e.point) +
 '<br />' +
 // e.lngLat is the longitude, latitude geographical position of the event
 JSON.stringify(e.lngLat.wrap());
+	
 });
 
  
@@ -181,7 +182,7 @@ geolocate.on('geolocate', function() {
 console.log('A geolocate event has occurred.')
 });
 
-//MY OWN SHIT
+//MY OWN SH*T
 
 var nav = new mapboxgl.NavigationControl();
 map.addControl(nav, 'top-left')
@@ -256,13 +257,14 @@ return point.geometry.coordinates;
 geojson.features.push(linestring);
 
 //some calculacable vars
+var newvar = String(e.lngLat.lng + e.lngLat.lat);	
 var km5 = parseFloat(turf.length(linestring).toLocaleString())/15;
 var cost = km5 * 80;
 // Populate the distanceContainer with total distance
 var value = document.createElement('pre');
 value.textContent =
 'Total distance: ' +
-turf.length(linestring).toLocaleString() + 'km.     Fuel needed(15km/l):' + km5 + ' Litres' + '.. The cost in fuel: ' + cost + 'ksh';
+turf.length(linestring).toLocaleString() + 'km.     Fuel needed(15km/l):' + km5 + ' Litres' + '.. The cost in fuel: ' + cost + 'ksh  ' + newvar;
 distanceContainer.appendChild(value);
 }
  
