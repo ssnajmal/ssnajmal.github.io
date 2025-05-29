@@ -1,9 +1,10 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
 
-  <title>Home</title>
+  <title>Shah Rukh's Portfolio</title>
 
   <meta name="description" content="Home">
 
@@ -21,86 +22,492 @@
 
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400|Lato:400,700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Animate.css for animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
   <style>
-    .w3-tangerine {
-      font-family: 'Lato', sans-serif;
+    :root {
+      --primary: rgba(30, 30, 47, 0.7);
+      --accent: #fff;
+      --bg: #181824;
+      --card-bg: rgba(35, 35, 58, 0.55);
+      --text: #f5f5f5;
+      --shadow: 0 4px 24px rgba(0,0,0,0.2);
+      --glass-blur: blur(12px);
+      --glow: 0 0 16px 4px #fff, 0 0 32px 8px #b3e5fc33;
+      --heatmap: linear-gradient(120deg, #ffffff22 0%, #b3e5fc22 100%);
     }
-
-    body {
-      background-color: #000000;
+    body.light-mode {
+      --primary: rgba(255,255,255,0.7);
+      --accent: #181824;
+      --bg: #fff;
+      --card-bg: rgba(240,240,240,0.7);
+      --text: #181824;
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+      --glass-blur: blur(12px);
+      --glow: 0 0 16px 4px #18182433, 0 0 32px 8px #b3e5fc33;
+      --heatmap: linear-gradient(120deg, #18182411 0%, #b3e5fc11 100%);
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Lato', 'Montserrat', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      scroll-behavior: smooth;
+      position: relative;
+      overflow-x: hidden;
+    }
+    /* Animated Background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 0;
+      background: radial-gradient(circle at 20% 30%, #fff2 0%, #b3e5fc11 40%, transparent 80%),
+                  radial-gradient(circle at 80% 70%, #b3e5fc33 0%, #fff1 40%, transparent 80%),
+                  linear-gradient(120deg, #23233a 60%, #1e1e2f 100%);
+      animation: bgMove 16s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    @keyframes bgMove {
+      0% { background-position: 20% 30%, 80% 70%; }
+      100% { background-position: 30% 40%, 70% 60%; }
+    }
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: var(--primary);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-radius: 0 0 24px 24px;
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-bottom: 1.5px solid #fff2;
+    }
+    .navbar .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      text-shadow: var(--glow);
+    }
+    .navbar .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .navbar .nav-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.5em 1em;
+      border-radius: 30px;
+      transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      background: transparent;
+      box-shadow: none;
+    }
+    .navbar .nav-links a:hover {
+      background: #fff2;
+      color: #181824;
+      transform: translateY(-2px) scale(1.07);
+      box-shadow: var(--glow);
+    }
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 45vh;
+      text-align: center;
+      padding: 3rem 1rem 2rem 1rem;
+      background: var(--heatmap);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    /* Kaleidoscope Canvas */
+    #kaleidoscope-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.7;
+      filter: blur(1px) brightness(1.1) saturate(1.2);
+      transition: opacity 0.3s;
+    }
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.7rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+      color: var(--accent);
+      letter-spacing: 1px;
+      animation: fadeInDown 1s;
+      text-shadow: var(--glow);
+      position: relative;
+      z-index: 1;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      color: #e0e0e0;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 1.2s;
+      text-shadow: 0 2px 8px #fff2;
+      position: relative;
+      z-index: 1;
+    }
+    .hero .quote {
+      font-style: italic;
+      color: #bdbdbd;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      animation: fadeIn 2s;
+      text-shadow: 0 2px 8px #fff2;
+      position: relative;
+      z-index: 1;
+    }
+    /* Projects Grid */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 2rem;
+      padding: 2.5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      z-index: 1;
+    }
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 2rem 1.2rem 1.5rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+      animation: fadeInUp 1s;
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1.5px solid #fff2;
+    }
+    .project-card:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 8px 32px #fff8, var(--glow);
+      background: rgba(255,255,255,0.08);
+      border-color: #fff5;
+    }
+    .project-card i, .project-card .fa {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 0.7rem;
+      transition: color 0.2s, text-shadow 0.2s;
+      text-shadow: var(--glow);
+    }
+    .project-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.3rem;
+      margin: 0.2rem 0 0.7rem 0;
+      color: var(--accent);
+      text-shadow: 0 2px 8px #fff2;
+    }
+    .project-card p {
+      font-size: 1rem;
+      color: #e0e0e0;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 2px 8px #fff2;
+    }
+    .project-card a {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      color: var(--accent);
+      padding: 0.5em 1.2em;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1rem;
+      box-shadow: 0 2px 8px #fff2;
+      transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+      border: 1.5px solid #fff3;
+      text-shadow: 0 2px 8px #fff2;
+    }
+    .project-card a:hover {
+      background: #fff;
+      color: #181824;
+      transform: scale(1.09);
+      box-shadow: var(--glow);
+      border-color: #fff;
+    }
+    /* Patreon Button */
+    .patreon {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0 0 0;
+      z-index: 1;
+    }
+    .patreon .project-card {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      min-width:220px;
+      box-shadow: 0 2px 16px #fff5, var(--glow);
+      border: 1.5px solid #fff5;
+    }
+    .patreon .project-card h3, .patreon .project-card p {
+      color: #fff;
+      text-shadow: 0 2px 8px #fff2;
+    }
+    /* Footer */
+    .footer {
+      text-align: center;
+      color: #bdbdbd;
+      font-size: 1rem;
+      padding: 1.5rem 0 0.5rem 0;
+      margin-top: 2rem;
+      z-index: 1;
+      position: relative;
+    }
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+      text-shadow: 0 2px 8px #fff2;
+    }
+    /* Animations */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    /* Responsive */
+    @media (max-width: 700px) {
+      .navbar { flex-direction: column; gap: 0.7rem; padding: 1rem; }
+      .projects { padding: 1.2rem 0.5rem; gap: 1.2rem; }
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 1rem; }
     }
   </style>
 </head>
 
 <body>
-  <div class="w3-bar w3-black w3-large" style=" width:100%">
-
-    <a href="index.html" class="w3-bar-item w3-button w3-tangerine" style="width:33%"><i class="fa fa-home"></i>Shah Rukh's Portfolio!</a>
-    <a href="register.html" class="w3-bar-item w3-button w3-tangerine" style=" width:33%"><i class="fa fa-male"></i>Register(sample)</a>
-    <a href="https://drive.google.com/file/d/1nayYH_J3g7d-chI-Y62POo-FLS8Qqopb/view?usp=sharing" class="w3-bar-item w3-button w3-tangerine" style=" width:33%"><i class="fa fa-home"></i>MY CV (About Me)</a>
-    
-  </div>
-   <div class="w3-bar w3-black w3-large" style=" width:100%">
-          <a href="Newgen.html" class="w3-bar-item w3-white w3-button" style=" width:100%">content creation project</a>
-  </div>
-  <div class="w3-bar w3-white w3-large" style=" width:100%">
-  
-    <a href="https://ssnajmal-incorporations.weeblysite.com/" class="w3-bar-item w3-button w3-white w3-tangerine" style="width:100%">Check out my Weebly site!!</a>
-  </div>
-  <div class="w3-bar w3-black w3-large" style=" width:100%">
-  
-    <a href="https://www.gewltd.com/" class="w3-bar-item w3-button w3-white w3-tangerine" style="width:100%">GEW LTD (Webdesign project)</a>
-  </div>
-  <div class="w3-bar w3-white w3-large" style=" width:100%">
-       <a href="Map.html" class="w3-bar-item w3-button w3-white w3-tangerine" style="width:100%">New Mapping System<i class="fa fa-map"></i></a>
-  </div>
-    <div class="w3-bar w3-black w3-large" style=" width:100%">
-       <a href="/websitetestfolder/testwebsite/index.html" class="w3-bar-item w3-button w3-white w3-tangerine" style="width:100%">Maintainance Matic(WIP)<i class="fa fa-globe"></i></a>
-  </div>
-<a href="https://www.patreon.com/bePatron?u=50566903" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-<div class="w3-bar w3-black w3-large">
-
-  <div class="w3-bar-item w3-black w3-center" style="height:20%; width:50%">
-    <h1 class="w3-black">Welcome to the home of image and content generation.     </h1>
-  </div>
-
-  <div class="w3-bar-item w3-white w3-center" style="height:20%; width:50%">
-    <h1 class="w3-white">  Simplified content creation.   </h1>
-  </div>
-</div>
-
-<div class="w3-panel w3-leftbar w3-bwhitebar w3-border-black w3-white w3-center">
- <p class="w3-xxlarge w3-serif">
- <i>  "Make it as simple as possible, but not simpler." </i></p>
- <p>  Albert Einstein </p>
+  <!-- Navbar -->
+  <nav class="navbar animate__animated animate__fadeInDown">
+    <a href="#" class="logo"><i class="fa fa-code"></i> Shah Rukh's Portfolio</a>
+    <div class="nav-links">
+      <a href="#projects"><i class="fa fa-folder-open"></i> Projects</a>
+      <a href="https://drive.google.com/file/d/1nayYH_J3g7d-chI-Y62POo-FLS8Qqopb/view?usp=sharing" target="_blank"><i class="fa fa-id-card"></i> My CV</a>
+      <a href="register.html"><i class="fa fa-user-plus"></i> Register</a>
+      <a href="Map.html"><i class="fa fa-map"></i> Mapping System</a>
+      <!-- Theme Toggle Button -->
+      <button id="theme-toggle" aria-label="Toggle light/dark mode" style="background:none;border:none;outline:none;cursor:pointer;font-size:1.4rem;color:var(--accent);margin-left:1.2rem;transition:color 0.2s;">
+        <i id="theme-icon" class="fa fa-moon"></i>
+      </button>
     </div>
+  </nav>
 
-<div class="w3-card-4 w3-black w3-center">
-      <div class="w3-panel w3-center w3-topbar w3-bottombar w3-border-white w3-border" >
-        <a class="w3-btn w3-black w3-hover-white w3-tangerine" style="width:100%" href="GenerationScreen_TechCompany.html">
-        Generate a picture from words or text to create a quick logo for a computer shop
-        </a>
+  <!-- Hero Section -->
+  <section class="hero animate__animated animate__fadeIn">
+    <!-- Kaleidoscope Canvas -->
+    <canvas id="kaleidoscope-bg"></canvas>
+    <h1>Welcome to My Portfolio</h1>
+    <p>Showcasing my coding skills, web projects, and creative content generation tools.<br>
+    <span style="color:var(--accent); font-weight:600; text-shadow: var(--glow);">Modern, immersive, and always evolving.</span></p>
+    <div class="quote">"Make it as simple as possible, but not simpler."<br><span style="font-size:0.9em; color:#888;">- Albert Einstein</span></div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects">
+    <!-- Project Card 1: Content Creation Project -->
+    <div class="project-card animate__animated animate__fadeInUp">
+      <i class="fa fa-lightbulb"></i>
+      <h3>Content Creation Project</h3>
+      <p>Innovative tools for generating content and images with ease.</p>
+      <a href="Newgen.html">Explore Project</a>
     </div>
-
-<div class="w3-panel w3-center 23-topbar w3-bottombar w3-border-white w3-border w3-center">
-        <a class="w3-btn w3-black w3-hover-white w3-tangerine" style="width:100%" href="GenerationScreen_ShopRegular.html">
-        Generate a picture from words or text to create a quick logo for a normal shop
-        </a>
+    <!-- Project Card 2: Weebly Site -->
+    <div class="project-card animate__animated animate__fadeInUp" style="animation-delay:0.1s;">
+      <i class="fa fa-globe"></i>
+      <h3>Weebly Site</h3>
+      <p>My personal website built with Weebly. See more about me and my work.</p>
+      <a href="https://ssnajmal-incorporations.weeblysite.com/" target="_blank">Visit Site</a>
     </div>
+    <!-- Project Card 3: GEW LTD Webdesign -->
+    <div class="project-card animate__animated animate__fadeInUp" style="animation-delay:0.2s;">
+      <i class="fa fa-building"></i>
+      <h3>GEW LTD (Webdesign Project)</h3>
+      <p>Professional web design for GEW LTD, a real-world client project.</p>
+      <a href="https://www.gewltd.com/" target="_blank">View Project</a>
+    </div>
+    <!-- Project Card 4: Logo Generator (Tech Company) -->
+    <div class="project-card animate__animated animate__fadeInUp" style="animation-delay:0.3s;">
+      <i class="fa fa-robot"></i>
+      <h3>Logo Generator (Tech Company)</h3>
+      <p>Generate a logo for a computer shop from text prompts using AI.</p>
+      <a href="GenerationScreen_TechCompany.html">Try It</a>
+    </div>
+    <!-- Project Card 5: Logo Generator (Shop) -->
+    <div class="project-card animate__animated animate__fadeInUp" style="animation-delay:0.4s;">
+      <i class="fa fa-store"></i>
+      <h3>Logo Generator (Shop)</h3>
+      <p>Create a quick logo for any shop using simple text input.</p>
+      <a href="GenerationScreen_ShopRegular.html">Try It</a>
+    </div>
+    <!-- Project Card 6: Maintenance Matic (WIP) -->
+    <div class="project-card animate__animated animate__fadeInUp" style="animation-delay:0.5s;">
+      <i class="fa fa-tools"></i>
+      <h3>Maintenance Matic (WIP)</h3>
+      <p>Work-in-progress: A tool for managing website maintenance tasks.</p>
+      <a href="/websitetestfolder/testwebsite/index.html">Preview</a>
+    </div>
+    <!-- Project Card 7: Mapping System -->
+    <div class="project-card animate__animated animate__fadeInUp" style="animation-delay:0.6s;">
+      <i class="fa fa-map"></i>
+      <h3>New Mapping System</h3>
+      <p>Explore my new mapping system for visualizing data and locations.</p>
+      <a href="Map.html">View Map</a>
+    </div>
+  </section>
 
-  <div class="w3-content w3-display-container w3-black w3-center" style="max-width:100%">
-
-    <img class="mySlides" src="Slide1final.jpg" style="height:auto;  width:70%">
-
+  <!-- Patreon Button -->
+  <div class="patreon">
+    <a href="https://www.patreon.com/bePatron?u=50566903" target="_blank" class="project-card">
+      <i class="fab fa-patreon"></i>
+      <h3>Become a Patron!</h3>
+      <p>Support my work and unlock exclusive content.</p>
+    </a>
   </div>
-  <div class="w3-bar w3-black w3-large w3-center" style=" width:100%">
-       <a href="index.html" class="w3-bar-item w3-button w3-white w3-tangerine" style="width:100%">Go back home<i class="fa fa-home"></i></a>
-  </div>
-  <div class="w3-bar w3-black w3-large w3-center" style=" width:100%">
-       <a href="index.html" class="w3-bar-item w3-button w3-white w3-tangerine" style="width:30%">sitemap<i class="fa fa-map"></i></a>
-  </div>
 
+  <!-- Footer -->
+  <footer class="footer">
+    &copy; 2024 Shahrukh Najmal &mdash; Built with <i class="fa fa-heart" style="color:#fff;text-shadow:var(--glow);"></i> | <a href="index.html">Home</a>
+  </footer>
+
+  <!-- Animate on scroll (optional, for more advanced animations) -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Theme toggle logic
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    function setTheme(mode) {
+      if (mode === 'light') {
+        document.body.classList.add('light-mode');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      } else {
+        document.body.classList.remove('light-mode');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+      }
+      localStorage.setItem('theme', mode);
+    }
+    // Load theme on page load
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') setTheme('light');
+    else setTheme('dark');
+    themeToggle.addEventListener('click', () => {
+      if (document.body.classList.contains('light-mode')) setTheme('dark');
+      else setTheme('light');
+    });
+    // Initialize AOS if you want more scroll animations
+    if (window.AOS) AOS.init();
+  </script>
+  <!-- Kaleidoscope Effect Script -->
+  <script>
+    const canvas = document.getElementById('kaleidoscope-bg');
+    const ctx = canvas.getContext('2d');
+    let width, height, cx, cy;
+    let mouse = { x: 0.5, y: 0.5 };
+    let isMobile = /Mobi|Android/i.test(navigator.userAgent);
+    function resize() {
+      const hero = document.querySelector('.hero');
+      width = hero.offsetWidth;
+      height = hero.offsetHeight;
+      canvas.width = width;
+      canvas.height = height;
+      cx = width / 2;
+      cy = height / 2;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+    // Mouse move
+    if (!isMobile) {
+      window.addEventListener('mousemove', e => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = (e.clientX - rect.left) / width;
+        mouse.y = (e.clientY - rect.top) / height;
+      });
+    } else {
+      // On mobile, animate slowly
+      let t = 0;
+      setInterval(() => {
+        mouse.x = 0.5 + 0.2 * Math.sin(t/60);
+        mouse.y = 0.5 + 0.2 * Math.cos(t/60);
+        t++;
+      }, 30);
+    }
+    // Helper to check if light mode is active
+    function isLightMode() {
+      return document.body.classList.contains('light-mode');
+    }
+    // Kaleidoscope draw (grayscale, bigger circles, invert for light mode)
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      const time = Date.now() * 0.001;
+      const numPetals = 10;
+      const radius = Math.min(width, height) * 0.7; // Larger circles
+      for (let i = 0; i < numPetals; i++) {
+        const angle = (i / numPetals) * Math.PI * 2 + time * 0.2;
+        const mx = cx + Math.cos(angle) * radius * (0.3 + 0.7 * mouse.x);
+        const my = cy + Math.sin(angle) * radius * (0.3 + 0.7 * mouse.y);
+        // Grayscale gradient, invert for light mode
+        let gray1 = Math.floor(255 * (0.5 + 0.5 * Math.sin(angle + time)));
+        let gray2 = Math.floor(255 * (0.5 + 0.5 * Math.cos(angle + time + 1)));
+        if (isLightMode()) {
+          gray1 = 255 - gray1;
+          gray2 = 255 - gray2;
+        }
+        const grad = ctx.createRadialGradient(mx, my, 0, mx, my, radius * 0.7);
+        grad.addColorStop(0, `rgba(${gray1},${gray1},${gray1},0.7)`);
+        grad.addColorStop(0.5, `rgba(${gray2},${gray2},${gray2},0.25)`);
+        grad.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.globalCompositeOperation = 'lighter';
+        ctx.beginPath();
+        ctx.arc(mx, my, radius * 0.7, 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.fill();
+      }
+      ctx.globalCompositeOperation = 'source-over';
+      requestAnimationFrame(draw);
+    }
+    draw();
+  </script>
 </body>
 
 </html>
