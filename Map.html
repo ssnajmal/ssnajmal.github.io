@@ -1,294 +1,409 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
-	<title>MAP</title>
-	<link rel="stylesheet" href="main.css">
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-	<script src='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js'></script>
-	<meta name="author" content="Shahrukh Najmal">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Interactive Map</title>
+	
+	<!-- Core CSS -->
+	<link rel="stylesheet" href="main.css">
+	
+	<!-- Mapbox CSS -->
 	<link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
+	
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	
+	<style>
+		:root {
+			--primary: rgba(30, 30, 47, 0.7);
+			--accent: #fff;
+			--bg: #181824;
+			--card-bg: rgba(35, 35, 58, 0.55);
+			--text: #f5f5f5;
+			--shadow: 0 4px 24px rgba(0,0,0,0.2);
+			--glass-blur: blur(12px);
+			--glow: 0 0 16px 4px #fff, 0 0 32px 8px #b3e5fc33;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: 'Lato', 'Montserrat', Arial, sans-serif;
+			background: var(--bg);
+			color: var(--text);
+			min-height: 100vh;
+		}
+
+		/* Navbar */
+		.navbar {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 1rem 2rem;
+			background: var(--primary);
+			box-shadow: var(--shadow);
+			position: sticky;
+			top: 0;
+			z-index: 10;
+			backdrop-filter: var(--glass-blur);
+			-webkit-backdrop-filter: var(--glass-blur);
+			border-bottom: 1.5px solid #fff2;
+		}
+
+		.navbar .logo {
+			font-family: 'Montserrat', sans-serif;
+			font-size: 1.7rem;
+			font-weight: 700;
+			color: var(--accent);
+			letter-spacing: 2px;
+			text-decoration: none;
+			display: flex;
+			align-items: center;
+			gap: 0.5em;
+			text-shadow: var(--glow);
+		}
+
+		.navbar .nav-links {
+			display: flex;
+			gap: 1.5rem;
+			align-items: center;
+		}
+
+		.navbar .nav-links a {
+			color: var(--accent);
+			text-decoration: none;
+			font-weight: 500;
+			font-size: 1rem;
+			padding: 0.5em 1em;
+			border-radius: 30px;
+			transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+			position: relative;
+			background: transparent;
+			box-shadow: none;
+		}
+
+		.navbar .nav-links a:hover {
+			background: #fff2;
+			color: #181824;
+			transform: translateY(-2px) scale(1.07);
+			box-shadow: var(--glow);
+		}
+
+		.navbar .nav-links a.active {
+			background: #fff2;
+			color: #181824;
+			box-shadow: var(--glow);
+		}
+
+		/* Map Container */
+		.map-container {
+			position: relative;
+			width: 100%;
+			height: calc(100vh - 180px);
+			background: var(--card-bg);
+			backdrop-filter: var(--glass-blur);
+			-webkit-backdrop-filter: var(--glass-blur);
+			border: 1px solid #fff2;
+			margin: 1rem 0;
+			border-radius: 12px;
+			overflow: hidden;
+		}
+
+		#map {
+			width: 100%;
+			height: 100%;
+			border-radius: 12px;
+		}
+
+		.distance-container {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			z-index: 1;
+			background: var(--card-bg);
+			padding: 1rem;
+			border-radius: 8px;
+			backdrop-filter: var(--glass-blur);
+			-webkit-backdrop-filter: var(--glass-blur);
+			border: 1px solid #fff2;
+			color: var(--text);
+			font-size: 0.9rem;
+			max-width: 300px;
+		}
+
+		.info-box {
+			background: var(--card-bg);
+			padding: 2rem;
+			margin: 1rem 0;
+			border-radius: 12px;
+			backdrop-filter: var(--glass-blur);
+			-webkit-backdrop-filter: var(--glass-blur);
+			border: 1px solid #fff2;
+		}
+
+		.info-box h1 {
+			font-size: 1.8rem;
+			color: var(--accent);
+			margin-bottom: 1rem;
+			text-shadow: var(--glow);
+		}
+
+		.info-box h2 {
+			font-size: 1.2rem;
+			color: var(--text);
+			margin-bottom: 1rem;
+			line-height: 1.6;
+		}
+
+		/* Container */
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 1rem;
+		}
+	</style>
 </head>
 <body>
+	<!-- Navbar -->
+	<nav class="navbar">
+		<a href="index.html" class="logo"><i class="fa fa-code"></i> Content Generators</a>
+		<div class="nav-links">
+			<a href="GenerationScreen_Healthcare.html"><i class="fa fa-hospital"></i> Healthcare</a>
+			<a href="GenerationScreen_TechCompany.html"><i class="fa fa-robot"></i> Tech Company</a>
+			<a href="GenerationScreen_ShopRegular.html"><i class="fa fa-store"></i> Shop</a>
+			<a href="Map.html" class="active"><i class="fa fa-map"></i> Map</a>
+			<a href="index.html"><i class="fa fa-home"></i> Portfolio</a>
+		</div>
+	</nav>
 
-<style>
+	<div class="container">
+		<div class="info-box">
+			<h1>Interactive Map System</h1>
+			<h2>This is a mapping system for local trips in Kenya less than 1000km. Find your location and click it to begin calculating the distance to your destination. You can click the destination to get an estimation of your route and click it again to remove the point. Add more points to improve your results.</h2>
+		</div>
 
-.distance-container {
-position: relative;
-top: 10px;
-left: 10px;
-z-index: 1;
-}
+		<div class="map-container">
+			<div id="distance" class="distance-container"></div>
+			<div id="map"></div>
+		</div>
+	</div>
 
-.distance-container > * {
-background-color: rgba(0, 0, 0, 0.5);
-color: #fff;
-font-size: 11px;
-line-height: 18px;
-display: block;
-margin: 0;
-padding: 5px 10px;
-border-radius: 3px;
-}
+	<script src="https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js"></script>
+	<script src="https://npmcdn.com/@turf/turf@5.1.6/turf.min.js"></script>
 
-	body { margin: 0; padding: 0; }
-	#map { position: relative; top: 0; bottom: 0; width: 100%; }
+	<script>
+		mapboxgl.accessToken = 'pk.eyJ1IjoidGhlY29ucXVlcm9yLWMxMzciLCJhIjoiY2s1ejM5bjhxMHEwdDNtbmprd2UyYXN4MyJ9.BC7tw7_-N1ltmAH4hb02eA';
 
+		var map = new mapboxgl.Map({
+			container: 'map',
+			style: 'mapbox://styles/mapbox/dark-v10',
+			center: [36.078420, -0.281490],
+			zoom: 12
+		});
 
-</style>
+		map.on('mousemove', function(e) {
+			document.getElementById('info').innerHTML =
+				// e.point is the x, y coordinates of the mousemove event relative
+				// to the top-left corner of the map
+				JSON.stringify(e.point) +
+				'<br />' +
+				// e.lngLat is the longitude, latitude geographical position of the event
+				JSON.stringify(e.lngLat.wrap());
+		});
 
-    <div class="w3-bar w3-black w3-large" style=" width:100%">
+		map.on('load', function() {
+			map.addSource('points', {
+				'type': 'geojson',
+				'data': {
+					'type': 'FeatureCollection',
+					'features': [
+						{
+							// feature for Mapbox DC
+							'type': 'Feature',
+							'geometry': {
+								'type': 'Point',
+								'coordinates': [
+									36.08314526412528, -0.2784103570914027
+								]
+							},
+							'properties': {
+								'title': 'PLACE THIS WAS CODED',
+								'icon': 'money'
+							}
+						},
+						{
+							// feature for Mapbox SF
+							'type': 'Feature',
+							'geometry': {
+								'type': 'Point',
+								'coordinates': [36.052096286417964,-0.29137412205585633]
+							},
+							'properties': {
+								'title': 'Farad Autos',
+								'icon': 'shop'
+							}
+						}
+					]
+				}
+			});
 
-    <a href="index.html" class="w3-bar-item w3-button w3-white w3-tangerine" style="width:33%"><i class="fa fa-home"></i></a>
-    <a href="register.html" class="w3-bar-item w3-button w3-tangerine" style=" width:33%"><i class="fa fa-male"></i>Register</a>
-    <a href="CV.html" class="w3-bar-item w3-button" >MY CV (About Me)</a>
-    <a href="Newgen.html" class="w3-bar-item w3-button" >Generate for a small startup</a>
-    <a href="Newgen2.html" class="w3-bar-item w3-button">Generate for a tech startup</a>
-    <a href="GenerationScreen_TechCompany.html" class="w3-bar-item w3-button">Generate for tech company</a>
-    <a href="GenerationScreen_ShopRegular.html" class="w3-bar-item w3-button">Generate for a normal shop</a>
+			map.addLayer({
+				'id': 'points',
+				'type': 'symbol',
+				'source': 'points',
+				'layout': {
+					// get the icon name from the source's "icon" property
+					// concatenate the name to get an icon from the style's sprite sheet
+					'icon-image': ['concat', ['get', 'icon'], '-15'],
+					// get the title name from the source's "title" property
+					'text-field': ['get', 'title'],
+					'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+					'text-offset': [0, 0.6],
+					'text-anchor': 'top'
+				}
+			});
+		});
 
-  </div>
-  <div class="w3-bar w3-black w3-large" style="width:100%">
-       <a href="Map.html" class="w3-bar-item w3-button w3-white w3-tangerine" style="width:100%">New Mapping System<i class="fa fa-map"></i></a>
-  </div>
-  <div class="w3-bar w3-black w3-large" style="width:100%">
-       <h1 class="w3-bar-item w3-button w3-white w3-tangerine" style="width:100%">This is a mapping system for local trips in kenya less than 1000km.<i class="fa fa-map"></i></h1>
-	   <h2 class="w3-bar-item w3-button w3-white w3-tangerine" style="width:100%">Find your location and click it to begin calculating the distance to your destination, you can click the destination to get an estimation of your route and click it again to remove the point, add more points to improve your results</h3>
-  </div>
-<div>
+		var distanceContainer = document.getElementById('distance');
+		var distanceContainer2 = document.getElementById('distance2');
 
-		<div id="distance" class="distance-container"></div>
+		// GeoJSON object to hold our measurement features
+		var geojson = {
+			'type': 'FeatureCollection',
+			'features': []
+		};
 
-		<div id='map' style='width: 100%; height: 50%;'></div>
-		<pre id="info"></pre>
-</div>
-</div>
-<div class="w3-bar w3-black w3-large" style=" width:100%">
-		 <a href="index.html" class="w3-bar-item w3-button w3-white w3-tangerine" style="width:100%">Back home<i class="fa fa-Home"></i></a>
-</div>
+		// Used to draw a line between points
+		var linestring = {
+			'type': 'Feature',
+			'geometry': {
+				'type': 'LineString',
+				'coordinates': []
+			}
+		};
 
-<script src="https://npmcdn.com/@turf/turf@5.1.6/turf.min.js"></script>
+		map.on('load', function() {
+			map.addSource('geojson', {
+				'type': 'geojson',
+				'data': geojson
+			});
+			// Initialize the geolocate control.
+			var geolocate = new mapboxgl.GeolocateControl({
+				positionOptions: {
+					enableHighAccuracy: true
+				},
+				trackUserLocation: true
+			});
+			// Add the control to the map.
+			map.addControl(geolocate);
+			// Set an event listener that fires
+			// when a geolocate event occurs.
+			geolocate.on('geolocate', function() {
+				console.log('A geolocate event has occurred.')
+			});
 
-<script>
-mapboxgl.accessToken = 'pk.eyJ1IjoidGhlY29ucXVlcm9yLWMxMzciLCJhIjoiY2s1ejM5bjhxMHEwdDNtbmprd2UyYXN4MyJ9.BC7tw7_-N1ltmAH4hb02eA';
+			//MY OWN SH*T
 
-    var map = new mapboxgl.Map({
-container: 'map',
-style: 'mapbox://styles/mapbox/light-v10',
-center: [36.078420, -0.281490],
-zoom: 12
-});
+			var nav = new mapboxgl.NavigationControl();
+			map.addControl(nav, 'top-left')
 
+			// Add styles to the map
+			map.addLayer({
+				id: 'measure-points',
+				type: 'circle',
+				source: 'geojson',
+				paint: {
+					'circle-radius': 5,
+					'circle-color': '#000'
+				},
+				filter: ['in', '$type', 'Point']
+			});
+			map.addLayer({
+				id: 'measure-lines',
+				type: 'line',
+				source: 'geojson',
+				layout: {
+					'line-cap': 'round',
+					'line-join': 'round'
+				},
+				paint: {
+					'line-color': '#000',
+					'line-width': 2.5
+				},
+				filter: ['in', '$type', 'LineString']
+			});
 
+			map.on('click', function(e) {
+				var features = map.queryRenderedFeatures(e.point, {
+					layers: ['measure-points']
+				});
 
-map.on('mousemove', function(e) {
-document.getElementById('info').innerHTML =
-// e.point is the x, y coordinates of the mousemove event relative
-// to the top-left corner of the map
-JSON.stringify(e.point) +
-'<br />' +
-// e.lngLat is the longitude, latitude geographical position of the event
-JSON.stringify(e.lngLat.wrap());
+				// Remove the linestring from the group
+				// So we can redraw it based on the points collection
+				if (geojson.features.length > 1) geojson.features.pop();
 
-});
+				// Clear the Distance container to populate it with a new value
+				distanceContainer.innerHTML = '';
 
+				// If a feature was clicked, remove it from the map
+				if (features.length) {
+					var id = features[0].properties.id;
+					geojson.features = geojson.features.filter(function(point) {
+						return point.properties.id !== id;
+					});
 
-map.on('load', function() {
+				} else {
+					var point = {
+						'type': 'Feature',
+						'geometry': {
+							'type': 'Point',
+							'coordinates': [e.lngLat.lng, e.lngLat.lat]
+						},
+						'properties': {
+							'id': String(new Date().getTime())
+						}
+					};
 
-map.addSource('points', {
-'type': 'geojson',
-'data': {
-'type': 'FeatureCollection',
-'features': [
-{
-// feature for Mapbox DC
-'type': 'Feature',
-'geometry': {
-'type': 'Point',
-'coordinates': [
- 36.08314526412528, -0.2784103570914027
-]
-},
-'properties': {
-'title': 'PLACE THIS WAS CODED',
-'icon': 'money'
-}
-},
-{
-// feature for Mapbox SF
-'type': 'Feature',
-'geometry': {
-'type': 'Point',
-'coordinates': [36.052096286417964,-0.29137412205585633]
-},
-'properties': {
-'title': 'Farad Autos',
-'icon': 'shop'
-}
-}
-]
-}
-});
+					geojson.features.push(point);
+				}
 
-map.addLayer({
-'id': 'points',
-'type': 'symbol',
-'source': 'points',
-'layout': {
-// get the icon name from the source's "icon" property
-// concatenate the name to get an icon from the style's sprite sheet
-'icon-image': ['concat', ['get', 'icon'], '-15'],
-// get the title name from the source's "title" property
-'text-field': ['get', 'title'],
-'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
-'text-offset': [0, 0.6],
-'text-anchor': 'top'
-}
-});
-});
+				if (geojson.features.length > 1) {
+					linestring.geometry.coordinates = geojson.features.map(function(
+						point
+					) {
+						return point.geometry.coordinates;
+					});
 
-var distanceContainer = document.getElementById('distance');
-var distanceContainer2 = document.getElementById('distance2');
+					geojson.features.push(linestring);
 
-// GeoJSON object to hold our measurement features
-var geojson = {
-'type': 'FeatureCollection',
-'features': []
-};
+					//some calculacable vars
+					var newvar = String(e.lngLat.lng +' , '+ e.lngLat.lat);
+					var km5 = parseFloat(turf.length(linestring).toLocaleString())/15;
+					var cost = km5 * 80;
+					// Populate the distanceContainer with total distance
+					var value = document.createElement('pre');
+					value.textContent =
+						'Total distance: ' +
+						turf.length(linestring).toLocaleString() + 'km.     Fuel needed(15km/l):' + km5 + ' Litres' + '.. The cost in fuel: ' + cost + 'ksh  ' + newvar;
+					distanceContainer.appendChild(value);
+				}
 
-// Used to draw a line between points
-var linestring = {
-'type': 'Feature',
-'geometry': {
-'type': 'LineString',
-'coordinates': []
-}
-};
+				map.getSource('geojson').setData(geojson);
+			});
+		});
 
-map.on('load', function() {
-map.addSource('geojson', {
-'type': 'geojson',
-'data': geojson
-});
- // Initialize the geolocate control.
-var geolocate = new mapboxgl.GeolocateControl({
-positionOptions: {
-enableHighAccuracy: true
-},
-trackUserLocation: true
-});
-// Add the control to the map.
-map.addControl(geolocate);
-// Set an event listener that fires
-// when a geolocate event occurs.
-geolocate.on('geolocate', function() {
-console.log('A geolocate event has occurred.')
-});
+		map.on('mousemove', function(e) {
+			var features = map.queryRenderedFeatures(e.point, {
+				layers: ['measure-points']
+			});
 
-//MY OWN SH*T
-
-var nav = new mapboxgl.NavigationControl();
-map.addControl(nav, 'top-left')
-
-// Add styles to the map
-map.addLayer({
-id: 'measure-points',
-type: 'circle',
-source: 'geojson',
-paint: {
-'circle-radius': 5,
-'circle-color': '#000'
-},
-filter: ['in', '$type', 'Point']
-});
-map.addLayer({
-id: 'measure-lines',
-type: 'line',
-source: 'geojson',
-layout: {
-'line-cap': 'round',
-'line-join': 'round'
-},
-paint: {
-'line-color': '#000',
-'line-width': 2.5
-},
-filter: ['in', '$type', 'LineString']
-});
-
-map.on('click', function(e) {
-var features = map.queryRenderedFeatures(e.point, {
-layers: ['measure-points']
-});
-
-// Remove the linestring from the group
-// So we can redraw it based on the points collection
-if (geojson.features.length > 1) geojson.features.pop();
-
-// Clear the Distance container to populate it with a new value
-distanceContainer.innerHTML = '';
-
-// If a feature was clicked, remove it from the map
-if (features.length) {
-var id = features[0].properties.id;
-geojson.features = geojson.features.filter(function(point) {
-return point.properties.id !== id;
-});
-
-} else {
-var point = {
-'type': 'Feature',
-'geometry': {
-'type': 'Point',
-'coordinates': [e.lngLat.lng, e.lngLat.lat]
-},
-'properties': {
-'id': String(new Date().getTime())
-}
-};
-
-geojson.features.push(point);
-}
-
-if (geojson.features.length > 1) {
-linestring.geometry.coordinates = geojson.features.map(function(
-point
-) {
-return point.geometry.coordinates;
-});
-
-geojson.features.push(linestring);
-
-//some calculacable vars
-var newvar = String(e.lngLat.lng +' , '+ e.lngLat.lat);
-var km5 = parseFloat(turf.length(linestring).toLocaleString())/15;
-var cost = km5 * 80;
-// Populate the distanceContainer with total distance
-var value = document.createElement('pre');
-value.textContent =
-'Total distance: ' +
-turf.length(linestring).toLocaleString() + 'km.     Fuel needed(15km/l):' + km5 + ' Litres' + '.. The cost in fuel: ' + cost + 'ksh  ' + newvar;
-distanceContainer.appendChild(value);
-}
-
-map.getSource('geojson').setData(geojson);
-});
-});
-
-map.on('mousemove', function(e) {
-var features = map.queryRenderedFeatures(e.point, {
-layers: ['measure-points']
-});
-
-
-// UI indicator for clicking/hovering a point on the map
-map.getCanvas().style.cursor = features.length
-? 'pointer'
-: 'crosshair';
-});
-
-</script>
+			// UI indicator for clicking/hovering a point on the map
+			map.getCanvas().style.cursor = features.length
+				? 'pointer'
+				: 'crosshair';
+		});
+	</script>
 </body>
 </html>
