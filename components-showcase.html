@@ -1159,6 +1159,14 @@
             margin-bottom: 3rem;
         }
 
+        /* Stack Islamic cards on mobile */
+        @media screen and (max-width: 768px) {
+            .islamic-cards-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem; /* Adjust gap for stacked layout */
+            }
+        }
+
         /* Islamic Art Hero Styles */
         .islamic-art-hero {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
