@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Content Generation - Tech Company</title>
+  <title>Content Generation - Healthcare</title>
   
   <!-- Core CSS -->
   <link rel="stylesheet" href="main.css">
@@ -11,7 +11,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&family=Chakra+Petch:wght@400;700&family=Audiowide&family=Press+Start+2P&family=VT323&family=Major+Mono+Display&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Montserrat:wght@400;700&family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&family=Poppins:wght@400;700&family=Nunito:wght@400;700&family=Share+Tech+Mono&family=Orbitron:wght@400;700&family=Chakra+Petch:wght@400;700&family=Audiowide&family=Press+Start+2P&family=VT323&family=Major+Mono+Display&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
   
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -117,8 +117,6 @@
       max-width: 1200px;
       margin: 2rem auto;
       padding: 0 1rem;
-      position: relative;
-      z-index: 1;
     }
 
     .header {
@@ -288,13 +286,6 @@
       opacity: 0.7;
       filter: blur(1px) brightness(1.2) saturate(1.3);
       transition: opacity 0.3s;
-      pointer-events: none;
-    }
-
-    /* Ensure content is above background */
-    .container {
-      position: relative;
-      z-index: 1;
     }
   </style>
 </head>
@@ -306,47 +297,47 @@
   <nav class="navbar animate__animated animate__fadeInDown">
     <a href="index.html" class="logo"><i class="fa fa-code"></i> Content Generators</a>
     <div class="nav-links">
-      <a href="GenerationScreen_Healthcare.html"><i class="fa fa-hospital"></i> Healthcare</a>
-      <a href="GenerationScreen_TechCompany.html" class="active"><i class="fa fa-robot"></i> Tech Company</a>
+      <a href="GenerationScreen_Healthcare.html" class="active"><i class="fa fa-hospital"></i> Healthcare</a>
+      <a href="GenerationScreen_TechCompany.html"><i class="fa fa-robot"></i> Tech Company</a>
       <a href="GenerationScreen_ShopRegular.html"><i class="fa fa-store"></i> Shop</a>
       <a href="index.html"><i class="fa fa-home"></i> Portfolio</a>
       <!-- Theme Toggle Button -->
       <button id="theme-toggle" aria-label="Toggle light/dark mode">
         <i id="theme-icon" class="fa fa-moon"></i>
       </button>
-  </div>
+    </div>
   </nav>
 
   <div class="container">
     <div class="header">
-      <h1>Generate Tech Company Content</h1>
-      <p>Create professional tech-themed images with custom text and icons</p>
-  </div>
+      <h1>Generate Healthcare Content</h1>
+      <p>Create professional healthcare-themed images with custom text and icons</p>
+    </div>
 
     <!-- Hidden Images for Canvas -->
     <div class="hidden-images">
-      <img id="business1" src="https://cdn-icons-png.flaticon.com/512/2387/2387446.png?v=1" alt="Enterprise Tech Icon" width="128" height="128">
-      <img id="business2" src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png?v=1" alt="Data Analytics Icon" width="128" height="128">
-      <img id="business3" src="https://cdn-icons-png.flaticon.com/512/2387/2387452.png?v=1" alt="Mobile App Icon" width="128" height="128">
-      <img id="business4" src="https://cdn-icons-png.flaticon.com/512/2387/2387447.png?v=1" alt="Hardware Tech Icon" width="128" height="128">
-      <img id="business5" src="https://cdn-icons-png.flaticon.com/512/2387/2387448.png?v=1" alt="Software Development Icon" width="128" height="128">
-      <img id="business6" src="https://cdn-icons-png.flaticon.com/512/2387/2387450.png?v=1" alt="Cybersecurity Icon" width="128" height="128">
-      <img id="business7" src="https://cdn-icons-png.flaticon.com/512/2387/2387451.png?v=1" alt="Cloud Computing Icon" width="128" height="128">
-      <img id="business8" src="https://cdn-icons-png.flaticon.com/512/2387/2387453.png?v=1" alt="AI/ML Icon" width="128" height="128">
-      <img id="business9" src="https://cdn-icons-png.flaticon.com/512/2387/2387454.png?v=1" alt="Modern Tech Icon" width="128" height="128">
-  </div>
+      <img id="health1" src="https://cdn-icons-png.flaticon.com/512/2966/2966327.png" alt="Medical Center Icon" width="128" height="128">
+      <img id="health2" src="https://cdn-icons-png.flaticon.com/512/2966/2966331.png" alt="Pharmacy Icon" width="128" height="128">
+      <img id="health3" src="https://cdn-icons-png.flaticon.com/512/2966/2966334.png" alt="Dental Care Icon" width="128" height="128">
+      <img id="health4" src="https://cdn-icons-png.flaticon.com/512/2966/2966337.png" alt="Mental Health Icon" width="128" height="128">
+      <img id="health5" src="https://cdn-icons-png.flaticon.com/512/2966/2966340.png" alt="Fitness Icon" width="128" height="128">
+      <img id="health6" src="https://cdn-icons-png.flaticon.com/512/2966/2966343.png" alt="Nutrition Icon" width="128" height="128">
+      <img id="health7" src="https://cdn-icons-png.flaticon.com/512/2966/2966346.png" alt="Pediatrics Icon" width="128" height="128">
+      <img id="health8" src="https://cdn-icons-png.flaticon.com/512/2966/2966349.png" alt="Emergency Icon" width="128" height="128">
+      <img id="health9" src="https://cdn-icons-png.flaticon.com/512/2966/2966352.png" alt="Wellness Icon" width="128" height="128">
+    </div>
 
     <div class="icon-grid">
-      <div class="icon-item"><img src="https://cdn-icons-png.flaticon.com/512/2387/2387446.png?v=1" alt="Enterprise Tech Icon"></div>
-      <div class="icon-item"><img src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png?v=1" alt="Data Analytics Icon"></div>
-      <div class="icon-item"><img src="https://cdn-icons-png.flaticon.com/512/2387/2387452.png?v=1" alt="Mobile App Icon"></div>
-      <div class="icon-item"><img src="https://cdn-icons-png.flaticon.com/512/2387/2387447.png?v=1" alt="Hardware Tech Icon"></div>
-      <div class="icon-item"><img src="https://cdn-icons-png.flaticon.com/512/2387/2387448.png?v=1" alt="Software Development Icon"></div>
-      <div class="icon-item"><img src="https://cdn-icons-png.flaticon.com/512/2387/2387450.png?v=1" alt="Cybersecurity Icon"></div>
-      <div class="icon-item"><img src="https://cdn-icons-png.flaticon.com/512/2387/2387451.png?v=1" alt="Cloud Computing Icon"></div>
-      <div class="icon-item"><img src="https://cdn-icons-png.flaticon.com/512/2387/2387453.png?v=1" alt="AI/ML Icon"></div>
-      <div class="icon-item"><img src="https://cdn-icons-png.flaticon.com/512/2387/2387454.png?v=1" alt="Modern Tech Icon"></div>
-  </div>
+      <div class="icon-item"><img src="https://cdn-icons-png.flaticon.com/512/2966/2966327.png" alt="Medical Center Icon"></div>
+      <div class="icon-item"><img src="https://cdn-icons-png.flaticon.com/512/2966/2966331.png" alt="Pharmacy Icon"></div>
+      <div class="icon-item"><img src="https://cdn-icons-png.flaticon.com/512/2966/2966334.png" alt="Dental Care Icon"></div>
+      <div class="icon-item"><img src="https://cdn-icons-png.flaticon.com/512/2966/2966337.png" alt="Mental Health Icon"></div>
+      <div class="icon-item"><img src="https://cdn-icons-png.flaticon.com/512/2966/2966340.png" alt="Fitness Icon"></div>
+      <div class="icon-item"><img src="https://cdn-icons-png.flaticon.com/512/2966/2966343.png" alt="Nutrition Icon"></div>
+      <div class="icon-item"><img src="https://cdn-icons-png.flaticon.com/512/2966/2966346.png" alt="Pediatrics Icon"></div>
+      <div class="icon-item"><img src="https://cdn-icons-png.flaticon.com/512/2966/2966349.png" alt="Emergency Icon"></div>
+      <div class="icon-item"><img src="https://cdn-icons-png.flaticon.com/512/2966/2966352.png" alt="Wellness Icon"></div>
+    </div>
 
     <div class="generator-controls">
       <div class="input-group">
@@ -355,7 +346,7 @@
         <button id="imageGenerator"><i class="fas fa-magic"></i> Generate</button>
         <button id="imageClear"><i class="fas fa-eraser"></i> Clear</button>
       </div>
-  </div>
+    </div>
 
     <div class="canvas-container">
       <div class="canvas-wrapper">
@@ -363,34 +354,34 @@
       </div>
       <div class="canvas-wrapper">
         <canvas id="myCanvas2" width="800" height="400"></canvas>
-  </div>
+      </div>
       <div class="canvas-wrapper">
         <canvas id="myCanvas3" width="800" height="400"></canvas>
-  </div>
+      </div>
       <div class="canvas-wrapper">
         <canvas id="myCanvas4" width="800" height="400"></canvas>
-  </div>
+      </div>
       <div class="canvas-wrapper">
         <canvas id="myCanvas5" width="800" height="400"></canvas>
-  </div>
+      </div>
       <div class="canvas-wrapper">
         <canvas id="myCanvas6" width="800" height="400"></canvas>
-  </div>
+      </div>
       <div class="canvas-wrapper">
         <canvas id="myCanvas7" width="800" height="400"></canvas>
-  </div>
+      </div>
       <div class="canvas-wrapper">
         <canvas id="myCanvas8" width="800" height="400"></canvas>
-</div>
+      </div>
       <div class="canvas-wrapper">
         <canvas id="myCanvas9" width="800" height="400"></canvas>
-  </div>
-  </div>
+      </div>
+    </div>
 
     <div class="generator-controls">
       <button id="btnDisplay"><i class="fas fa-image"></i> Display All as JPEG</button>
       <button id="btnDownload"><i class="fas fa-download"></i> Download Images</button>
-  </div>
+    </div>
 
     <!-- Hidden Images for Display -->
     <div class="hidden-images">
@@ -400,15 +391,15 @@
       <img src="" id="imgConverted4">
       <img src="" id="imgConverted5">
       <img src="" id="imgConverted6">
+    </div>
   </div>
-</div>
 
   <footer class="footer">
     <p>Icons made by <a href="https://www.flaticon.com/authors/smashicons" target="_blank">Smashicons</a> from 
     <a href="https://www.flaticon.com/" target="_blank">www.flaticon.com</a></p>
   </footer>
 
-<script>
+  <script>
     // Font loading functionality
     const loadFontsButton = document.querySelector("#loadFonts");
     const imageGenButton = document.querySelector("#imageGenerator");
@@ -428,7 +419,7 @@
         const testCtx = testCanvas.getContext('2d');
         
         // Test each font
-        const fonts = ['Share Tech Mono', 'Orbitron', 'Chakra Petch', 'Audiowide', 'Press Start 2P', 'VT323', 'Major Mono Display', 'IBM Plex Mono'];
+        const fonts = ['Quicksand', 'Montserrat', 'Roboto', 'Open Sans', 'Poppins', 'Nunito', 'Share Tech Mono', 'Orbitron', 'Chakra Petch', 'Audiowide', 'Press Start 2P', 'VT323', 'Major Mono Display', 'IBM Plex Mono'];
         for (const font of fonts) {
           testCtx.font = `12px "${font}"`;
           if (testCtx.font.indexOf(font) === -1) {
@@ -463,52 +454,52 @@
 
     // Wait for fonts to load before drawing
     document.fonts.ready.then(function() {
-//button and final image declaration
-  const btnDisplay = document.querySelector("#btnDisplay");
+      //button and final image declaration
+      const btnDisplay = document.querySelector("#btnDisplay");
       const btnDownload = document.querySelector("#btnDownload");
 
-  const imgConverted = document.querySelector("#imgConverted");
-  const imgConverted2 = document.querySelector("#imgConverted2");
-  const imgConverted3 = document.querySelector("#imgConverted3");
-  const imgConverted4 = document.querySelector("#imgConverted4");
-  const imgConverted5 = document.querySelector("#imgConverted5");
-  const imgConverted6 = document.querySelector("#imgConverted6");
+      const imgConverted = document.querySelector("#imgConverted");
+      const imgConverted2 = document.querySelector("#imgConverted2");
+      const imgConverted3 = document.querySelector("#imgConverted3");
+      const imgConverted4 = document.querySelector("#imgConverted4");
+      const imgConverted5 = document.querySelector("#imgConverted5");
+      const imgConverted6 = document.querySelector("#imgConverted6");
 
-  const imageGen = document.querySelector("#imageGenerator");
+      const imageGen = document.querySelector("#imageGenerator");
       const imageCl = document.querySelector("#imageClear");
 
-//querySelector declaration from htmlto js
-  const myCanvas = document.querySelector("#myCanvas");
-  const myCanvas2 = document.querySelector("#myCanvas2");
-  const myCanvas3 = document.querySelector("#myCanvas3");
-  const myCanvas4 = document.querySelector("#myCanvas4");
-  const myCanvas5 = document.querySelector("#myCanvas5");
-  const myCanvas6 = document.querySelector("#myCanvas6");
-  const myCanvas7 = document.querySelector("#myCanvas7");
-  const myCanvas8 = document.querySelector("#myCanvas8");
-  const myCanvas9 = document.querySelector("#myCanvas9");
+      //querySelector declaration from htmlto js
+      const myCanvas = document.querySelector("#myCanvas");
+      const myCanvas2 = document.querySelector("#myCanvas2");
+      const myCanvas3 = document.querySelector("#myCanvas3");
+      const myCanvas4 = document.querySelector("#myCanvas4");
+      const myCanvas5 = document.querySelector("#myCanvas5");
+      const myCanvas6 = document.querySelector("#myCanvas6");
+      const myCanvas7 = document.querySelector("#myCanvas7");
+      const myCanvas8 = document.querySelector("#myCanvas8");
+      const myCanvas9 = document.querySelector("#myCanvas9");
 
-//declaration of canvas´s context
-  const ctx = myCanvas.getContext("2d");
-  const ctx2 = myCanvas2.getContext("2d");
-  const ctx3 = myCanvas3.getContext("2d");
-  const ctx4 = myCanvas4.getContext("2d");
+      //declaration of canvas´s context
+      const ctx = myCanvas.getContext("2d");
+      const ctx2 = myCanvas2.getContext("2d");
+      const ctx3 = myCanvas3.getContext("2d");
+      const ctx4 = myCanvas4.getContext("2d");
       const ctx5 = myCanvas5.getContext("2d");
       const ctx6 = myCanvas6.getContext("2d");
       const ctx7 = myCanvas7.getContext("2d");
       const ctx8 = myCanvas8.getContext("2d");
       const ctx9 = myCanvas9.getContext("2d");
 
-  //icon declaration
-      var businessicon1 = document.getElementById("business1");
-      var businessicon2 = document.getElementById("business2");
-      var businessicon3 = document.getElementById("business3");
-      var businessicon4 = document.getElementById("business4");
-      var businessicon5 = document.getElementById("business5");
-      var businessicon6 = document.getElementById("business6");
-      var businessicon7 = document.getElementById("business7");
-      var businessicon8 = document.getElementById("business8");
-      var businessicon9 = document.getElementById("business9");
+      //icon declaration
+      var healthicon1 = document.getElementById("health1");
+      var healthicon2 = document.getElementById("health2");
+      var healthicon3 = document.getElementById("health3");
+      var healthicon4 = document.getElementById("health4");
+      var healthicon5 = document.getElementById("health5");
+      var healthicon6 = document.getElementById("health6");
+      var healthicon7 = document.getElementById("health7");
+      var healthicon8 = document.getElementById("health8");
+      var healthicon9 = document.getElementById("health9");
 
       imageGen.addEventListener("click", async function() {
         if (!fontsLoaded) {
@@ -530,7 +521,7 @@
         const text = document.getElementById("imageText").value;
 
         // Wait for all images to load
-        const images = [businessicon1, businessicon2, businessicon3, businessicon4, businessicon5, businessicon6, businessicon7, businessicon8, businessicon9];
+        const images = [healthicon1, healthicon2, healthicon3, healthicon4, healthicon5, healthicon6, healthicon7, healthicon8, healthicon9];
         await Promise.all(images.map(img => {
           if (img.complete) return Promise.resolve();
           return new Promise(resolve => {
@@ -539,205 +530,161 @@
           });
         }));
 
-        // AI/ML Style - Icon 1
-        ctx.font = "bold 70px 'Orbitron'";
+        // Medical Research Style - Icon 1
+        ctx.font = "bold 70px 'Quicksand'";
         ctx.fillStyle = "#FFFFFF";
         ctx.filter = "brightness(0) invert(1)";
-        ctx.drawImage(businessicon1, 50, 50, 100, 100);
+        ctx.drawImage(healthicon1, 50, 50, 100, 100);
         ctx.filter = "none";
         ctx.fillText(text, 170, 120);
-        // Draw neural network pattern
+        // Draw DNA helix
         ctx.beginPath();
-        for(let i = 0; i < 5; i++) {
+        for(let i = 0; i < 8; i++) {
           const y = 200 + i * 30;
           ctx.moveTo(400, y);
           ctx.lineTo(700, y);
-          for(let j = 0; j < 7; j++) {
-            const x = 400 + j * 50;
-            ctx.moveTo(x, y);
-            ctx.lineTo(x, y + 30);
-            ctx.arc(x, y, 3, 0, Math.PI * 2);
-          }
+          ctx.arc(400 + i * 40, y, 5, 0, Math.PI * 2);
+          ctx.arc(700 - i * 40, y, 5, 0, Math.PI * 2);
         }
         ctx.strokeStyle = "#FFFFFF";
         ctx.lineWidth = 2;
         ctx.stroke();
 
-        // Cloud Computing Style - Icon 2
-        ctx2.font = "bold 65px 'Share Tech Mono'";
+        // Hospital Style - Icon 2
+        ctx2.font = "bold 65px 'Montserrat'";
         ctx2.fillStyle = "#FFFFFF";
         ctx2.filter = "brightness(0) invert(1)";
-        ctx2.drawImage(businessicon2, 50, 50, 100, 100);
+        ctx2.drawImage(healthicon2, 50, 50, 100, 100);
         ctx2.filter = "none";
         ctx2.fillText(text, 170, 120);
-        // Draw cloud pattern
+        // Draw hospital cross
         ctx2.beginPath();
-        const cloudX = 400;
-        const cloudY = 200;
-        ctx2.arc(cloudX, cloudY, 30, 0, Math.PI * 2);
-        ctx2.arc(cloudX + 30, cloudY, 20, 0, Math.PI * 2);
-        ctx2.arc(cloudX - 30, cloudY, 20, 0, Math.PI * 2);
-        ctx2.arc(cloudX + 60, cloudY - 30, 10, 0, Math.PI * 2);
-        ctx2.arc(cloudX + 60, cloudY + 30, 10, 0, Math.PI * 2);
-        ctx2.arc(cloudX - 60, cloudY - 30, 10, 0, Math.PI * 2);
-        ctx2.arc(cloudX - 60, cloudY + 30, 10, 0, Math.PI * 2);
+        ctx2.moveTo(500, 150);
+        ctx2.lineTo(500, 250);
+        ctx2.moveTo(450, 200);
+        ctx2.lineTo(550, 200);
         ctx2.strokeStyle = "#FFFFFF";
-        ctx2.lineWidth = 2;
+        ctx2.lineWidth = 4;
         ctx2.stroke();
 
-        // Cybersecurity Style - Icon 3
-        ctx3.font = "bold 70px 'Major Mono Display'";
+        // Pharmacy Style - Icon 3
+        ctx3.font = "bold 70px 'Roboto'";
         ctx3.fillStyle = "#FFFFFF";
         ctx3.filter = "brightness(0) invert(1)";
-        ctx3.drawImage(businessicon3, 50, 50, 100, 100);
+        ctx3.drawImage(healthicon3, 50, 50, 100, 100);
         ctx3.filter = "none";
         ctx3.fillText(text, 170, 120);
-        // Draw shield pattern
+        // Draw pill shape
         ctx3.beginPath();
-        ctx3.moveTo(400, 150);
-        ctx3.lineTo(500, 200);
-        ctx3.lineTo(400, 250);
-        ctx3.lineTo(300, 200);
-        ctx3.closePath();
-        ctx3.moveTo(400, 160);
-        ctx3.lineTo(480, 200);
-        ctx3.lineTo(400, 240);
-        ctx3.lineTo(320, 200);
-        ctx3.closePath();
-        ctx3.arc(400, 200, 5, 0, Math.PI * 2);
+        ctx3.ellipse(500, 200, 40, 20, 0, 0, Math.PI * 2);
         ctx3.strokeStyle = "#FFFFFF";
         ctx3.lineWidth = 2;
         ctx3.stroke();
 
-        // Data Analytics Style - Icon 4
-        ctx4.font = "bold 75px 'IBM Plex Mono'";
+        // Medical Device Style - Icon 4
+        ctx4.font = "bold 75px 'Open Sans'";
         ctx4.fillStyle = "#FFFFFF";
         ctx4.filter = "brightness(0) invert(1)";
-        ctx4.drawImage(businessicon4, 50, 50, 100, 100);
+        ctx4.drawImage(healthicon4, 50, 50, 100, 100);
         ctx4.filter = "none";
         ctx4.fillText(text, 170, 120);
-        // Draw data visualization
+        // Draw heartbeat pattern
         ctx4.beginPath();
+        ctx4.moveTo(400, 200);
+        ctx4.lineTo(450, 200);
+        ctx4.lineTo(475, 150);
+        ctx4.lineTo(500, 250);
+        ctx4.lineTo(525, 200);
+        ctx4.lineTo(700, 200);
         ctx4.strokeStyle = "#FFFFFF";
         ctx4.lineWidth = 2;
-        for(let i = 0; i < 7; i++) {
-          const x = 400 + i * 40;
-          const height = 30 + Math.random() * 50;
-          ctx4.moveTo(x, 250);
-          ctx4.lineTo(x, 250 - height);
-          ctx4.arc(x, 250 - height, 5, 0, Math.PI * 2);
-        }
         ctx4.stroke();
 
-        // Software Development Style - Icon 5
-        ctx5.font = "bold 60px 'Press Start 2P'";
+        // Health Insurance Style - Icon 5
+        ctx5.font = "bold 60px 'Lato'";
         ctx5.fillStyle = "#FFFFFF";
         ctx5.filter = "brightness(0) invert(1)";
-        ctx5.drawImage(businessicon5, 50, 50, 100, 100);
+        ctx5.drawImage(healthicon5, 50, 50, 100, 100);
         ctx5.filter = "none";
         ctx5.fillText(text, 170, 120);
-        // Draw code pattern
-        ctx5.font = "20px 'Share Tech Mono'";
-        ctx5.fillStyle = "#FFFFFF";
-        ctx5.fillText("async function() {", 400, 200);
-        ctx5.fillText("  await process();", 400, 230);
-        ctx5.fillText("  return success;", 400, 260);
-        ctx5.fillText("}", 400, 290);
+        // Draw medical chart
         ctx5.beginPath();
-        ctx5.moveTo(390, 190);
-        ctx5.lineTo(390, 300);
-        ctx5.moveTo(550, 190);
-        ctx5.lineTo(550, 300);
+        ctx5.rect(400, 150, 300, 100);
+        ctx5.moveTo(400, 200);
+        ctx5.lineTo(700, 200);
+        ctx5.moveTo(450, 150);
+        ctx5.lineTo(450, 250);
         ctx5.strokeStyle = "#FFFFFF";
         ctx5.lineWidth = 2;
         ctx5.stroke();
 
-        // Hardware Tech Style - Icon 6
-        ctx6.font = "bold 80px 'Audiowide'";
+        // Laboratory Style - Icon 6
+        ctx6.font = "bold 80px 'Poppins'";
         ctx6.fillStyle = "#FFFFFF";
         ctx6.filter = "brightness(0) invert(1)";
-        ctx6.drawImage(businessicon6, 50, 50, 100, 100);
+        ctx6.drawImage(healthicon6, 50, 50, 100, 100);
         ctx6.filter = "none";
         ctx6.fillText(text, 170, 120);
-        // Draw circuit pattern
+        // Draw microscope pattern
         ctx6.beginPath();
+        ctx6.arc(500, 200, 30, 0, Math.PI * 2);
+        ctx6.moveTo(500, 170);
+        ctx6.lineTo(500, 230);
+        ctx6.moveTo(470, 200);
+        ctx6.lineTo(530, 200);
         ctx6.strokeStyle = "#FFFFFF";
         ctx6.lineWidth = 2;
-        for(let i = 0; i < 5; i++) {
-          const y = 200 + i * 30;
-          ctx6.moveTo(400, y);
-          ctx6.lineTo(700, y);
-          for(let j = 0; j < 7; j++) {
-            const x = 400 + j * 50;
-            ctx6.moveTo(x, y);
-            ctx6.lineTo(x, y + 30);
-            ctx6.arc(x, y, 3, 0, Math.PI * 2);
-          }
-        }
         ctx6.stroke();
 
-        // Mobile App Style - Icon 7
-        ctx7.font = "bold 70px 'Chakra Petch'";
+        // Mental Health Style - Icon 7
+        ctx7.font = "bold 70px 'Nunito'";
         ctx7.fillStyle = "#FFFFFF";
         ctx7.filter = "brightness(0) invert(1)";
-        ctx7.drawImage(businessicon7, 50, 50, 100, 100);
+        ctx7.drawImage(healthicon7, 50, 50, 100, 100);
         ctx7.filter = "none";
         ctx7.fillText(text, 170, 120);
-        // Draw mobile app interface
+        // Draw brain pattern
         ctx7.beginPath();
-        ctx7.rect(500, 150, 80, 120);
-        ctx7.rect(510, 160, 60, 40);
-        ctx7.rect(510, 210, 60, 50);
+        ctx7.moveTo(400, 200);
+        ctx7.bezierCurveTo(450, 150, 550, 150, 600, 200);
+        ctx7.bezierCurveTo(550, 250, 450, 250, 400, 200);
         ctx7.strokeStyle = "#FFFFFF";
         ctx7.lineWidth = 2;
         ctx7.stroke();
 
-        // Enterprise Tech Style - Icon 8
-        ctx8.font = "bold 75px 'VT323'";
+        // Dental Style - Icon 8
+        ctx8.font = "bold 75px 'Raleway'";
         ctx8.fillStyle = "#FFFFFF";
         ctx8.filter = "brightness(0) invert(1)";
-        ctx8.drawImage(businessicon8, 50, 50, 100, 100);
+        ctx8.drawImage(healthicon8, 50, 50, 100, 100);
         ctx8.filter = "none";
         ctx8.fillText(text, 170, 120);
-        // Draw enterprise architecture
+        // Draw tooth pattern
         ctx8.beginPath();
+        ctx8.moveTo(500, 150);
+        ctx8.lineTo(550, 200);
+        ctx8.lineTo(500, 250);
+        ctx8.lineTo(450, 200);
+        ctx8.closePath();
         ctx8.strokeStyle = "#FFFFFF";
         ctx8.lineWidth = 2;
-        ctx8.moveTo(400, 150);
-        ctx8.lineTo(700, 150);
-        ctx8.moveTo(400, 200);
-        ctx8.lineTo(700, 200);
-        ctx8.moveTo(400, 250);
-        ctx8.lineTo(700, 250);
-        for(let i = 0; i < 4; i++) {
-          const x = 400 + i * 100;
-          ctx8.moveTo(x, 150);
-          ctx8.lineTo(x, 250);
-          ctx8.arc(x, 200, 5, 0, Math.PI * 2);
-        }
         ctx8.stroke();
 
-        // Modern Tech Style - Icon 9
-        ctx9.font = "bold 65px 'Share Tech Mono'";
+        // Emergency Style - Icon 9
+        ctx9.font = "bold 65px 'Source Sans Pro'";
         ctx9.fillStyle = "#FFFFFF";
         ctx9.filter = "brightness(0) invert(1)";
-        ctx9.drawImage(businessicon9, 50, 50, 100, 100);
+        ctx9.drawImage(healthicon9, 50, 50, 100, 100);
         ctx9.filter = "none";
         ctx9.fillText(text, 170, 120);
-        // Draw modern tech pattern
+        // Draw emergency symbol
         ctx9.beginPath();
+        ctx9.moveTo(500, 150);
+        ctx9.lineTo(550, 250);
+        ctx9.lineTo(450, 250);
+        ctx9.closePath();
         ctx9.strokeStyle = "#FFFFFF";
         ctx9.lineWidth = 2;
-        ctx9.moveTo(400, 150);
-        ctx9.lineTo(700, 150);
-        ctx9.moveTo(400, 250);
-        ctx9.lineTo(700, 250);
-        for(let i = 0; i < 4; i++) {
-          const x = 400 + i * 100;
-          ctx9.moveTo(x, 150);
-          ctx9.lineTo(x, 250);
-          ctx9.arc(x, 200, 5, 0, Math.PI * 2);
-        }
         ctx9.stroke();
       });
 
@@ -755,23 +702,23 @@
       });
 
       btnDisplay.addEventListener("click", function() {
-       const dataURI = myCanvas.toDataURL("image/jpeg");
-       const dataURI2 = myCanvas2.toDataURL("image/jpeg");
-       const dataURI3 = myCanvas3.toDataURL("image/jpeg");
-       const dataURI4 = myCanvas4.toDataURL("image/jpeg");
-       const dataURI5 = myCanvas5.toDataURL("image/jpeg");
-       const dataURI6 = myCanvas6.toDataURL("image/jpeg");
-       imgConverted.src = dataURI;
-       imgConverted2.src = dataURI2;
-       imgConverted3.src = dataURI3;
-       imgConverted4.src = dataURI4;
-       imgConverted5.src = dataURI5;
-       imgConverted6.src = dataURI6;
-     });
+        const dataURI = myCanvas.toDataURL("image/jpeg");
+        const dataURI2 = myCanvas2.toDataURL("image/jpeg");
+        const dataURI3 = myCanvas3.toDataURL("image/jpeg");
+        const dataURI4 = myCanvas4.toDataURL("image/jpeg");
+        const dataURI5 = myCanvas5.toDataURL("image/jpeg");
+        const dataURI6 = myCanvas6.toDataURL("image/jpeg");
+        imgConverted.src = dataURI;
+        imgConverted2.src = dataURI2;
+        imgConverted3.src = dataURI3;
+        imgConverted4.src = dataURI4;
+        imgConverted5.src = dataURI5;
+        imgConverted6.src = dataURI6;
+      });
 
-     //to download using btnDownload
+      //to download using btnDownload
       btnDownload.addEventListener("click", function() {
-       //ie/edge support(png only)
+        //ie/edge support(png only)
         if (window.navigator.msSaveBlob) {
           window.navigator.msSaveBlob(myCanvas.msToBlob(), "canvas-img.png")
           window.navigator.msSaveBlob(myCanvas2.msToBlob(), "canvas2-img.png")
@@ -779,15 +726,15 @@
           window.navigator.msSaveBlob(myCanvas4.msToBlob(), "canvas4-img.png")
           window.navigator.msSaveBlob(myCanvas5.msToBlob(), "canvas5-img.png")
           window.navigator.msSaveBlob(myCanvas6.msToBlob(), "canvas-img6.png")
-       }
-       //other browsers
-       else {
-         const a = document.createElement("a");
-         document.body.appendChild(a);
-         a.href = myCanvas.toDataURL();
-         a.download = "canvas-img.jpeg";
-         a.click();
-         document.body.removeChild(a);
+        }
+        //other browsers
+        else {
+          const a = document.createElement("a");
+          document.body.appendChild(a);
+          a.href = myCanvas.toDataURL();
+          a.download = "canvas-img.jpeg";
+          a.click();
+          document.body.removeChild(a);
         }
       });
     });
@@ -818,8 +765,8 @@
         this.speedY = Math.random() * 2 - 1;
         this.hue = hue;
         this.connections = [];
-        // Use tech-themed colors (cyan and white)
-        this.color = Math.random() > 0.5 ? 'rgba(0, 255, 255, 0.5)' : 'rgba(255, 255, 255, 0.5)';
+        // Randomly choose between blue and white
+        this.color = Math.random() > 0.5 ? 'rgba(0, 150, 255, 0.5)' : 'rgba(255, 255, 255, 0.5)';
       }
 
       update() {
@@ -841,17 +788,20 @@
       }
 
       draw() {
+        // Use the particle's assigned color
         ctx.fillStyle = this.color;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
 
+        // Draw connections with matching color
         particles.forEach(particle => {
           const dx = this.x - particle.x;
           const dy = this.y - particle.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           if (distance < 100) {
             ctx.beginPath();
+            // Use a lighter version of the particle's color for connections
             const connectionColor = this.color.replace('0.5', `${0.2 * (1 - distance/100)}`);
             ctx.strokeStyle = connectionColor;
             ctx.lineWidth = 0.5;
@@ -894,4 +844,4 @@
     animate();
   </script>
 </body>
-</html>
+</html> 

@@ -1,38 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-
-  <title>Shahrukh Najmal - Portfolio</title>
-
-  <meta name="description" content="Home">
-
-  <meta name="author" content="Shahrukh Najmal">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <title>Content Generation Hub</title>
+  
+  <!-- Core CSS -->
   <link rel="stylesheet" href="main.css">
-
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+  
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-
+  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <!-- Animate.css for animations -->
+  
+  <!-- Animate.css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
+  
   <style>
     :root {
       --primary: rgba(30, 30, 47, 0.7);
@@ -44,16 +30,7 @@
       --glass-blur: blur(12px);
       --glow: 0 0 16px 4px #fff, 0 0 32px 8px #b3e5fc33;
     }
-    body.light-mode {
-      --primary: rgba(255,255,255,0.7);
-      --accent: #181824;
-      --bg: #fff;
-      --card-bg: rgba(240,240,240,0.7);
-      --text: #181824;
-      --shadow: 0 4px 24px rgba(0,0,0,0.08);
-      --glass-blur: blur(12px);
-      --glow: 0 0 16px 4px #18182433, 0 0 32px 8px #b3e5fc33;
-    }
+
     body {
       margin: 0;
       padding: 0;
@@ -63,6 +40,7 @@
       min-height: 100vh;
       overflow-x: hidden;
     }
+
     /* Enhanced Kaleidoscope Background */
     #kaleidoscope-bg {
       position: fixed;
@@ -75,6 +53,7 @@
       filter: blur(1px) brightness(1.2) saturate(1.3);
       transition: opacity 0.3s;
     }
+
     /* Navbar */
     .navbar {
       display: flex;
@@ -90,6 +69,7 @@
       -webkit-backdrop-filter: var(--glass-blur);
       border-bottom: 1.5px solid #fff2;
     }
+
     .navbar .logo {
       font-family: 'Montserrat', sans-serif;
       font-size: 1.7rem;
@@ -102,11 +82,13 @@
       gap: 0.5em;
       text-shadow: var(--glow);
     }
+
     .navbar .nav-links {
       display: flex;
       gap: 1.5rem;
       align-items: center;
     }
+
     .navbar .nav-links a {
       color: var(--accent);
       text-decoration: none;
@@ -119,114 +101,116 @@
       background: transparent;
       box-shadow: none;
     }
+
     .navbar .nav-links a:hover {
       background: #fff2;
       color: #181824;
       transform: translateY(-2px) scale(1.07);
       box-shadow: var(--glow);
     }
-    /* Hero Section */
-    .hero {
-      min-height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      position: relative;
+
+    .navbar .nav-links a.active {
+      background: #fff2;
+      color: #181824;
+      box-shadow: var(--glow);
     }
-    .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
+
+    #theme-toggle {
+      background: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-size: 1.4rem;
+      color: var(--accent);
+      margin-left: 1.2rem;
+      transition: color 0.2s;
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
       position: relative;
       z-index: 1;
     }
-    .hero h1 {
+
+    .header h1 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 4rem;
-      font-weight: 700;
+      font-size: 3.5rem;
       color: var(--accent);
       margin-bottom: 1.5rem;
       text-shadow: var(--glow);
       animation: fadeInDown 1s;
     }
-    .hero p {
-      font-size: 1.4rem;
+
+    .header p {
       color: #e0e0e0;
-      margin-bottom: 2rem;
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto;
       line-height: 1.6;
       animation: fadeInUp 1.2s;
     }
-    .hero .cta-button {
-      display: inline-block;
-      padding: 1rem 2rem;
-      background: rgba(255,255,255,0.15);
-      color: var(--accent);
-      text-decoration: none;
-      border-radius: 30px;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-      border: 1.5px solid #fff2;
-      animation: fadeInUp 1.4s;
-    }
-    .hero .cta-button:hover {
-      background: rgba(255,255,255,0.25);
-      transform: translateY(-2px);
-      box-shadow: var(--glow);
-      border-color: #fff5;
-    }
-    /* Projects Section */
-    .projects {
+
+    /* Generator Grid */
+    .generator-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-      padding: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
+      margin-bottom: 3rem;
     }
-    .project-card {
+
+    .generator-card {
       background: var(--card-bg);
-      border-radius: 18px;
       padding: 2rem;
+      border-radius: 18px;
       text-align: center;
       transition: all 0.3s ease;
       backdrop-filter: var(--glass-blur);
       -webkit-backdrop-filter: var(--glass-blur);
-      border: 1.5px solid #fff2;
+      border: 1px solid #fff2;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1rem;
       animation: fadeInUp 1s;
     }
-    .project-card:hover {
+
+    .generator-card:hover {
       transform: translateY(-10px);
       box-shadow: var(--glow);
       border-color: #fff5;
     }
-    .project-card i {
-      font-size: 2.5rem;
+
+    .generator-card i {
+      font-size: 3rem;
       color: var(--accent);
       margin-bottom: 1rem;
       text-shadow: var(--glow);
     }
-    .project-card h3 {
+
+    .generator-card h2 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: var(--accent);
       margin: 0;
       text-shadow: var(--glow);
     }
-    .project-card p {
+
+    .generator-card p {
       color: #e0e0e0;
       font-size: 1rem;
       margin: 0;
       line-height: 1.5;
     }
-    .project-card a {
+
+    .generator-card a {
       display: inline-block;
       padding: 0.8rem 1.5rem;
       background: rgba(255,255,255,0.15);
@@ -236,187 +220,99 @@
       font-weight: 600;
       transition: all 0.3s ease;
       margin-top: 1rem;
-      border: 1.5px solid #fff2;
+      border: 1px solid #fff2;
     }
-    .project-card a:hover {
+
+    .generator-card a:hover {
       background: rgba(255,255,255,0.25);
       transform: translateY(-2px);
       box-shadow: var(--glow);
       border-color: #fff5;
     }
+
     /* Footer */
     .footer {
       text-align: center;
-      padding: 2rem;
+      padding: 1rem;
       background: var(--primary);
       backdrop-filter: var(--glass-blur);
       -webkit-backdrop-filter: var(--glass-blur);
-      border-top: 1.5px solid #fff2;
-      position: relative;
-      z-index: 1;
+      border-top: 1px solid #fff2;
     }
-    .footer p {
-      color: var(--accent);
-      margin: 0;
-    }
+
     .footer a {
       color: var(--accent);
       text-decoration: none;
     }
+
     .footer a:hover {
       text-decoration: underline;
     }
+
     /* Animations */
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-30px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    /* Responsive */
-    @media (max-width: 768px) {
-      .navbar {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
-      }
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      .hero p {
-        font-size: 1.1rem;
-      }
-      .projects {
-        padding: 1rem;
-        gap: 1.5rem;
-      }
-    }
   </style>
 </head>
-
 <body>
   <!-- Navbar -->
   <nav class="navbar animate__animated animate__fadeInDown">
-    <a href="index.html" class="logo">
-      <i class="fas fa-code"></i> Shahrukh Najmal
-    </a>
+    <a href="index.html" class="logo"><i class="fa fa-code"></i> Content Generators</a>
     <div class="nav-links">
-      <a href="GenerationScreen.html">
-        <i class="fas fa-magic"></i> Content Generators
-      </a>
+      <a href="GenerationScreen.html" class="active"><i class="fa fa-magic"></i> Generators</a>
+      <a href="index.html"><i class="fa fa-home"></i> Portfolio</a>
+      <!-- Theme Toggle Button -->
       <button id="theme-toggle" aria-label="Toggle light/dark mode">
-        <i id="theme-icon" class="fas fa-moon"></i>
+        <i id="theme-icon" class="fa fa-moon"></i>
       </button>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Welcome to My Portfolio</h1>
-      <p>I'm a passionate developer creating innovative solutions and beautiful digital experiences. Explore my projects and discover how I can help bring your ideas to life.</p>
-      <a href="#projects" class="cta-button">
-        <i class="fas fa-arrow-down"></i> View My Work
-      </a>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="projects">
-    <!-- Content Generation Hub -->
-    <div class="project-card animate__animated animate__fadeInUp">
-      <i class="fas fa-magic"></i>
-      <h3>Content Generation Hub</h3>
-      <p>A suite of specialized generators for creating professional content across various industries.</p>
-      <a href="GenerationScreen.html">Explore Project</a>
+  <div class="container">
+    <div class="header">
+      <h1>Content Generation Hub</h1>
+      <p>Choose from our collection of specialized content generators to create professional, industry-specific images and designs.</p>
     </div>
 
-    <!-- Weebly Site -->
-    <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
-      <i class="fas fa-globe"></i>
-      <h3>Weebly Site</h3>
-      <p>My personal website showcasing my work and professional journey.</p>
-      <a href="https://ssnajmal-incorporations.weeblysite.com/" target="_blank">Visit Site</a>
-    </div>
+    <div class="generator-grid">
+      <div class="generator-card animate__animated animate__fadeInUp">
+        <i class="fa fa-hospital"></i>
+        <h2>Healthcare</h2>
+        <p>Create professional healthcare-themed images with medical icons and modern design elements.</p>
+        <a href="GenerationScreen_Healthcare.html">Generate Healthcare Content</a>
+      </div>
 
-    <!-- GEW LTD -->
-    <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
-      <i class="fas fa-building"></i>
-      <h3>GEW LTD</h3>
-      <p>Professional web design project for a real-world client.</p>
-      <a href="https://www.gewltd.com/" target="_blank">View Project</a>
-    </div>
+      <div class="generator-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
+        <i class="fa fa-robot"></i>
+        <h2>Tech Company</h2>
+        <p>Design modern tech company logos and images with futuristic elements and tech-inspired patterns.</p>
+        <a href="GenerationScreen_TechCompany.html">Generate Tech Content</a>
+      </div>
 
-    <!-- Maintenance Matic -->
-    <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.6s">
-      <i class="fas fa-tools"></i>
-      <h3>Maintenance Matic</h3>
-      <p>A powerful tool for managing website maintenance tasks efficiently.</p>
-      <a href="/websitetestfolder/testwebsite/index.html">Preview</a>
+      <div class="generator-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
+        <i class="fa fa-store"></i>
+        <h2>Shop Business</h2>
+        <p>Create engaging retail and shop business images with shopping icons and business elements.</p>
+        <a href="GenerationScreen_ShopRegular.html">Generate Shop Content</a>
+      </div>
     </div>
-
-    <!-- Mapping System -->
-    <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.8s">
-      <i class="fas fa-map-marked-alt"></i>
-      <h3>Mapping System</h3>
-      <p>An innovative system for visualizing and analyzing geographical data.</p>
-      <a href="Map.html">View Map</a>
-    </div>
-  </section>
+  </div>
 
   <!-- Kaleidoscope Background -->
   <canvas id="kaleidoscope-bg"></canvas>
 
-  <!-- Footer -->
   <footer class="footer">
-    <p>
-      &copy; 2024 Shahrukh Najmal &mdash; 
-      Built with <i class="fas fa-heart" style="color: #ff4d4d;"></i> | 
-      <a href="index.html">Home</a>
-    </p>
+    <p>© 2024 Content Generation Hub. All rights reserved.</p>
   </footer>
 
   <script>
-    // Theme toggle functionality
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    
-    function setTheme(mode) {
-      if (mode === 'light') {
-        document.body.classList.add('light-mode');
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
-      } else {
-        document.body.classList.remove('light-mode');
-        themeIcon.classList.remove('fa-sun');
-        themeIcon.classList.add('fa-moon');
-      }
-      localStorage.setItem('theme', mode);
-    }
-
-    // Load saved theme
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') setTheme('light');
-    else setTheme('dark');
-
-    // Toggle theme on click
-    themeToggle.addEventListener('click', () => {
-      if (document.body.classList.contains('light-mode')) setTheme('dark');
-      else setTheme('light');
-    });
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-
     // Enhanced Kaleidoscope Background
     const canvas = document.getElementById('kaleidoscope-bg');
     const ctx = canvas.getContext('2d');
@@ -464,20 +360,19 @@
       }
 
       draw() {
-        // Use grey color instead of hue-based color
-        ctx.fillStyle = `rgba(200, 200, 200, 0.5)`;
+        ctx.fillStyle = `hsla(${this.hue}, 100%, 50%, 0.5)`;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
 
-        // Draw connections with grey color
+        // Draw connections
         particles.forEach(particle => {
           const dx = this.x - particle.x;
           const dy = this.y - particle.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           if (distance < 100) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(200, 200, 200, ${0.2 * (1 - distance/100)})`;
+            ctx.strokeStyle = `hsla(${this.hue}, 100%, 50%, ${0.2 * (1 - distance/100)})`;
             ctx.lineWidth = 0.5;
             ctx.moveTo(this.x, this.y);
             ctx.lineTo(particle.x, particle.y);
@@ -499,6 +394,8 @@
       ctx.fillStyle = 'rgba(24, 24, 36, 0.1)';
       ctx.fillRect(0, 0, width, height);
 
+      hue = (hue + 0.5) % 360;
+
       particles.forEach(particle => {
         particle.update();
         particle.draw();
@@ -516,7 +413,16 @@
     window.addEventListener('resize', resize);
     init();
     animate();
+
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      themeIcon.classList.toggle('fa-moon');
+      themeIcon.classList.toggle('fa-sun');
+    });
   </script>
 </body>
-
-</html>
+</html> 

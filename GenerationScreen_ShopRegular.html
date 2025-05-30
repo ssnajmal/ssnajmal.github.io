@@ -3,370 +3,1037 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Content generation: Regular Shop Business</title>
-  <link rel="stylesheet" type="text/css" href="main.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-   <link href="https://fonts.googleapis.com/css?family=Bitter|Cabin|Cinzel|Courgette|
-   Dosis|Heebo|Inconsolata|Jomolhari|Lato|Lobster|Lora|Merriweather|Modak|Montserrat|Muli|Nunito|
-   Oswald|Pacifico|Poppins|Quicksand|Raleway|Roboto|Rubik|Satisfy|Staatliches|Stoke|Ubuntu&display=swap" rel="stylesheet">
-   <style>
-  .w3-tangerine {
+  <title>Content Generation - Shop Business</title>
+  
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="main.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Parisienne&family=Playfair+Display:wght@400;700&family=Satisfy&family=Shadows+Into+Light&family=Yellowtail&family=Zeyada&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  
+  <style>
+    :root {
+      --primary: rgba(30, 30, 47, 0.7);
+      --accent: #fff;
+      --bg: #181824;
+      --card-bg: rgba(35, 35, 58, 0.55);
+      --text: #f5f5f5;
+      --shadow: 0 4px 24px rgba(0,0,0,0.2);
+      --glass-blur: blur(12px);
+      --glow: 0 0 16px 4px #fff, 0 0 32px 8px #b3e5fc33;
+      --shop-primary: #4CAF50;
+      --shop-accent: #FFC107;
+      --shop-secondary: #8BC34A;
+      --shop-tertiary: #FFEB3B;
+    }
 
-      font-family: 'Lato', sans-serif;
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Lato', 'Montserrat', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
 
-      font-family: 'Oswald', sans-serif;
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: var(--primary);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-bottom: 1.5px solid #fff2;
+    }
 
+    .navbar .logo {
       font-family: 'Montserrat', sans-serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      text-shadow: var(--glow);
+    }
 
-      font-family: 'Raleway', sans-serif;
+    .navbar .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
 
-      font-family: 'Roboto', sans-serif;
+    .navbar .nav-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.5em 1em;
+      border-radius: 30px;
+      transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      background: transparent;
+      box-shadow: none;
+    }
 
-      font-family: 'Muli', sans-serif;
+    .navbar .nav-links a:hover {
+      background: #fff2;
+      color: #181824;
+      transform: translateY(-2px) scale(1.07);
+      box-shadow: var(--glow);
+    }
 
-      font-family: 'Ubuntu', sans-serif;
+    .navbar .nav-links a.active {
+      background: #fff2;
+      color: #181824;
+      box-shadow: var(--glow);
+    }
 
-      font-family: 'Merriweather', serif;
+    #theme-toggle {
+      background: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-size: 1.4rem;
+      color: var(--accent);
+      margin-left: 1.2rem;
+      transition: color 0.2s;
+    }
 
-      font-family: 'Staatliches', cursive;
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 1;
+    }
 
-      font-family: 'Jomolhari', serif;
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
 
-      font-family: 'Poppins', sans-serif;
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      text-shadow: var(--glow);
+    }
 
-      font-family: 'Lora', serif;
+    .header p {
+      color: #e0e0e0;
+      font-size: 1.1rem;
+    }
 
-      font-family: 'Stoke', serif;
+    /* Icon Grid */
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
 
-      font-family: 'Nunito', sans-serif;
+    .icon-item {
+      background: var(--card-bg);
+      padding: 1rem;
+      border-radius: 12px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid #fff2;
+    }
 
-      font-family: 'Rubik', sans-serif;
+    .icon-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--glow);
+    }
 
-      font-family: 'Quicksand', sans-serif;
+    .icon-item img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
 
-      font-family: 'Dosis', sans-serif;
+    /* Generator Controls */
+    .generator-controls {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 18px;
+      margin-bottom: 2rem;
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid #fff2;
+    }
 
-      font-family: 'Inconsolata', monospace;
+    .input-group {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
 
-      font-family: 'Cabin', sans-serif;
+    input[type="text"] {
+      flex: 1;
+      padding: 0.8rem 1.2rem;
+      border: none;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.1);
+      color: var(--text);
+      font-size: 1rem;
+    }
 
-      font-family: 'Heebo', sans-serif;
+    button {
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.15);
+      color: var(--accent);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-      font-family: 'Bitter', serif;
+    button:hover:not(:disabled) {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-2px);
+      box-shadow: var(--glow);
+    }
 
-      font-family: 'Lobster', cursive;
+    button:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
 
-      font-family: 'Pacifico', cursive;
+    .font-loader {
+      background: #2196F3;
+      color: white;
+    }
 
-      font-family: 'Modak', cursive;
+    .font-loader:hover:not(:disabled) {
+      background: #1976D2;
+    }
 
-      font-family: 'Satisfy', cursive;
+    /* Canvas Container */
+    .canvas-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
 
-      font-family: 'Cinzel', serif;
+    .canvas-wrapper {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 16px;
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid #fff2;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
 
-      font-family: 'Courgette', cursive;
+    .canvas-wrapper:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--glow);
+    }
 
+    .canvas-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, var(--shop-primary)22, var(--shop-accent)22);
+      z-index: 0;
+    }
 
-  }
-      body {
-          background-color: #303641;
-      }
+    canvas {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      background: var(--primary);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-top: 1px solid #fff2;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Enhanced Kaleidoscope Background */
+    #kaleidoscope-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.7;
+      filter: blur(1px) brightness(1.2) saturate(1.3);
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+
+    /* Color Picker Styles */
+    .color-controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: var(--card-bg);
+      border-radius: 12px;
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid #fff2;
+    }
+
+    .color-picker-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .color-picker-group label {
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    input[type="color"] {
+      -webkit-appearance: none;
+      width: 60px;
+      height: 60px;
+      border: none;
+      border-radius: 50%;
+      padding: 0;
+      cursor: pointer;
+      background: none;
+      transition: transform 0.3s ease;
+    }
+
+    input[type="color"]:hover {
+      transform: scale(1.1);
+    }
+
+    input[type="color"]::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+
+    input[type="color"]::-webkit-color-swatch {
+      border: 3px solid var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .color-slider {
+      width: 100%;
+      height: 8px;
+      -webkit-appearance: none;
+      background: var(--card-bg);
+      border-radius: 4px;
+      outline: none;
+      margin: 0.5rem 0;
+    }
+
+    .color-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+
+    .color-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    .color-value {
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 500;
+      min-width: 60px;
+      text-align: center;
+      background: var(--card-bg);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      border: 1px solid #fff2;
+    }
   </style>
 </head>
-<!-- code4icon: <i class="material-icons lock">lock</i> -->
 <body>
-  <div class="w3-bar w3-black w3-large">
-  <a href="index.html"
-  class="w3-bar-item w3-button"
-  style="width:33%">Home</a>
-    <a href="GenerationScreen.html"
-    class="w3-bar-item w3-button w3-green"
-    style="width:33%">Content Generator</a>
-  </div class="w3-container w3-black">
-  <h1>Generate Image from Text (.PNG)
-  </h1>
-  <p>This means the background color will not carry forward, its not a part of the logo.\n
-    you may need to refresh the page to load fonts in some browsers</p>
-  <h2>images to be used:</h2>
+  <!-- Kaleidoscope Background Canvas -->
+  <canvas id="kaleidoscope-bg"></canvas>
+  
+  <!-- Navbar -->
+  <nav class="navbar animate__animated animate__fadeInDown">
+    <a href="index.html" class="logo"><i class="fa fa-code"></i> Content Generators</a>
+    <div class="nav-links">
+      <a href="GenerationScreen_Healthcare.html"><i class="fa fa-hospital"></i> Healthcare</a>
+      <a href="GenerationScreen_TechCompany.html"><i class="fa fa-robot"></i> Tech Company</a>
+      <a href="GenerationScreen_ShopRegular.html" class="active"><i class="fa fa-store"></i> Shop</a>
+      <a href="index.html"><i class="fa fa-home"></i> Portfolio</a>
+      <!-- Theme Toggle Button -->
+      <button id="theme-toggle" aria-label="Toggle light/dark mode">
+        <i id="theme-icon" class="fa fa-moon"></i>
+      </button>
+    </div>
+  </nav>
 
-  <img id="business1"
-  src="icons/cart-13.png"
-  alt="The Scream"
-  width="128"
-  height="128">
+  <div class="container">
+    <div class="header">
+      <h1>Generate Shop Business Content</h1>
+      <p>Create professional business-themed images with custom text and icons</p>
+    </div>
 
-  <img id="business2"
-  src="icons/cart-2.png"
-  alt="The Scream"
-  width="128"
-  height="128">
+    <!-- Icon Grid -->
+    <div class="icon-grid">
+      <div class="icon-item" data-icon="shopicon1">
+        <img src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png" alt="Retail Store Icon">
+      </div>
+      <div class="icon-item" data-icon="shopicon2">
+        <img src="https://cdn-icons-png.flaticon.com/512/3081/3081562.png" alt="Shopping Cart Icon">
+      </div>
+      <div class="icon-item" data-icon="shopicon3">
+        <img src="https://cdn-icons-png.flaticon.com/512/3081/3081565.png" alt="Price Tag Icon">
+      </div>
+      <div class="icon-item" data-icon="shopicon4">
+        <img src="https://cdn-icons-png.flaticon.com/512/3081/3081568.png" alt="Sale Sign Icon">
+      </div>
+      <div class="icon-item" data-icon="shopicon5">
+        <img src="https://cdn-icons-png.flaticon.com/512/3081/3081571.png" alt="Gift Box Icon">
+      </div>
+      <div class="icon-item" data-icon="shopicon6">
+        <img src="https://cdn-icons-png.flaticon.com/512/3081/3081574.png" alt="Shopping Bag Icon">
+      </div>
+      <div class="icon-item" data-icon="shopicon7">
+        <img src="https://cdn-icons-png.flaticon.com/512/3081/3081577.png" alt="Credit Card Icon">
+      </div>
+      <div class="icon-item" data-icon="shopicon8">
+        <img src="https://cdn-icons-png.flaticon.com/512/3081/3081580.png" alt="Store Hours Icon">
+      </div>
+      <div class="icon-item" data-icon="shopicon9">
+        <img src="https://cdn-icons-png.flaticon.com/512/3081/3081583.png" alt="Store Location Icon">
+      </div>
+    </div>
 
-  <img id="business3"
-  src="icons/cart.png"
-  alt="0"
-  width="128"
-  height="128">
+    <div class="generator-controls">
+      <div class="input-group">
+        <input type="text" id="imageText" placeholder="Enter your text here...">
+        <button id="loadFonts" class="font-loader"><i class="fas fa-font"></i> Load Fonts</button>
+        <button id="imageGenerator"><i class="fas fa-magic"></i> Generate</button>
+        <button id="imageClear"><i class="fas fa-eraser"></i> Clear</button>
+      </div>
+      
+      <div class="color-controls">
+        <div class="color-picker-group">
+          <label>Main Color</label>
+          <input type="color" id="mainColor" value="#FFFFFF">
+        </div>
+        <div class="color-picker-group">
+          <label>Brightness</label>
+          <input type="range" id="brightness" class="color-slider" min="0" max="200" value="100">
+          <span class="color-value">100%</span>
+        </div>
+        <div class="color-picker-group">
+          <label>Contrast</label>
+          <input type="range" id="contrast" class="color-slider" min="0" max="200" value="100">
+          <span class="color-value">100%</span>
+        </div>
+        <div class="color-picker-group">
+          <label>Font Size</label>
+          <input type="range" id="fontSize" class="color-slider" min="30" max="120" value="70">
+          <span class="color-value">70px</span>
+        </div>
+        <div class="color-picker-group">
+          <label>Icon Size</label>
+          <input type="range" id="iconSize" class="color-slider" min="50" max="200" value="100">
+          <span class="color-value">100px</span>
+        </div>
+        <div class="color-picker-group">
+          <label>Decoration Size</label>
+          <input type="range" id="decorationSize" class="color-slider" min="50" max="200" value="100">
+          <span class="color-value">100%</span>
+        </div>
+      </div>
+    </div>
 
-  <img id="business4"
-  src="icons/coin-10.png"
-  alt="The Scream"
-  width="128"
-  height="128">
+    <div class="canvas-container">
+      <div class="canvas-wrapper">
+        <canvas id="myCanvas" width="800" height="400"></canvas>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="myCanvas2" width="800" height="400"></canvas>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="myCanvas3" width="800" height="400"></canvas>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="myCanvas4" width="800" height="400"></canvas>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="myCanvas5" width="800" height="400"></canvas>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="myCanvas6" width="800" height="400"></canvas>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="myCanvas7" width="800" height="400"></canvas>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="myCanvas8" width="800" height="400"></canvas>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="myCanvas9" width="800" height="400"></canvas>
+      </div>
+    </div>
 
-  <img id="business5"
-  src="icons/coin-5.png"
-  alt="The Scream"
-  width="128"
-  height="128">
-
-  <img id="business6"
-  src="icons/delivery-cart-1.png"
-  alt="0"
-  width="128"
-  height="128">
-
-  <img id="business7"
-  src="icons/diagram-3.png"
-  alt="The Scream"
-  width="128"
-  height="128">
-  <img id="business8"
-  src="icons/grocery.png"
-  alt="The Scream"
-  width="128"
-  height="128">
-  <img id="business9"
-  src="icons/credit-card-1.png"
-  alt="0"
-  width="128"
-  height="128">
-
-<div class="w3-display-container">
-
-  <div class="w3-display-center w3-container">
-
-    <div><input id="imageText" placeholder="Image Text"
-    class="w3-button w3-xlarge"
-    type="text"></div>
-
-    <div><button type="button" class="w3-button w3-xlarge" id="imageGenerator">Generate</button>
-      <button type="button" class="w3-button w3-xlarge" id="imageClear">clear</button></div>
+    <div class="generator-controls">
+      <button id="btnDisplay"><i class="fas fa-image"></i> Display All as JPEG</button>
+      <button id="btnDownload"><i class="fas fa-download"></i> Download Images</button>
+    </div>
   </div>
 
-  <div class=" w3-container w3-blue">
-    <div><canvas id="myCanvas" width="800" height="400"></canvas></div>
-  </div>
+  <footer class="footer">
+    <p>Icons made by <a href="https://www.flaticon.com/authors/smashicons" target="_blank">Smashicons</a> from 
+    <a href="https://www.flaticon.com/" target="_blank">www.flaticon.com</a></p>
+  </footer>
 
-  <div class=" w3-container w3-black">
-    <div><canvas id="myCanvas2" width="800" height="400"></canvas></div>
-  </div>
+  <script>
+    //button and final image declaration
+    const btnDisplay = document.querySelector("#btnDisplay");
+    const btnDownload =  document.querySelector("#btnDownload");
 
-  <div class="w3-container w3-grey">
-    <div><canvas id="myCanvas3" width="800" height="400"></canvas></div>
-  </div>
+    const imgConverted = document.querySelector("#imgConverted");
+    const imgConverted2 = document.querySelector("#imgConverted2");
+    const imgConverted3 = document.querySelector("#imgConverted3");
+    const imgConverted4 = document.querySelector("#imgConverted4");
+    const imgConverted5 = document.querySelector("#imgConverted5");
+    const imgConverted6 = document.querySelector("#imgConverted6");
 
-  <div class="w3-container w3-teal">
-    <div><canvas id="myCanvas4" width="800" height="400"></canvas></div>
-  </div>
-  <div class="w3-container w3 black">
-    <div><canvas id="myCanvas5" width="800" height="400"></canvas></div>
-  </div>
-  <div class="w3-container w3-pink">
-    <div><canvas id="myCanvas6" width="800" height="400"></canvas></div>
-  </div>
-  <div class="w3-container w3-black">
-    <div><canvas id="myCanvas7" width="800" height="400"></canvas></div>
-  </div>
-  <div class="w3-container w3-deeppurple">
-    <div><canvas id="myCanvas8" width="800" height="400"></canvas></div>
-  </div>
-  <div class="w3-container w3-deeppurple">
-    <div><canvas id="myCanvas9" width="800" height="400"></canvas></div>
-  </div>
+    const imageGen = document.querySelector("#imageGenerator");
+    const imageCl=document.querySelector("#imageClear")
 
-  <div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from
-    <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a></div>
-</div>
+    //querySelector declaration from htmlto js
+    const myCanvas = document.querySelector("#myCanvas");
+    const myCanvas2 = document.querySelector("#myCanvas2");
+    const myCanvas3 = document.querySelector("#myCanvas3");
+    const myCanvas4 = document.querySelector("#myCanvas4");
+    const myCanvas5 = document.querySelector("#myCanvas5");
+    const myCanvas6 = document.querySelector("#myCanvas6");
+    const myCanvas7 = document.querySelector("#myCanvas7");
+    const myCanvas8 = document.querySelector("#myCanvas8");
+    const myCanvas9 = document.querySelector("#myCanvas9");
 
-  <div>
-    <div><button type="button" id="btnDisplay" float:center;>display all in .jpeg format</button></div>
-  </div>
-  <div>
-    <div><button type="button" id="btnDownload">download all (IE) or first image (other browsers) or right click and save image as.. to download.</button></div>
-  </div>
+    //declaration of canvas´s context
+    const ctx = myCanvas.getContext("2d");
+    const ctx2 = myCanvas2.getContext("2d");
+    const ctx3 = myCanvas3.getContext("2d");
+    const ctx4 = myCanvas4.getContext("2d");
+    const ctx5= myCanvas5.getContext("2d");
+    const ctx6= myCanvas6.getContext("2d");
+    const ctx7= myCanvas7.getContext("2d");
+    const ctx8= myCanvas8.getContext("2d");
+    const ctx9= myCanvas9.getContext("2d");
 
-  <div>
-    <div>  <img src="" id="imgConverted" style="float: left; border: 2px solid #00f; margin-left: 10px;"></div>
-  </div>
-  <div>
-    <div>  <img src="" id="imgConverted2" style="float: left; border: 2px solid #00f; margin-left: 10px;"></div>
-  </div>
+    //icon declaration
+    const iconItems = document.querySelectorAll('.icon-item');
+    const shopIcons = {};
+    
+    iconItems.forEach(item => {
+      const iconId = item.dataset.icon;
+      shopIcons[iconId] = item.querySelector('img');
+    });
 
-  <div>
-    <div>  <img src="" id="imgConverted3" style="float: left; border: 2px solid #00f; margin-left: 10px;"></div>
-    <div>  <img src="" id="imgConverted4" style="float: left; border: 2px solid #00f; margin-left: 10px;"></div>
-  </div>
-  <div>
-    <div>  <img src="" id="imgConverted5" style="float: left; border: 2px solid #00f; margin-left: 10px;"></div>
-    <div>  <img src="" id="imgConverted6" style="float: left; border: 2px solid #00f; margin-left: 10px;"></div>
-  </div>
-  <div class="w3-bar w3-black w3-large" style=" width:100%">
-       <a href="index.html" class="w3-bar-item w3-button w3-white w3-tangerine" style="width:100%">Back home<i class="fa fa-Home"></i></a>
-  </div>
+    // Font loading functionality
+    const loadFontsButton = document.querySelector("#loadFonts");
+    const imageGenButton = document.querySelector("#imageGenerator");
+    let fontsLoaded = false;
 
+    // Add these variables at the top of your script
+    const mainColorPicker = document.getElementById('mainColor');
+    const brightnessSlider = document.getElementById('brightness');
+    const contrastSlider = document.getElementById('contrast');
+    const brightnessValue = brightnessSlider.nextElementSibling;
+    const contrastValue = contrastSlider.nextElementSibling;
+    const fontSizeSlider = document.getElementById('fontSize');
+    const iconSizeSlider = document.getElementById('iconSize');
+    const decorationSizeSlider = document.getElementById('decorationSize');
+    const fontSizeValue = fontSizeSlider.nextElementSibling;
+    const iconSizeValue = iconSizeSlider.nextElementSibling;
+    const decorationSizeValue = decorationSizeSlider.nextElementSibling;
 
-<script>
+    // Update color values display
+    brightnessSlider.addEventListener('input', function() {
+      brightnessValue.textContent = this.value + '%';
+    });
 
-//button and final image declaration
-  const btnDisplay = document.querySelector("#btnDisplay");
-  const btnDownload =  document.querySelector("#btnDownload");
+    contrastSlider.addEventListener('input', function() {
+      contrastValue.textContent = this.value + '%';
+    });
 
-  const imgConverted = document.querySelector("#imgConverted");
-  const imgConverted2 = document.querySelector("#imgConverted2");
-  const imgConverted3 = document.querySelector("#imgConverted3");
-  const imgConverted4 = document.querySelector("#imgConverted4");
-  const imgConverted5 = document.querySelector("#imgConverted5");
-  const imgConverted6 = document.querySelector("#imgConverted6");
+    // Update size values display
+    fontSizeSlider.addEventListener('input', function() {
+      fontSizeValue.textContent = this.value + 'px';
+      if (imageGenButton.disabled === false) {
+        imageGenButton.click();
+      }
+    });
 
-  const imageGen = document.querySelector("#imageGenerator");
-  const imageCl=document.querySelector("#imageClear")
+    iconSizeSlider.addEventListener('input', function() {
+      iconSizeValue.textContent = this.value + 'px';
+      if (imageGenButton.disabled === false) {
+        imageGenButton.click();
+      }
+    });
 
-//querySelector declaration from htmlto js
-  const myCanvas = document.querySelector("#myCanvas");
-  const myCanvas2 = document.querySelector("#myCanvas2");
-  const myCanvas3 = document.querySelector("#myCanvas3");
-  const myCanvas4 = document.querySelector("#myCanvas4");
-  const myCanvas5 = document.querySelector("#myCanvas5");
-  const myCanvas6 = document.querySelector("#myCanvas6");
-  const myCanvas7 = document.querySelector("#myCanvas7");
-  const myCanvas8 = document.querySelector("#myCanvas8");
-  const myCanvas9 = document.querySelector("#myCanvas9");
+    decorationSizeSlider.addEventListener('input', function() {
+      decorationSizeValue.textContent = this.value + '%';
+      if (imageGenButton.disabled === false) {
+        imageGenButton.click();
+      }
+    });
 
-//declaration of canvas´s context
-  const ctx = myCanvas.getContext("2d");
-  const ctx2 = myCanvas2.getContext("2d");
-  const ctx3 = myCanvas3.getContext("2d");
-  const ctx4 = myCanvas4.getContext("2d");
-  const ctx5= myCanvas5.getContext("2d");
-  const ctx6= myCanvas6.getContext("2d");
-  const ctx7= myCanvas7.getContext("2d");
-  const ctx8= myCanvas8.getContext("2d");
-  const ctx9= myCanvas9.getContext("2d");
+    // Color picker change handlers
+    mainColorPicker.addEventListener('change', function() {
+      if (imageGenButton.disabled === false) {
+        imageGenButton.click();
+      }
+    });
 
-  //icon declaration
-var businessicon1=document.getElementById("business1");
-var businessicon2=document.getElementById("business2");
-var businessicon3=document.getElementById("business3");
-var businessicon4=document.getElementById("business4");
-var businessicon5=document.getElementById("business5");
-var businessicon6=document.getElementById("business6");
-var businessicon7=document.getElementById("business7");
-var businessicon8=document.getElementById("business8");
-var businessicon9=document.getElementById("business9");
-//imageCl.addEventListener("click",function(){
-  //ctx.
-//}
-imageGen.addEventListener("click",function(){
+    brightnessSlider.addEventListener('input', function() {
+      if (imageGenButton.disabled === false) {
+        imageGenButton.click();
+      }
+    });
 
-  //9th autogen
-  ctx9.beginPath();
-  ctx9.font = "100px Dosis";
-  ctx9.fillStyle = "orange";
-  ctx9.drawImage(businessicon9,250,50,128,128);
-  ctx9.fillText(document.getElementById("imageText").value, 150,250);
+    contrastSlider.addEventListener('input', function() {
+      if (imageGenButton.disabled === false) {
+        imageGenButton.click();
+      }
+    });
 
-  //eith autogen
-  ctx8.beginPath();
-  ctx8.font = "100px Inconsolata";
-  ctx8.fillStyle = "orange";
-  ctx8.drawImage(businessicon8,100,100,128,128);
-  ctx8.fillText(document.getElementById("imageText").value, 250,250);
+    // Function to load fonts
+    async function loadFonts() {
+      try {
+        loadFontsButton.disabled = true;
+        loadFontsButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading Fonts...';
+        
+        // Wait for fonts to be ready
+        await document.fonts.ready;
+        
+        // Test if fonts are actually loaded by creating a test canvas
+        const testCanvas = document.createElement('canvas');
+        const testCtx = testCanvas.getContext('2d');
+        
+        // Test each font
+        const fonts = ['Dancing Script', 'Great Vibes', 'Parisienne', 'Playfair Display', 'Satisfy', 'Shadows Into Light', 'Yellowtail', 'Zeyada'];
+        for (const font of fonts) {
+          testCtx.font = `12px "${font}"`;
+          if (testCtx.font.indexOf(font) === -1) {
+            throw new Error(`Font ${font} not loaded properly`);
+          }
+        }
+        
+        fontsLoaded = true;
+        loadFontsButton.innerHTML = '<i class="fas fa-check"></i> Fonts Loaded';
+        loadFontsButton.style.backgroundColor = '#4CAF50';
+        
+        // Enable generate button
+        imageGenButton.disabled = false;
+      } catch (error) {
+        console.error('Error loading fonts:', error);
+        loadFontsButton.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Font Loading Failed';
+        loadFontsButton.style.backgroundColor = '#f44336';
+        
+        // Retry button
+        setTimeout(() => {
+          loadFontsButton.disabled = false;
+          loadFontsButton.innerHTML = '<i class="fas fa-redo"></i> Retry Loading Fonts';
+        }, 2000);
+      }
+    }
 
-  //seventh autogen
-  ctx7.beginPath();
-  ctx7.font = "100px Courgette";
-  ctx7.fillStyle = "blue";
-  ctx7.drawImage(businessicon7,100,100,128,128);
-  ctx7.fillText(document.getElementById("imageText").value, 250,250);
+    // Add click handler for load fonts button
+    loadFontsButton.addEventListener('click', loadFonts);
 
-  //sisxth one image thing
-  ctx6.font = "80px Cinzel";
-  ctx6.beginPath();
-  ctx6.fillStyle = "orange";
-  ctx6.drawImage(businessicon6,100,100,128,128);
-  ctx6.fill();
-  ctx6.fillText(document.getElementById("imageText").value, 300,100);
+    // Initially disable generate button until fonts are loaded
+    imageGenButton.disabled = true;
 
-  //fifth autogen image
-  ctx5.beginPath();
-  ctx5.font = "100px Satisfy";
-  ctx5.fillStyle = "blue";
-  ctx5.drawImage(businessicon5,100,100,128,128);
-  ctx5.fillText(document.getElementById("imageText").value, 300,250);
+    // Wait for fonts to load before drawing
+    document.fonts.ready.then(function() {
+      imageGenButton.addEventListener("click", async function() {
+        if (!fontsLoaded) {
+          alert("Please load fonts first!");
+          return;
+        }
 
-  //fourth autogen IMAGE
-  ctx4.font = "150px Lobster";
-  ctx4.drawImage(businessicon4,100,100,128,128);
-  ctx4.fillStyle = "green";
-  ctx4.fillText(document.getElementById("imageText").value, 200,300);
+        // Get current values
+        const mainColor = mainColorPicker.value;
+        const brightness = brightnessSlider.value;
+        const contrast = contrastSlider.value;
+        const fontSize = fontSizeSlider.value;
+        const iconSize = iconSizeSlider.value;
+        const decorationScale = decorationSizeSlider.value / 100;
 
-//third autogen image
-  ctx3.font = "80px Modak";
-  ctx3.fillStyle = "black";
-  ctx3.drawImage(businessicon3,100,100,128,128);
-  ctx3.fillText(document.getElementById("imageText").value, 300,300);
+        // Clear all canvases first
+        [ctx, ctx2, ctx3, ctx4, ctx5, ctx6, ctx7, ctx8, ctx9].forEach(context => {
+          context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+        });
 
-//second autogen image
-  ctx2.font = "80px Satisfy";
-  ctx2.fillStyle = "blue";
-  ctx2.beginPath();
-  ctx2.drawImage(businessicon2,100,100,128,128);
-  ctx2.fillText(document.getElementById("imageText").value, 270,220);
+        const text = document.getElementById("imageText").value;
 
- //first autogen image
-  ctx.font = "100px Oswald";
-  ctx.fillStyle = "red";
-  ctx.drawImage(businessicon1,100,100,128,128);
-  ctx.fillText(document.getElementById("imageText").value,200,250);
-  ctx.beginPath();
-  ctx.textAlign = "start";
-});
+        // Storefront Style - Icon 1
+        ctx.font = `bold ${fontSize}px 'Great Vibes'`;
+        ctx.fillStyle = mainColor;
+        ctx.filter = `brightness(0) invert(1) brightness(${brightness}%) contrast(${contrast}%)`;
+        ctx.drawImage(shopIcons.shopicon1, 350, 100, iconSize, iconSize);
+        ctx.filter = "none";
+        ctx.textAlign = 'center';
+        ctx.fillText(text, 400, 250);
+        // Simple horizontal lines
+        ctx.beginPath();
+        ctx.moveTo(250, 300);
+        ctx.lineTo(550, 300);
+        ctx.strokeStyle = mainColor;
+        ctx.lineWidth = 3 * decorationScale;
+        ctx.stroke();
 
-   btnDisplay.addEventListener("click", function(){
-       const dataURI = myCanvas.toDataURL("image/jpeg");
-       const dataURI2 = myCanvas2.toDataURL("image/jpeg");
-       const dataURI3 = myCanvas3.toDataURL("image/jpeg");
-       const dataURI4 = myCanvas4.toDataURL("image/jpeg");
-       const dataURI5 = myCanvas5.toDataURL("image/jpeg");
-       const dataURI6 = myCanvas6.toDataURL("image/jpeg");
-       imgConverted.src = dataURI;
-       imgConverted2.src = dataURI2;
-       imgConverted3.src = dataURI3;
-       imgConverted4.src = dataURI4;
-       imgConverted5.src = dataURI5;
-       imgConverted6.src = dataURI6;
-     });
-     //to download using btnDownload
-     btnDownload.addEventListener("click", function(){
-       //ie/edge support(png only)
-       if(window.navigator.msSaveBlob){
-         window.navigator.msSaveBlob(myCanvas.msToBlob(),"canvas-img.png")
-         window.navigator.msSaveBlob(myCanvas2.msToBlob(),"canvas2-img.png")
-         window.navigator.msSaveBlob(myCanvas3.msToBlob(),"canvas3-img.png")
-         window.navigator.msSaveBlob(myCanvas4.msToBlob(),"canvas4-img.png")
-         window.navigator.msSaveBlob(myCanvas5.msToBlob(),"canvas5-img.png")
-         window.navigator.msSaveBlob(myCanvas6.msToBlob(),"canvas-img6.png")
-       }
-       //other browsers
-       else {
-         const a = document.createElement("a");
-         document.body.appendChild(a);
-         a.href = myCanvas.toDataURL();
-         a.download = "canvas-img.jpeg";
-         a.click();
-         document.body.removeChild(a);
-       }});
+        // Shopping Cart Style - Icon 2
+        ctx2.font = `bold ${fontSize}px 'Dancing Script'`;
+        ctx2.fillStyle = mainColor;
+        ctx2.filter = `brightness(0) invert(1) brightness(${brightness}%) contrast(${contrast}%)`;
+        ctx2.drawImage(shopIcons.shopicon2, 350, 100, iconSize, iconSize);
+        ctx2.filter = "none";
+        ctx2.textAlign = 'center';
+        ctx2.fillText(text, 400, 250);
+        // Simple diagonal lines
+        ctx2.beginPath();
+        ctx2.moveTo(250, 300);
+        ctx2.lineTo(550, 300);
+        ctx2.strokeStyle = mainColor;
+        ctx2.lineWidth = 3 * decorationScale;
+        ctx2.stroke();
+
+        // Price Tag Style - Icon 3
+        ctx3.font = `bold ${fontSize}px 'Parisienne'`;
+        ctx3.fillStyle = mainColor;
+        ctx3.filter = `brightness(0) invert(1) brightness(${brightness}%) contrast(${contrast}%)`;
+        ctx3.drawImage(shopIcons.shopicon3, 350, 100, iconSize, iconSize);
+        ctx3.filter = "none";
+        ctx3.textAlign = 'center';
+        ctx3.fillText(text, 400, 250);
+        // Simple circle
+        ctx3.beginPath();
+        ctx3.arc(400, 300, 50 * decorationScale, 0, Math.PI * 2);
+        ctx3.strokeStyle = mainColor;
+        ctx3.lineWidth = 3 * decorationScale;
+        ctx3.stroke();
+
+        // Sale Sign Style - Icon 4
+        ctx4.font = `bold ${fontSize}px 'Satisfy'`;
+        ctx4.fillStyle = mainColor;
+        ctx4.filter = `brightness(0) invert(1) brightness(${brightness}%) contrast(${contrast}%)`;
+        ctx4.drawImage(shopIcons.shopicon4, 350, 100, iconSize, iconSize);
+        ctx4.filter = "none";
+        ctx4.textAlign = 'center';
+        ctx4.fillText(text, 400, 250);
+        // Simple square
+        ctx4.beginPath();
+        ctx4.rect(300, 275, 200 * decorationScale, 50 * decorationScale);
+        ctx4.strokeStyle = mainColor;
+        ctx4.lineWidth = 3 * decorationScale;
+        ctx4.stroke();
+
+        // Gift Box Style - Icon 5
+        ctx5.font = `bold ${fontSize}px 'Shadows Into Light'`;
+        ctx5.fillStyle = mainColor;
+        ctx5.filter = `brightness(0) invert(1) brightness(${brightness}%) contrast(${contrast}%)`;
+        ctx5.drawImage(shopIcons.shopicon5, 350, 100, iconSize, iconSize);
+        ctx5.filter = "none";
+        ctx5.textAlign = 'center';
+        ctx5.fillText(text, 400, 250);
+        // Simple triangle
+        ctx5.beginPath();
+        ctx5.moveTo(400, 275);
+        ctx5.lineTo(300, 325 * decorationScale);
+        ctx5.lineTo(500, 325 * decorationScale);
+        ctx5.closePath();
+        ctx5.strokeStyle = mainColor;
+        ctx5.lineWidth = 3 * decorationScale;
+        ctx5.stroke();
+
+        // Shopping Bag Style - Icon 6
+        ctx6.font = `bold ${fontSize}px 'Yellowtail'`;
+        ctx6.fillStyle = mainColor;
+        ctx6.filter = `brightness(0) invert(1) brightness(${brightness}%) contrast(${contrast}%)`;
+        ctx6.drawImage(shopIcons.shopicon6, 350, 100, iconSize, iconSize);
+        ctx6.filter = "none";
+        ctx6.textAlign = 'center';
+        ctx6.fillText(text, 400, 250);
+        // Simple vertical lines
+        ctx6.beginPath();
+        ctx6.moveTo(350, 275);
+        ctx6.lineTo(350, 325 * decorationScale);
+        ctx6.moveTo(450, 275);
+        ctx6.lineTo(450, 325 * decorationScale);
+        ctx6.strokeStyle = mainColor;
+        ctx6.lineWidth = 3 * decorationScale;
+        ctx6.stroke();
+
+        // Credit Card Style - Icon 7
+        ctx7.font = `bold ${fontSize}px 'Zeyada'`;
+        ctx7.fillStyle = mainColor;
+        ctx7.filter = `brightness(0) invert(1) brightness(${brightness}%) contrast(${contrast}%)`;
+        ctx7.drawImage(shopIcons.shopicon7, 350, 100, iconSize, iconSize);
+        ctx7.filter = "none";
+        ctx7.textAlign = 'center';
+        ctx7.fillText(text, 400, 250);
+        // Simple rectangle
+        ctx7.beginPath();
+        ctx7.rect(300, 275, 200 * decorationScale, 50 * decorationScale);
+        ctx7.strokeStyle = mainColor;
+        ctx7.lineWidth = 3 * decorationScale;
+        ctx7.stroke();
+
+        // Store Hours Style - Icon 8
+        ctx8.font = `bold ${fontSize}px 'Great Vibes'`;
+        ctx8.fillStyle = mainColor;
+        ctx8.filter = `brightness(0) invert(1) brightness(${brightness}%) contrast(${contrast}%)`;
+        ctx8.drawImage(shopIcons.shopicon8, 350, 100, iconSize, iconSize);
+        ctx8.filter = "none";
+        ctx8.textAlign = 'center';
+        ctx8.fillText(text, 400, 250);
+        // Simple cross
+        ctx8.beginPath();
+        ctx8.moveTo(350, 300);
+        ctx8.lineTo(450, 300);
+        ctx8.moveTo(400, 275);
+        ctx8.lineTo(400, 325 * decorationScale);
+        ctx8.strokeStyle = mainColor;
+        ctx8.lineWidth = 3 * decorationScale;
+        ctx8.stroke();
+
+        // Store Location Style - Icon 9
+        ctx9.font = `bold ${fontSize}px 'Dancing Script'`;
+        ctx9.fillStyle = mainColor;
+        ctx9.filter = `brightness(0) invert(1) brightness(${brightness}%) contrast(${contrast}%)`;
+        ctx9.drawImage(shopIcons.shopicon9, 350, 100, iconSize, iconSize);
+        ctx9.filter = "none";
+        ctx9.textAlign = 'center';
+        ctx9.fillText(text, 400, 250);
+        // Simple diamond
+        ctx9.beginPath();
+        ctx9.moveTo(400, 275);
+        ctx9.lineTo(450 * decorationScale, 300);
+        ctx9.lineTo(400, 325 * decorationScale);
+        ctx9.lineTo(350 * decorationScale, 300);
+        ctx9.closePath();
+        ctx9.strokeStyle = mainColor;
+        ctx9.lineWidth = 3 * decorationScale;
+        ctx9.stroke();
+      });
+
+      btnDisplay.addEventListener("click", function(){
+        const dataURI = myCanvas.toDataURL("image/jpeg");
+        const dataURI2 = myCanvas2.toDataURL("image/jpeg");
+        const dataURI3 = myCanvas3.toDataURL("image/jpeg");
+        const dataURI4 = myCanvas4.toDataURL("image/jpeg");
+        const dataURI5 = myCanvas5.toDataURL("image/jpeg");
+        const dataURI6 = myCanvas6.toDataURL("image/jpeg");
+        imgConverted.src = dataURI;
+        imgConverted2.src = dataURI2;
+        imgConverted3.src = dataURI3;
+        imgConverted4.src = dataURI4;
+        imgConverted5.src = dataURI5;
+        imgConverted6.src = dataURI6;
+      });
+
+      //to download using btnDownload
+      btnDownload.addEventListener("click", function(){
+        //ie/edge support(png only)
+        if(window.navigator.msSaveBlob){
+          window.navigator.msSaveBlob(myCanvas.msToBlob(),"canvas-img.png")
+          window.navigator.msSaveBlob(myCanvas2.msToBlob(),"canvas2-img.png")
+          window.navigator.msSaveBlob(myCanvas3.msToBlob(),"canvas3-img.png")
+          window.navigator.msSaveBlob(myCanvas4.msToBlob(),"canvas4-img.png")
+          window.navigator.msSaveBlob(myCanvas5.msToBlob(),"canvas5-img.png")
+          window.navigator.msSaveBlob(myCanvas6.msToBlob(),"canvas-img6.png")
+        }
+        //other browsers
+        else {
+          const a = document.createElement("a");
+          document.body.appendChild(a);
+          a.href = myCanvas.toDataURL();
+          a.download = "canvas-img.jpeg";
+          a.click();
+          document.body.removeChild(a);
+        }
+      });
+
+      // Enhanced Kaleidoscope Background
+      const bgCanvas = document.getElementById('kaleidoscope-bg');
+      const bgCtx = bgCanvas.getContext('2d');
+      let width, height;
+      let mouse = { x: 0, y: 0 };
+      let particles = [];
+      let hue = 0;
+
+      function resize() {
+        width = bgCanvas.width = window.innerWidth;
+        height = bgCanvas.height = window.innerHeight;
+      }
+
+      class Particle {
+        constructor() {
+          this.reset();
+        }
+
+        reset() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.size = Math.random() * 3 + 1;
+          this.speedX = Math.random() * 2 - 1;
+          this.speedY = Math.random() * 2 - 1;
+          this.hue = hue;
+          this.connections = [];
+          // Use shop-themed colors (green and gold)
+          this.color = Math.random() > 0.5 ? 'rgba(76, 175, 80, 0.5)' : 'rgba(255, 193, 7, 0.5)';
+        }
+
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+
+          if (this.x < 0 || this.x > width) this.speedX *= -1;
+          if (this.y < 0 || this.y > height) this.speedY *= -1;
+
+          // Mouse interaction
+          const dx = mouse.x - this.x;
+          const dy = mouse.y - this.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < 100) {
+            const angle = Math.atan2(dy, dx);
+            this.x -= Math.cos(angle) * 0.5;
+            this.y -= Math.sin(angle) * 0.5;
+          }
+        }
+
+        draw() {
+          bgCtx.fillStyle = this.color;
+          bgCtx.beginPath();
+          bgCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          bgCtx.fill();
+
+          particles.forEach(particle => {
+            const dx = this.x - particle.x;
+            const dy = this.y - particle.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance < 100) {
+              bgCtx.beginPath();
+              const connectionColor = this.color.replace('0.5', `${0.2 * (1 - distance/100)}`);
+              bgCtx.strokeStyle = connectionColor;
+              bgCtx.lineWidth = 0.5;
+              bgCtx.moveTo(this.x, this.y);
+              bgCtx.lineTo(particle.x, particle.y);
+              bgCtx.stroke();
+            }
+          });
+        }
+      }
+
+      function init() {
+        resize();
+        particles = [];
+        for (let i = 0; i < 100; i++) {
+          particles.push(new Particle());
+        }
+      }
+
+      function animate() {
+        bgCtx.fillStyle = 'rgba(24, 24, 36, 0.1)';
+        bgCtx.fillRect(0, 0, width, height);
+
+        particles.forEach(particle => {
+          particle.update();
+          particle.draw();
+        });
+
+        requestAnimationFrame(animate);
+      }
+
+      // Mouse move event
+      window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+
+      window.addEventListener('resize', resize);
+      init();
+      animate();
+    });
+
+    // Function to apply filters to an image
+    function applyFiltersToImage(image, brightness, contrast) {
+      const tempCanvas = document.createElement('canvas');
+      const tempCtx = tempCanvas.getContext('2d');
+      tempCanvas.width = image.width;
+      tempCanvas.height = image.height;
+      
+      // First make the icon white
+      tempCtx.filter = 'brightness(0) invert(1)';
+      tempCtx.drawImage(image, 0, 0);
+      
+      // Then apply brightness and contrast
+      tempCtx.filter = `brightness(${brightness}%) contrast(${contrast}%)`;
+      tempCtx.globalCompositeOperation = 'source-over';
+      tempCtx.drawImage(tempCanvas, 0, 0);
+      
+      return tempCanvas;
+    }
   </script>
 </body>
 </html>
