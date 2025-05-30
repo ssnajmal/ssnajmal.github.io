@@ -1,0 +1,2319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component Showcase - What I Can Do</title>
+    
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="main.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    
+    <!-- Amiri Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: rgba(30, 30, 47, 0.7);
+            --accent: #fff;
+            --bg: #181824;
+            --card-bg: rgba(35, 35, 58, 0.55);
+            --text: #f5f5f5;
+            --shadow: 0 4px 24px rgba(0,0,0,0.2);
+            --glass-blur: blur(12px);
+            --glow: 0 0 16px 4px #fff, 0 0 32px 8px #b3e5fc33;
+        }
+
+        /* Enhanced Background */
+        #kaleidoscope-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.7;
+            filter: blur(1px) brightness(1.2) saturate(1.3);
+            transition: opacity 0.3s;
+        }
+
+        .particle {
+            position: absolute;
+            background: #ffd700;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.6;
+            box-shadow: 0 0 10px #ffd700;
+        }
+
+        .particle-connection {
+            position: absolute;
+            background: linear-gradient(90deg, rgba(255,215,0,0.2), rgba(255,215,0,0));
+            height: 1px;
+            transform-origin: left center;
+            pointer-events: none;
+        }
+
+        /* Restore original styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1.5px solid #fff2;
+        }
+
+        .navbar .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 2px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            text-shadow: var(--glow);
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .navbar .nav-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.5em 1em;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover {
+            background: #fff2;
+            transform: translateY(-2px);
+            box-shadow: var(--glow);
+        }
+
+        .navbar .nav-links a.active {
+            background: #fff2;
+            box-shadow: var(--glow);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            text-shadow: var(--glow);
+        }
+
+        .section-header p {
+            color: var(--text);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Component Sections */
+        .component-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            margin-bottom: 3rem;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid #fff2;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .component-section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--glow);
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #fff2;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--glow);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-text {
+            color: var(--text);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Carousels */
+        .swiper {
+            width: 100%;
+            padding: 2rem 0;
+        }
+
+        .swiper-slide {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #fff2;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Location Component */
+        .location-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #fff2;
+        }
+
+        .location-icon {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .location-info h3 {
+            margin: 0;
+            color: var(--accent);
+        }
+
+        .location-info p {
+            margin: 0.5rem 0 0;
+            color: var(--text);
+        }
+
+        /* Calendar */
+        .calendar-container {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #fff2;
+        }
+
+        /* Timer */
+        .timer-container {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid #fff2;
+        }
+
+        .timer-display {
+            font-size: 3rem;
+            color: var(--accent);
+            margin: 1rem 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .timer-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .timer-button {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 30px;
+            background: var(--accent);
+            color: var(--bg);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .timer-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow);
+        }
+
+        /* Sliders */
+        .slider-container {
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid #fff2;
+        }
+
+        .slider {
+            width: 100%;
+            height: 8px;
+            -webkit-appearance: none;
+            background: var(--accent);
+            border-radius: 4px;
+            outline: none;
+            margin: 1rem 0;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+            box-shadow: var(--glow);
+        }
+
+        .slider-value {
+            color: var(--accent);
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        /* Gallery Styles */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 1.5rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Testimonials Styles */
+        .testimonials-slider {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            scroll-snap-type: x mandatory;
+        }
+
+        .testimonial {
+            flex: 0 0 300px;
+            scroll-snap-align: start;
+        }
+
+        .testimonial-content {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #fff2;
+        }
+
+        .testimonial-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            object-fit: cover;
+        }
+
+        .testimonial-role {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Pricing Styles */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pricing-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid #fff2;
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card.featured {
+            transform: scale(1.05);
+            border-color: var(--accent);
+            box-shadow: var(--glow);
+        }
+
+        .pricing-header {
+            margin-bottom: 2rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .pricing-features li {
+            margin: 1rem 0;
+            color: var(--text);
+        }
+
+        .pricing-button {
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow);
+        }
+
+        /* Contact Form Styles */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid #fff2;
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow);
+        }
+
+        /* 3D Character Styles */
+        .character-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid #fff2;
+        }
+
+        #characterCanvas {
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
+            margin: 0 auto;
+        }
+
+        .character-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .character-controls button {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 30px;
+            background: var(--accent);
+            color: var(--bg);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .character-controls button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow);
+        }
+
+        /* Kaleidoscope Styles */
+        .kaleidoscope-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid #fff2;
+        }
+
+        #kaleidoscopeCanvas {
+            width: 100%;
+            max-width: 500px;
+            height: 500px;
+            margin: 0 auto;
+        }
+
+        .kaleidoscope-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        /* E-commerce Styles */
+        .ecommerce-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #fff2;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: #ff4d4d;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            z-index: 1;
+        }
+
+        .product-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-actions {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0,0,0,0.7);
+            transition: bottom 0.3s ease;
+        }
+
+        .product-card:hover .product-actions {
+            bottom: 0;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .action-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: var(--accent);
+            color: var(--bg);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        .current-price {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #666;
+        }
+
+        .product-rating {
+            color: #ffd700;
+        }
+
+        /* Modern Form Styles */
+        .forms-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .form-example {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid #fff2;
+        }
+
+        .floating-form .form-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .floating-form input {
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            border: 1px solid #fff2;
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .floating-form label {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .floating-form input:focus + label,
+        .floating-form input:not(:placeholder-shown) + label {
+            top: 0;
+            font-size: 0.8rem;
+            background: var(--card-bg);
+            padding: 0 0.5rem;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .checkmark {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--accent);
+            border-radius: 4px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-container input:checked + .checkmark::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--accent);
+        }
+
+        .custom-select {
+            position: relative;
+        }
+
+        .custom-select select {
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            border: 1px solid #fff2;
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            appearance: none;
+        }
+
+        .custom-select::after {
+            content: '▼';
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent);
+            pointer-events: none;
+        }
+
+        /* WhatsApp Button Styles */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #25D366;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .whatsapp-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-text {
+            display: none;
+        }
+
+        .whatsapp-button:hover .whatsapp-text {
+            display: inline;
+        }
+
+        /* Hero Screens */
+        .hero-screens {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-screen {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            height: 400px;
+            border: 1px solid #fff2;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-screen:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--glow);
+        }
+
+        /* Modern Hero */
+        .modern-hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+        }
+
+        .modern-hero h2 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            text-shadow: var(--glow);
+        }
+
+        .modern-hero p {
+            color: var(--text);
+            margin-bottom: 2rem;
+        }
+
+        .modern-hero .cta-button {
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--bg);
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .modern-hero .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow);
+        }
+
+        /* Animated Hero */
+        .animated-hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .animated-hero .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1;
+        }
+
+        .animated-hero .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            background: #ffd700;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        /* Video Hero */
+        .video-hero {
+            position: relative;
+        }
+
+        .video-hero video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        /* Enhanced Carousel */
+        .swiper {
+            width: 100%;
+            height: 400px;
+            margin: 2rem 0;
+        }
+
+        .swiper-slide {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #fff2;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--accent) !important;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: var(--accent) !important;
+        }
+
+        /* Component Grid */
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .component-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid #fff2;
+            transition: all 0.3s ease;
+        }
+
+        .component-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--glow);
+        }
+
+        .component-item h4 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .component-item p {
+            color: var(--text);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .component-item .preview {
+            height: 150px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+        }
+
+        /* Interactive Timeline */
+        .timeline-container {
+            position: relative;
+            padding: 2rem 0;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid #fff2;
+            overflow: hidden;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: var(--accent);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+            box-shadow: var(--glow);
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: all 0.5s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            transform: translateX(100px);
+        }
+
+        .timeline-item:nth-child(even).visible {
+            transform: translateX(0);
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            border: 1px solid #fff2;
+            position: relative;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: var(--glow);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            right: -60px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -60px;
+        }
+
+        .timeline-date {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .timeline-title {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .timeline-text {
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-content::after {
+                left: -60px !important;
+            }
+        }
+
+        /* Islamic Art Cards Container */
+        .islamic-cards-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Islamic Art Hero Styles */
+        .islamic-art-hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .islamic-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .islamic-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .arabic-text {
+            font-size: 2rem;
+            margin: 1.5rem 0;
+            color: #FFD700;
+            font-family: 'Amiri', serif;
+        }
+
+        .islamic-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .islamic-patterns {
+            background: #ffffff;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+        }
+
+        .pattern-group polygon {
+            stroke: #FFD700; /* Yellow stroke like the arabic text */
+            stroke-width: 5; /* Thick stroke as requested */
+            opacity: 0; /* Start invisible for animation */
+            transform-origin: center; /* Set transform origin for potential scaling/rotation */
+            animation: revealPattern 12.5s ease-in-out infinite alternate; /* Adjusted duration for slower reverse */
+            animation-fill-mode: forwards; /* Ensure elements stay visible after animation */
+        }
+
+        @keyframes revealPattern {
+            0% {
+                opacity: 0;
+                transform: scale(0.8); /* Optional: add a subtle scale-in effect */
+            }
+            16% {
+                opacity: 1;
+                transform: scale(1); /* Optional: add a subtle scale-in effect */
+            }
+            40% {
+                 opacity: 1;
+                 transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+        }
+
+        /* More granular staggered delays */
+        .pattern-group polygon:nth-child(5n + 1) { animation-delay: 0s; }
+        .pattern-group polygon:nth-child(5n + 2) { animation-delay: 0.1s; }
+        .pattern-group polygon:nth-child(5n + 3) { animation-delay: 0.2s; }
+        .pattern-group polygon:nth-child(5n + 4) { animation-delay: 0.3s; }
+        .pattern-group polygon:nth-child(5n + 5) { animation-delay: 0.4s; }
+
+        /* Further delays for a longer reveal */
+        .pattern-group polygon:nth-child(n + 20) { animation-delay: calc(0.5s + (var(--n) - 20) * 0.04s); }
+        .pattern-group polygon:nth-child(n + 40) { animation-delay: calc(1s + (var(--n) - 40) * 0.03s); }
+         .pattern-group polygon:nth-child(n + 60) { animation-delay: calc(1.5s + (var(--n) - 60) * 0.02s); }
+
+        /* Add a CSS variable for nth-child index for calc */
+        .pattern-group polygon {
+            --n: 1;
+        }
+        .pattern-group polygon:nth-child(2) { --n: 2; }
+        .pattern-group polygon:nth-child(3) { --n: 3; }
+        .pattern-group polygon:nth-child(4) { --n: 4; }
+        .pattern-group polygon:nth-child(5) { --n: 5; }
+        .pattern-group polygon:nth-child(6) { --n: 6; }
+        .pattern-group polygon:nth-child(7) { --n: 7; }
+        .pattern-group polygon:nth-child(8) { --n: 8; }
+        .pattern-group polygon:nth-child(9) { --n: 9; }
+        .pattern-group polygon:nth-child(10) { --n: 10; }
+        .pattern-group polygon:nth-child(11) { --n: 11; }
+        .pattern-group polygon:nth-child(12) { --n: 12; }
+        .pattern-group polygon:nth-child(13) { --n: 13; }
+        .pattern-group polygon:nth-child(14) { --n: 14; }
+        .pattern-group polygon:nth-child(15) { --n: 15; }
+        .pattern-group polygon:nth-child(16) { --n: 16; }
+        .pattern-group polygon:nth-child(17) { --n: 17; }
+        .pattern-group polygon:nth-child(18) { --n: 18; }
+        .pattern-group polygon:nth-child(19) { --n: 19; }
+        .pattern-group polygon:nth-child(20) { --n: 20; }
+        .pattern-group polygon:nth-child(21) { --n: 21; }
+        .pattern-group polygon:nth-child(22) { --n: 22; }
+        .pattern-group polygon:nth-child(23) { --n: 23; }
+        .pattern-group polygon:nth-child(24) { --n: 24; }
+        .pattern-group polygon:nth-child(25) { --n: 25; }
+        .pattern-group polygon:nth-child(26) { --n: 26; }
+        .pattern-group polygon:nth-child(27) { --n: 27; }
+        .pattern-group polygon:nth-child(28) { --n: 28; }
+        .pattern-group polygon:nth-child(29) { --n: 29; }
+        .pattern-group polygon:nth-child(30) { --n: 30; }
+        .pattern-group polygon:nth-child(31) { --n: 31; }
+        .pattern-group polygon:nth-child(32) { --n: 32; }
+        .pattern-group polygon:nth-child(33) { --n: 33; }
+        .pattern-group polygon:nth-child(34) { --n: 34; }
+        .pattern-group polygon:nth-child(35) { --n: 35; }
+        .pattern-group polygon:nth-child(36) { --n: 36; }
+        .pattern-group polygon:nth-child(37) { --n: 37; }
+        .pattern-group polygon:nth-child(38) { --n: 38; }
+        .pattern-group polygon:nth-child(39) { --n: 39; }
+        .pattern-group polygon:nth-child(40) { --n: 40; }
+        .pattern-group polygon:nth-child(41) { --n: 41; }
+        .pattern-group polygon:nth-child(42) { --n: 42; }
+        .pattern-group polygon:nth-child(43) { --n: 43; }
+        .pattern-group polygon:nth-child(44) { --n: 44; }
+        .pattern-group polygon:nth-child(45) { --n: 45; }
+        .pattern-group polygon:nth-child(46) { --n: 46; }
+        .pattern-group polygon:nth-child(47) { --n: 47; }
+        .pattern-group polygon:nth-child(48) { --n: 48; }
+        .pattern-group polygon:nth-child(49) { --n: 49; }
+        .pattern-group polygon:nth-child(50) { --n: 50; }
+        /* ... add more nth-child indices as needed for finer control ... */
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo"><i class="fa fa-code"></i> Component Showcase</a>
+        <div class="nav-links">
+            <a href="GenerationScreen_Healthcare.html"><i class="fa fa-hospital"></i> Healthcare</a>
+            <a href="GenerationScreen_TechCompany.html"><i class="fa fa-robot"></i> Tech Company</a>
+            <a href="GenerationScreen_ShopRegular.html"><i class="fa fa-store"></i> Shop</a>
+            <a href="Map.html"><i class="fa fa-map"></i> Map</a>
+            <a href="components-showcase.html" class="active"><i class="fa fa-puzzle-piece"></i> Components</a>
+            <a href="index.html"><i class="fa fa-home"></i> Portfolio</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="section-header">
+            <h2>What I Can Do</h2>
+            <p>A showcase of various web components and features I can implement for your website</p>
+        </div>
+
+        <!-- Islamic Art Cards Container -->
+        <div class="islamic-cards-container">
+            <!-- Islamic Art Hero -->
+            <div class="islamic-art-hero">
+                <div class="islamic-content">
+                    <h2>Islamic Art & Design</h2>
+                    <div class="arabic-text">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+                    <p>Experience the beauty of Islamic geometric patterns and arabesque designs through modern web technology</p>
+                </div>
+            </div>
+
+            <!-- Islamic Geometric Patterns -->
+            <div class="islamic-patterns">
+                <svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' style='position: absolute; top: 0; left: 0;'>
+                    <defs>
+                        <linearGradient id='a' gradientUnits='userSpaceOnUse' x1='0' x2='0' y1='0' y2='100%' gradientTransform='rotate(240)'>
+                            <stop offset='0' stop-color='#1a472a'/>
+                            <stop offset='1' stop-color='#2d5a3f'/>
+                        </linearGradient>
+                        <pattern patternUnits='userSpaceOnUse' id='b' width='540' height='450' x='0' y='0' viewBox='0 0 1080 900'>
+                            <g fill-opacity='0.2' class='pattern-group'>
+                                <!-- Row 1 -->
+                                <polygon fill='#1a472a' points='90 150 0 300 180 300'/>
+                                <polygon fill='#2d5a3f' points='90 150 180 0 0 0'/>
+                                <polygon fill='#3d7a4f' points='270 150 360 0 180 0'/>
+                                <polygon fill='#4d9a5f' points='450 150 360 300 540 300'/>
+                                <polygon fill='#5dba6f' points='450 150 540 0 360 0'/>
+                                <polygon fill='#6dda7f' points='630 150 540 300 720 300'/>
+                                <polygon fill='#7dfa8f' points='630 150 720 0 540 0'/>
+                                <polygon fill='#8dff9f' points='810 150 720 300 900 300'/>
+                                <polygon fill='#9dffaf' points='810 150 900 0 720 0'/>
+                                <polygon fill='#adffbf' points='990 150 900 300 1080 300'/>
+                                <polygon fill='#bdffcf' points='990 150 1080 0 900 0'/>
+
+                                <!-- Row 2 -->
+                                <polygon fill='#1a472a' points='90 450 0 600 180 600'/>
+                                <polygon fill='#2d5a3f' points='90 450 180 300 0 300'/>
+                                <polygon fill='#3d7a4f' points='270 450 180 600 360 600'/>
+                                <polygon fill='#4d9a5f' points='270 450 360 300 180 300'/>
+                                <polygon fill='#5dba6f' points='450 450 360 600 540 600'/>
+                                <polygon fill='#6dda7f' points='450 450 540 300 360 300'/>
+                                <polygon fill='#7dfa8f' points='630 450 540 600 720 600'/>
+                                <polygon fill='#8dff9f' points='630 450 720 300 540 300'/>
+                                <polygon fill='#9dffaf' points='810 450 720 600 900 600'/>
+                                <polygon fill='#adffbf' points='810 450 900 300 720 300'/>
+                                <polygon fill='#bdffcf' points='990 450 900 600 1080 600'/>
+                                <polygon fill='#cfffdf' points='990 450 1080 300 900 300'/>
+
+                                <!-- Row 3 -->
+                                <polygon fill='#1a472a' points='90 750 0 900 180 900'/>
+                                <polygon fill='#2d5a3f' points='270 750 180 900 360 900'/>
+                                <polygon fill='#3d7a4f' points='270 750 360 600 180 600'/>
+                                <polygon fill='#4d9a5f' points='450 750 540 600 360 600'/>
+                                <polygon fill='#5dba6f' points='630 750 540 900 720 900'/>
+                                <polygon fill='#6dda7f' points='630 750 720 600 540 600'/>
+                                <polygon fill='#7dfa8f' points='810 750 720 900 900 900'/>
+                                <polygon fill='#8dff9f' points='810 750 900 600 720 600'/>
+                                <polygon fill='#9dffaf' points='990 750 900 900 1080 900'/>
+
+                                <!-- Connecting Polygons -->
+                                <polygon fill='#adffbf' points='180 0 90 150 270 150'/>
+                                <polygon fill='#bdffcf' points='360 0 270 150 450 150'/>
+                                <polygon fill='#cfffdf' points='540 0 450 150 630 150'/>
+                                <polygon fill='#dfffef' points='900 0 810 150 990 150'/>
+                                <polygon fill='#efffff' points='0 300 -90 450 90 450'/>
+                                <polygon fill='#faffff' points='0 300 90 150 -90 150'/>
+                                <polygon fill='#ffffff' points='180 300 90 450 270 450'/>
+                                <polygon fill='#faffff' points='180 300 270 150 90 150'/>
+                                <polygon fill='#efffff' points='360 300 270 450 450 450'/>
+                                <polygon fill='#dfffef' points='360 300 450 150 270 150'/>
+                                <polygon fill='#cfffdf' points='540 300 450 450 630 450'/>
+                                <polygon fill='#bdffcf' points='540 300 630 150 450 150'/>
+                                <polygon fill='#adffbf' points='720 300 630 450 810 450'/>
+                                <polygon fill='#9dffaf' points='720 300 810 150 630 150'/>
+                                <polygon fill='#8dff9f' points='900 300 810 450 990 450'/>
+                                <polygon fill='#7dfa8f' points='900 300 990 150 810 150'/>
+                                <polygon fill='#6dda7f' points='0 600 -90 750 90 750'/>
+                                <polygon fill='#5dba6f' points='0 600 90 450 -90 450'/>
+                                <polygon fill='#4d9a5f' points='180 600 90 750 270 750'/>
+                                <polygon fill='#3d7a4f' points='180 600 270 450 90 450'/>
+                                <polygon fill='#2d5a3f' points='360 600 270 750 450 750'/>
+                                <polygon fill='#1a472a' points='360 600 450 450 270 450'/>
+                                <polygon fill='#2d5a3f' points='540 600 630 450 450 450'/>
+                                <polygon fill='#3d7a4f' points='720 600 630 750 810 750'/>
+                                <polygon fill='#4d9a5f' points='900 600 810 750 990 750'/>
+                                <polygon fill='#5dba6f' points='900 600 990 450 810 450'/>
+                                <polygon fill='#6dda7f' points='0 900 90 750 -90 750'/>
+                                <polygon fill='#7dfa8f' points='180 900 270 750 90 750'/>
+                                <polygon fill='#8dff9f' points='360 900 450 750 270 750'/>
+                                <polygon fill='#9dffaf' points='540 900 630 750 450 750'/>
+                                <polygon fill='#adffbf' points='720 900 810 750 630 750'/>
+                                <polygon fill='#bdffcf' points='900 900 990 750 810 750'/>
+                                <polygon fill='#cfffdf' points='1080 300 990 450 1170 450'/>
+                                <polygon fill='#dfffef' points='1080 300 1170 150 990 150'/>
+                                <polygon fill='#efffff' points='1080 600 990 750 1170 750'/>
+                                <polygon fill='#faffff' points='1080 600 1170 450 990 450'/>
+                                <polygon fill='#ffffff' points='1080 900 1170 750 990 750'/>
+                            </g>
+                        </pattern>
+                    </defs>
+                    <rect x='0' y='0' fill='url(#a)' width='100%' height='100%'/>
+                    <rect x='0' y='0' fill='url(#b)' width='100%' height='100%'/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Cards Section -->
+        <div class="component-section">
+            <h3>Modern Cards</h3>
+            <div class="cards-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800" alt="Coding" class="card-image">
+                    <div class="card-content">
+                        <h4 class="card-title">Web Development</h4>
+                        <p class="card-text">Modern, responsive websites built with the latest technologies.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800" alt="Analytics" class="card-image">
+                    <div class="card-content">
+                        <h4 class="card-title">Data Analytics</h4>
+                        <p class="card-text">Interactive dashboards and data visualization solutions.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800" alt="UI/UX" class="card-image">
+                    <div class="card-content">
+                        <h4 class="card-title">UI/UX Design</h4>
+                        <p class="card-text">Beautiful, intuitive interfaces that users love.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Gallery -->
+        <div class="component-section">
+            <h3>Interactive Gallery</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="web">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=800" alt="Web Design">
+                    <div class="gallery-overlay">
+                        <h4>Web Design</h4>
+                        <p>Modern & Responsive</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="mobile">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800" alt="Mobile Apps">
+                    <div class="gallery-overlay">
+                        <h4>Mobile Apps</h4>
+                        <p>Native & Hybrid</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="ecommerce">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800" alt="E-commerce">
+                    <div class="gallery-overlay">
+                        <h4>E-commerce</h4>
+                        <p>Online Stores</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonials Slider -->
+        <div class="component-section">
+            <h3>Client Testimonials</h3>
+            <div class="testimonials-slider">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150" alt="Client" class="testimonial-image">
+                        <p>"Outstanding work! The website exceeded our expectations."</p>
+                        <h4>John Smith</h4>
+                        <p class="testimonial-role">CEO, TechCorp</p>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150" alt="Client" class="testimonial-image">
+                        <p>"Professional, creative, and delivered on time."</p>
+                        <h4>Sarah Johnson</h4>
+                        <p class="testimonial-role">Marketing Director</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing Cards -->
+        <div class="component-section">
+            <h3>Service Packages</h3>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h4>Basic</h4>
+                        <div class="price">$999</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Responsive Website</li>
+                        <li>5 Pages</li>
+                        <li>Contact Form</li>
+                        <li>Basic SEO</li>
+                    </ul>
+                    <button class="pricing-button">Get Started</button>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-header">
+                        <h4>Professional</h4>
+                        <div class="price">$1999</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Everything in Basic</li>
+                        <li>10 Pages</li>
+                        <li>E-commerce Integration</li>
+                        <li>Advanced SEO</li>
+                        <li>Content Management</li>
+                    </ul>
+                    <button class="pricing-button">Get Started</button>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h4>Enterprise</h4>
+                        <div class="price">Custom</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Everything in Professional</li>
+                        <li>Custom Features</li>
+                        <li>API Integration</li>
+                        <li>24/7 Support</li>
+                        <li>Analytics Dashboard</li>
+                    </ul>
+                    <button class="pricing-button">Contact Us</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="component-section">
+            <h3>Get in Touch</h3>
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <select required>
+                        <option value="">Select Service</option>
+                        <option value="web">Web Design</option>
+                        <option value="mobile">Mobile App</option>
+                        <option value="ecommerce">E-commerce</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
+        </div>
+
+        <!-- Carousels Section -->
+        <div class="component-section">
+            <h3>Image Carousels</h3>
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c89da2b85c35?auto=format&fit=crop&w=800&q=80" alt="Coding Team">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80" alt="Web Design Mockup">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1497215728165-864cd9cb7fcd?auto=format&fit=crop&w=800&q=80" alt="Office Workspace">
+                    </div>
+                     <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Presentation">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+
+        <!-- Location Section -->
+        <div class="component-section">
+            <h3>Location Components</h3>
+            <div class="location-card">
+                <i class="fas fa-map-marker-alt location-icon"></i>
+                <div class="location-info">
+                    <h3>Nairobi, Kenya</h3>
+                    <p>123 Business Street, Central Business District</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calendar Section -->
+        <div class="component-section">
+            <h3>Calendar Component</h3>
+            <div class="calendar-container">
+                <input type="text" id="calendar" placeholder="Select a date...">
+            </div>
+        </div>
+
+        <!-- Timer Section -->
+        <div class="component-section">
+            <h3>Timer Component</h3>
+            <div class="timer-container">
+                <div class="timer-display">00:00:00</div>
+                <div class="timer-controls">
+                    <button class="timer-button" id="startTimer">Start</button>
+                    <button class="timer-button" id="pauseTimer">Pause</button>
+                    <button class="timer-button" id="resetTimer">Reset</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sliders Section -->
+        <div class="component-section">
+            <h3>Interactive Sliders</h3>
+            <div class="slider-container">
+                <input type="range" min="0" max="100" value="50" class="slider" id="rangeSlider">
+                <div class="slider-value">50%</div>
+            </div>
+        </div>
+
+        <!-- 3D Character Animation -->
+        <div class="component-section">
+            <h3>3D Character Animation</h3>
+            <div class="character-container">
+                <canvas id="characterCanvas"></canvas>
+                <div class="character-controls">
+                    <button id="waveBtn">Wave</button>
+                    <button id="danceBtn">Dance</button>
+                    <button id="jumpBtn">Jump</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Kaleidoscope -->
+        <div class="component-section">
+            <h3>Interactive Kaleidoscope</h3>
+            <div class="kaleidoscope-container">
+                <canvas id="kaleidoscopeCanvas"></canvas>
+                <div class="kaleidoscope-controls">
+                    <input type="range" id="segmentsSlider" min="3" max="12" value="6">
+                    <input type="color" id="colorPicker" value="#ffffff">
+                </div>
+            </div>
+        </div>
+
+        <!-- E-commerce Showcase -->
+        <div class="component-section">
+            <h3>E-commerce Features</h3>
+            <div class="ecommerce-showcase">
+                <div class="product-card">
+                    <div class="product-badge">New</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800" alt="Product">
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="fas fa-heart"></i></button>
+                            <button class="action-btn"><i class="fas fa-shopping-cart"></i></button>
+                            <button class="action-btn"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h4>Premium Headphones</h4>
+                        <div class="product-price">
+                            <span class="current-price">$299</span>
+                            <span class="old-price">$399</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(128)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modern Form Examples -->
+        <div class="component-section">
+            <h3>Modern Form Components</h3>
+            <div class="forms-showcase">
+                <div class="form-example">
+                    <h4>Floating Label Form</h4>
+                    <div class="floating-form">
+                        <div class="form-group">
+                            <input type="text" id="floatingName" required>
+                            <label for="floatingName">Your Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="floatingEmail" required>
+                            <label for="floatingEmail">Email Address</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-example">
+                    <h4>Animated Checkbox</h4>
+                    <label class="checkbox-container">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        Subscribe to newsletter
+                    </label>
+                </div>
+
+                <div class="form-example">
+                    <h4>Custom Select</h4>
+                    <div class="custom-select">
+                        <select>
+                            <option value="">Select an option</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Timeline -->
+        <div class="component-section">
+            <h3>Interactive Timeline</h3>
+            <div class="timeline-container">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2024</div>
+                            <h4 class="timeline-title">Project Launch</h4>
+                            <p class="timeline-text">Successfully launched multiple client websites with modern features and responsive design.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2023</div>
+                            <h4 class="timeline-title">E-commerce Integration</h4>
+                            <p class="timeline-text">Developed custom e-commerce solutions with secure payment gateways and inventory management.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2022</div>
+                            <h4 class="timeline-title">UI/UX Focus</h4>
+                            <p class="timeline-text">Enhanced user experience with modern design patterns and interactive elements.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2021</div>
+                            <h4 class="timeline-title">Web Development</h4>
+                            <p class="timeline-text">Started creating responsive websites with cutting-edge technologies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Button -->
+        <a href="https://wa.me/1234567890" class="whatsapp-button" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <span class="whatsapp-text">Contact Me</span>
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        // Initialize Swiper
+        new Swiper('.swiper', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 3000,
+            }
+        });
+
+        // Initialize Calendar
+        flatpickr("#calendar", {
+            dateFormat: "Y-m-d",
+            theme: "dark"
+        });
+
+        // Timer Functionality
+        let timer;
+        let seconds = 0;
+        const timerDisplay = document.querySelector('.timer-display');
+        const startButton = document.getElementById('startTimer');
+        const pauseButton = document.getElementById('pauseTimer');
+        const resetButton = document.getElementById('resetTimer');
+
+        function updateTimer() {
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+            timerDisplay.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        }
+
+        startButton.addEventListener('click', () => {
+            timer = setInterval(() => {
+                seconds++;
+                updateTimer();
+            }, 1000);
+        });
+
+        pauseButton.addEventListener('click', () => {
+            clearInterval(timer);
+        });
+
+        resetButton.addEventListener('click', () => {
+            clearInterval(timer);
+            seconds = 0;
+            updateTimer();
+        });
+
+        // Slider Functionality
+        const rangeSlider = document.getElementById('rangeSlider');
+        const sliderValue = document.querySelector('.slider-value');
+
+        rangeSlider.addEventListener('input', () => {
+            sliderValue.textContent = `${rangeSlider.value}%`;
+        });
+
+        // Add smooth scrolling for gallery items
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const category = item.dataset.category;
+                // Add your category navigation logic here
+            });
+        });
+
+        // Initialize testimonials slider
+        const testimonialsSlider = document.querySelector('.testimonials-slider');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        testimonialsSlider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            testimonialsSlider.style.cursor = 'grabbing';
+            startX = e.pageX - testimonialsSlider.offsetLeft;
+            scrollLeft = testimonialsSlider.scrollLeft;
+        });
+
+        testimonialsSlider.addEventListener('mouseleave', () => {
+            isDown = false;
+            testimonialsSlider.style.cursor = 'grab';
+        });
+
+        testimonialsSlider.addEventListener('mouseup', () => {
+            isDown = false;
+            testimonialsSlider.style.cursor = 'grab';
+        });
+
+        testimonialsSlider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - testimonialsSlider.offsetLeft;
+            const walk = (x - startX) * 2;
+            testimonialsSlider.scrollLeft = scrollLeft - walk;
+        });
+
+        // 3D Character Animation
+        const canvas = document.getElementById('characterCanvas');
+        const ctx = canvas.getContext('2d');
+        let character = {
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            size: 50,
+            angle: 0
+        };
+
+        function drawCharacter() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.save();
+            ctx.translate(character.x, character.y);
+            ctx.rotate(character.angle);
+
+            // Draw body
+            ctx.beginPath();
+            ctx.arc(0, 0, character.size, 0, Math.PI * 2);
+            ctx.fillStyle = '#fff';
+            ctx.fill();
+
+            // Draw face
+            ctx.beginPath();
+            ctx.arc(-10, -10, 5, 0, Math.PI * 2);
+            ctx.arc(10, -10, 5, 0, Math.PI * 2);
+            ctx.fillStyle = '#000';
+            ctx.fill();
+
+            // Draw smile
+            ctx.beginPath();
+            ctx.arc(0, 0, 20, 0, Math.PI);
+            ctx.strokeStyle = '#000';
+            ctx.stroke();
+
+            ctx.restore();
+        }
+
+        // Animation functions
+        function wave() {
+            let startAngle = character.angle;
+            let endAngle = startAngle + Math.PI * 2;
+            let duration = 1000;
+            let startTime = null;
+
+            function animate(currentTime) {
+                if (!startTime) startTime = currentTime;
+                let progress = (currentTime - startTime) / duration;
+
+                if (progress < 1) {
+                    character.angle = startAngle + (endAngle - startAngle) * Math.sin(progress * Math.PI);
+                    drawCharacter();
+                    requestAnimationFrame(animate);
+                } else {
+                    character.angle = startAngle;
+                    drawCharacter();
+                }
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        // Event listeners for character controls
+        document.getElementById('waveBtn').addEventListener('click', wave);
+
+        // Initialize character
+        drawCharacter();
+
+        // Kaleidoscope Animation
+        const kaleidoscopeCanvas = document.getElementById('kaleidoscopeCanvas');
+        const kCtx = kaleidoscopeCanvas.getContext('2d');
+        let segments = 6;
+        let color = '#ffffff';
+
+        function drawKaleidoscope() {
+            kCtx.clearRect(0, 0, kaleidoscopeCanvas.width, kaleidoscopeCanvas.height);
+            const centerX = kaleidoscopeCanvas.width / 2;
+            const centerY = kaleidoscopeCanvas.height / 2;
+            const radius = Math.min(centerX, centerY) - 10;
+
+            for (let i = 0; i < segments; i++) {
+                const angle = (i * 2 * Math.PI) / segments;
+                kCtx.save();
+                kCtx.translate(centerX, centerY);
+                kCtx.rotate(angle);
+                kCtx.beginPath();
+                kCtx.moveTo(0, 0);
+                kCtx.lineTo(radius, 0);
+                kCtx.arc(0, 0, radius, 0, Math.PI / segments);
+                kCtx.closePath();
+                kCtx.fillStyle = color;
+                kCtx.fill();
+                kCtx.restore();
+            }
+        }
+
+        // Event listeners for kaleidoscope controls
+        document.getElementById('segmentsSlider').addEventListener('input', (e) => {
+            segments = parseInt(e.target.value);
+            drawKaleidoscope();
+        });
+
+        document.getElementById('colorPicker').addEventListener('input', (e) => {
+            color = e.target.value;
+            drawKaleidoscope();
+        });
+
+        // Initialize kaleidoscope
+        drawKaleidoscope();
+
+        // Enhanced Background Animation
+        const bgCanvas = document.createElement('canvas');
+        bgCanvas.id = 'kaleidoscope-bg';
+        document.body.appendChild(bgCanvas);
+        const bgCtx = bgCanvas.getContext('2d');
+        let particles = [];
+        const particleCount = 100;
+
+        function initBackground() {
+            bgCanvas.width = window.innerWidth;
+            bgCanvas.height = window.innerHeight;
+
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * bgCanvas.width,
+                    y: Math.random() * bgCanvas.height,
+                    size: Math.random() * 3 + 1,
+                    speedX: Math.random() * 2 - 1,
+                    speedY: Math.random() * 2 - 1,
+                    color: '#ffd700'
+                });
+            }
+        }
+
+        function animateBackground() {
+            bgCtx.fillStyle = 'rgba(24, 24, 36, 0.1)';
+            bgCtx.fillRect(0, 0, bgCanvas.width, bgCanvas.height);
+
+            particles.forEach(particle => {
+                particle.x += particle.speedX;
+                particle.y += particle.speedY;
+
+                if (particle.x < 0 || particle.x > bgCanvas.width) particle.speedX *= -1;
+                if (particle.y < 0 || particle.y > bgCanvas.height) particle.speedY *= -1;
+
+                bgCtx.beginPath();
+                bgCtx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                bgCtx.fillStyle = particle.color;
+                bgCtx.fill();
+
+                particles.forEach(otherParticle => {
+                    const dx = particle.x - otherParticle.x;
+                    const dy = particle.y - otherParticle.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 100) {
+                        bgCtx.beginPath();
+                        bgCtx.strokeStyle = `rgba(255, 215, 0, ${0.2 * (1 - distance/100)})`;
+                        bgCtx.lineWidth = 0.5;
+                        bgCtx.moveTo(particle.x, particle.y);
+                        bgCtx.lineTo(otherParticle.x, otherParticle.y);
+                        bgCtx.stroke();
+                    }
+                });
+            });
+
+            requestAnimationFrame(animateBackground);
+        }
+
+        window.addEventListener('resize', initBackground);
+        initBackground();
+        animateBackground();
+
+        // Timeline Animation
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        function checkTimeline() {
+            const triggerBottom = window.innerHeight * 0.8;
+            
+            timelineItems.forEach(item => {
+                const itemTop = item.getBoundingClientRect().top;
+                
+                if (itemTop < triggerBottom) {
+                    item.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkTimeline);
+        window.addEventListener('load', checkTimeline);
+        checkTimeline(); // Initial check
+
+        // Fix canvas sizing
+        function resizeCanvas() {
+            const canvas = document.getElementById('characterCanvas');
+            const kaleidoscopeCanvas = document.getElementById('kaleidoscopeCanvas');
+            
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            kaleidoscopeCanvas.width = kaleidoscopeCanvas.offsetWidth;
+            kaleidoscopeCanvas.height = kaleidoscopeCanvas.offsetHeight;
+            
+            drawCharacter();
+            drawKaleidoscope();
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas(); // Initial sizing
+
+        // Optimize background animation
+        let animationFrame;
+        function animateBackground() {
+            bgCtx.fillStyle = 'rgba(24, 24, 36, 0.1)';
+            bgCtx.fillRect(0, 0, bgCanvas.width, bgCanvas.height);
+
+            particles.forEach(particle => {
+                particle.x += particle.speedX;
+                particle.y += particle.speedY;
+
+                if (particle.x < 0 || particle.x > bgCanvas.width) particle.speedX *= -1;
+                if (particle.y < 0 || particle.y > bgCanvas.height) particle.speedY *= -1;
+
+                bgCtx.beginPath();
+                bgCtx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                bgCtx.fillStyle = particle.color;
+                bgCtx.fill();
+
+                particles.forEach(otherParticle => {
+                    const dx = particle.x - otherParticle.x;
+                    const dy = particle.y - otherParticle.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 100) {
+                        bgCtx.beginPath();
+                        bgCtx.strokeStyle = `rgba(255, 215, 0, ${0.2 * (1 - distance/100)})`;
+                        bgCtx.lineWidth = 0.5;
+                        bgCtx.moveTo(particle.x, particle.y);
+                        bgCtx.lineTo(otherParticle.x, otherParticle.y);
+                        bgCtx.stroke();
+                    }
+                });
+            });
+
+            animationFrame = requestAnimationFrame(animateBackground);
+        }
+
+        // Clean up animation on page unload
+        window.addEventListener('unload', () => {
+            if (animationFrame) {
+                cancelAnimationFrame(animationFrame);
+            }
+        });
+
+        // Canvas-based Crescent Animation
+        const crescentCanvas = document.getElementById('crescentAnimationCanvas');
+        const crescentCtx = crescentCanvas.getContext('2d');
+
+        let crescents = [];
+        const numberOfCrescents = 50; // Adjust number of crescents
+
+        // Crescent drawing function (simplified approximation)
+        function drawCrescent(x, y, size, rotation, opacity) {
+            crescentCtx.save();
+            crescentCtx.translate(x, y);
+            crescentCtx.rotate(rotation);
+            crescentCtx.globalAlpha = opacity;
+            crescentCtx.fillStyle = '#ffd700'; // Golden color
+            crescentCtx.shadowBlur = 10; // Glow effect
+            crescentCtx.shadowColor = 'rgba(255, 215, 0, 0.8)';
+
+            // Draw a simplified crescent shape (example using arcs)
+            crescentCtx.beginPath();
+            crescentCtx.arc(0, 0, size, Math.PI * 0.2, Math.PI * 0.8, false);
+            crescentCtx.arc(size * 0.8, 0, size * 0.6, Math.PI * 0.8, Math.PI * 0.2, true);
+            crescentCtx.closePath();
+            crescentCtx.fill();
+
+             // Draw a simplified star shape (example)
+            const starSize = size * 0.4;
+            const spikes = 5;
+            const outerRadius = starSize;
+            const innerRadius = starSize / 2;
+
+            crescentCtx.beginPath();
+            crescentCtx.moveTo(0, -outerRadius);
+            for (let i = 0; i < spikes; i++) {
+                let angle = Math.PI / spikes;
+                crescentCtx.lineTo(Math.sin(angle * (2 * i + 1)) * innerRadius, Math.cos(angle * (2 * i + 1)) * -innerRadius);
+                crescentCtx.lineTo(Math.sin(angle * (2 * i + 2)) * outerRadius, Math.cos(angle * (2 * i + 2)) * -outerRadius);
+            }
+            crescentCtx.closePath();
+            crescentCtx.fill();
+
+            crescentCtx.restore();
+        }
+
+        function initCrescents() {
+            crescentCanvas.width = crescentCanvas.offsetWidth;
+            crescentCanvas.height = crescentCanvas.offsetHeight;
+            const centerX = crescentCanvas.width / 2;
+            const centerY = crescentCanvas.height / 2;
+
+            crescents = [];
+            for (let i = 0; i < numberOfCrescents; i++) {
+                crescents.push({
+                    x: centerX,
+                    y: centerY,
+                    size: Math.random() * 5 + 2, // Vary initial size
+                    rotation: Math.random() * Math.PI * 2, // Vary initial rotation
+                    speed: Math.random() * 0.2 + 0.1, // Vary speed outwards
+                    rotationSpeed: (Math.random() - 0.5) * 0.01, // Vary rotation speed and direction
+                    opacity: 0 // Start invisible
+                });
+            }
+        }
+
+        function animateCrescents() {
+            crescentCtx.clearRect(0, 0, crescentCanvas.width, crescentCanvas.height);
+            crescentCtx.fillStyle = 'rgba(24, 24, 36, 0.1)'; // Subtle trail effect
+            crescentCtx.fillRect(0, 0, crescentCanvas.width, crescentCanvas.height);
+
+            const centerX = crescentCanvas.width / 2;
+            const centerY = crescentCanvas.height / 2;
+
+            for (let i = 0; i < crescents.length; i++) {
+                const crescent = crescents[i];
+
+                // Move outwards from center
+                const angle = Math.atan2(crescent.y - centerY, crescent.x - centerX);
+                crescent.x += Math.cos(angle) * crescent.speed;
+                crescent.y += Math.sin(angle) * crescent.speed;
+
+                // Rotate
+                crescent.rotation += crescent.rotationSpeed;
+
+                // Fade in and out
+                if (crescent.opacity < 1) crescent.opacity += 0.005;
+                // Fade out as it gets close to edge
+                const distanceFromCenter = Math.sqrt(Math.pow(crescent.x - centerX, 2) + Math.pow(crescent.y - centerY, 2));
+                const maxDistance = Math.min(centerX, centerY);
+                if (distanceFromCenter > maxDistance * 0.8) {
+                     crescent.opacity -= 0.01; // Fade out faster near edge
+                }
+               
+
+                // Draw crescent
+                if (crescent.opacity > 0) {
+                     drawCrescent(crescent.x, crescent.y, crescent.size, crescent.rotation, crescent.opacity);
+                }
+
+                // Recycle crescents that go off screen or fade out
+                if (crescent.x < -crescent.size || crescent.x > crescentCanvas.width + crescent.size ||
+                    crescent.y < -crescent.size || crescent.y > crescentCanvas.height + crescent.size || crescent.opacity <= 0) {
+                   
+                    // Reset properties for a new crescent originating from center
+                    crescents[i] = {
+                        x: centerX,
+                        y: centerY,
+                        size: Math.random() * 5 + 2,
+                        rotation: Math.random() * Math.PI * 2,
+                        speed: Math.random() * 0.2 + 0.1,
+                        rotationSpeed: (Math.random() - 0.5) * 0.01,
+                        opacity: 0 // Start invisible again
+                    };
+                }
+            }
+
+            requestAnimationFrame(animateCrescents);
+        }
+
+        window.addEventListener('load', initCrescents);
+        window.addEventListener('resize', initCrescents);
+        animateCrescents(); // Start animation loop
+
+        // Clean up animation frame
+        window.addEventListener('unload', () => {
+            cancelAnimationFrame(animateCrescents);
+        });
+
+        // Remove all the old animation code and replace with this simple version
+        const islamicPatternsDiv = document.querySelector('.islamic-patterns');
+        const islamicElements = islamicPatternsDiv.querySelectorAll('.islamic-element');
+
+        function updatePathLengths() {
+            islamicElements.forEach(element => {
+                const length = element.getTotalLength();
+
+                // Set the stroke properties and CSS variable
+                element.style.strokeDasharray = length;
+                element.style.strokeDashoffset = length; // Start invisible
+                element.style.setProperty('--initial-dashoffset', length);
+
+                // Store the current animation style
+                const currentAnimation = element.style.animation;
+
+                // Temporarily remove animation
+                element.style.animation = 'none';
+
+                // Force reflow
+                element.offsetHeight; 
+
+                // Force a repaint and reset the animation by manipulating stroke-dashoffset
+                element.style.strokeDashoffset = 0; // Briefly set to 0 (drawn)
+                element.offsetHeight; // Force reflow/repaint again
+                element.style.strokeDashoffset = length; // Set back to length (invisible) to prepare for animation
+
+                // Re-add the original animation style after a small delay
+                setTimeout(() => {
+                    element.style.animation = currentAnimation;
+                }, 50); // Increased delay slightly
+            });
+        }
+
+        // Initialize the animation on load and resize
+        window.addEventListener('load', updatePathLengths);
+        window.addEventListener('resize', updatePathLengths);
+
+        // Remove all other animation code
+    </script>
+</body>
+</html> 

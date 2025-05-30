@@ -1,79 +1,239 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
-    <meta name="description" content="Login - Register">
-    <meta name="author" content="Shahrukh Najmal">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Join Our Mailing List</title>
     <link rel="stylesheet" href="main.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: rgba(30, 30, 47, 0.7);
+            --accent: #fff;
+            --bg: #181824;
+            --card-bg: rgba(35, 35, 58, 0.55);
+            --text: #f5f5f5;
+            --shadow: 0 4px 24px rgba(0,0,0,0.2);
+            --glass-blur: blur(12px);
+            --glow: 0 0 16px 4px #fff, 0 0 32px 8px #b3e5fc33;
+        }
+
         body {
-            background-color: #303641;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            box-shadow: var(--shadow);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1.5px solid #fff2;
+        }
+
+        .navbar .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 2px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            text-shadow: var(--glow);
+        }
+
+        .login-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .login-form {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 400px;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid #fff2;
+            box-shadow: var(--shadow);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-header h1 {
+            color: var(--accent);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            text-shadow: var(--glow);
+        }
+
+        .form-header p {
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #fff2;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: var(--glow);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            background: var(--accent);
+            color: var(--bg);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow);
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        .form-footer a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-footer a:hover {
+            text-shadow: var(--glow);
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            color: #4CAF50;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 8px;
+        }
+
+        .error-message {
+            display: none;
+            text-align: center;
+            color: #f44336;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(244, 67, 54, 0.1);
+            border-radius: 8px;
         }
     </style>
 </head>
 
 <body>
-    <div id="container-login">
-        <div id="title">
-            <i class="material-icons lock">lock</i> Login
+    <nav class="navbar">
+        <a href="index.html" class="logo"><i class="fa fa-code"></i> Content Generators</a>
+        <div class="nav-links">
+            <a href="GenerationScreen_Healthcare.html"><i class="fa fa-hospital"></i> Healthcare</a>
+            <a href="GenerationScreen_TechCompany.html"><i class="fa fa-robot"></i> Tech Company</a>
+            <a href="GenerationScreen_ShopRegular.html"><i class="fa fa-store"></i> Shop</a>
+            <a href="Map.html"><i class="fa fa-map"></i> Map</a>
+            <a href="components-showcase.html"><i class="fa fa-puzzle-piece"></i> Components</a>
+            <a href="index.html"><i class="fa fa-home"></i> Portfolio</a>
         </div>
+    </nav>
 
-        <form method="POST" action="connect.php">
-            <div class="input">
-                <div class="input-addon">
-                    <i class="material-icons">face</i>
-                </div>
-                <input id="username" placeholder="Username" type="text" required class="validate" autocomplete="off">
+    <div class="login-container">
+        <form class="login-form" id="loginForm" action="mailto:shehzadshahrukh@gmail.com" method="post" enctype="text/plain">
+            <div class="form-header">
+                <h1>Join Our Mailing List</h1>
+                <p>Stay updated with our latest features and updates</p>
             </div>
-
-            <div class="clearfix"></div>
-
-            <div class="input">
-                <div class="input-addon">
-                    <i class="material-icons">vpn_key</i>
-                </div>
-                <input id="password" placeholder="Password" type="password" required class="validate" autocomplete="off">
+            
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
             </div>
-
-            <div class="remember-me">
-                <input type="checkbox">
-                <span style="color: #DDD">Remember Me</span>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
             </div>
-            <div>
-            <a href="#"><button id="login-link">Log in</button></a>
-            <a href="index.html">bypass</a>
-          </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number (Optional)</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            
+            <button type="submit" class="submit-btn">Subscribe</button>
+            
+            <div class="form-footer">
+                Already subscribed? <a href="index.html">Return to Home</a>
+            </div>
         </form>
-
-        <div class="forgot-password">
-            <a href="#">Forgot your password?</a>
-        </div>
-        <div class="privacy">
-            <a href="#">Privacy Policy</a>
-        </div>
-
-        <div class="register">
-            Don't have an account yet?
-            <a href="register.html"><button id="register-link">Register here</button></a>
-        </div>
     </div>
-  </div>
-  <div class="w3-bar w3-black w3-large" style=" width:100%">
-       <a href="index.html" class="w3-bar-item w3-button w3-white w3-tangerine" style="width:100%">Back home<i class="fa fa-Home"></i></a>
-  </div>
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="/__/firebase/7.4.0/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-    https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="/__/firebase/7.4.0/firebase-analytics.js"></script>
-
-    <!-- Initialize Firebase -->
-    <script src="/__/firebase/init.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            
+            // Create the email body
+            const subject = 'New Mailing List Subscription';
+            const body = `New subscription details:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nTimestamp: ${new Date().toISOString()}`;
+            
+            // Update the form action with the email details
+            this.action = `mailto:your-email@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        });
+    </script>
 </body>
 
 </html>
