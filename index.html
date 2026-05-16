@@ -207,6 +207,13 @@
       box-shadow: var(--glow);
       border-color: #fff5;
     }
+    .project-card.github-link {
+      border-color: #ff9500;
+    }
+    .project-card.github-link:hover {
+      border-color: #ffb84d;
+      background: rgba(255, 149, 0, 0.1);
+    }
     .project-card i {
       font-size: 2.5rem;
       color: var(--accent);
@@ -225,6 +232,12 @@
       font-size: 1rem;
       margin: 0;
       line-height: 1.5;
+    }
+    .project-card .project-status {
+      font-size: 0.85rem;
+      color: #ffb84d;
+      font-weight: 600;
+      margin-top: 0.5rem;
     }
     .project-card a {
       display: inline-block;
@@ -303,11 +316,11 @@
       <i class="fas fa-code"></i> Shah Rukh Shehzad's Portfolio
     </a>
     <div class="nav-links">
-      <a href="GenerationScreen_Healthcare.html"><i class="fa fa-hospital"></i>USIU PROJECT: Healthcare</a>
-      <a href="GenerationScreen_TechCompany.html"><i class="fa fa-robot"></i>USIU PROJECT: Tech Company</a>
-      <a href="GenerationScreen_ShopRegular.html"><i class="fa fa-store"></i>USIU PROJECT: Shop</a>
+      <a href="GenerationScreen_Healthcare.html"><i class="fa fa-hospital"></i>Healthcare</a>
+      <a href="GenerationScreen_TechCompany.html"><i class="fa fa-robot"></i>Tech Company</a>
+      <a href="GenerationScreen_ShopRegular.html"><i class="fa fa-store"></i>Shop</a>
       <a href="Map.html"><i class="fa fa-map"></i> Map</a>
-      <a href="components-showcase.html"><i class="fa fa-puzzle-piece"></i> Web Design Showcase!</a>
+      <a href="components-showcase.html"><i class="fa fa-puzzle-piece"></i> Showcase</a>
       <a href="blog.html"><i class="fa fa-blog"></i> Blog</a>
       <a href="index.html" class="active"><i class="fa fa-home"></i> Portfolio</a>
       <button id="theme-toggle" aria-label="Toggle light/dark mode">
@@ -320,7 +333,7 @@
   <section class="hero">
     <div class="hero-content">
       <h1>SR_TECH</h1>
-      <p>SR_SOFTWARE_SUITE: A BUNCH OF SOFTWARE BUILT BY ME:SHAH RUKH SHEHZAD</p>
+      <p>SR_SOFTWARE_SUITE: A BUNCH OF SOFTWARE BUILT BY ME: SHAH RUKH SHEHZAD</p>
       <a href="#projects" class="cta-button">
         <i class="fas fa-arrow-down"></i> View My Work
       </a>
@@ -328,72 +341,98 @@
   </section>
 
   <!-- Projects Section -->
- <section id="projects" class="projects">
-  
-  <div class="project-card animate__animated animate__fadeInUp">
-    <i class="fas fa-file-invoice-dollar"></i>
-    <h3>SR Payroll</h3>
-    <p>A comprehensive payroll application for streamlined salary management and reporting.</p>
-    <a href="https://sr-payroll.vercel.app" target="_blank">Explore Project</a>
-  </div>
+  <section id="projects" class="projects">
+   
+    <!-- Existing Projects -->
+    <div class="project-card animate__animated animate__fadeInUp">
+      <i class="fas fa-file-invoice-dollar"></i>
+      <h3>SR Payroll</h3>
+      <p>A comprehensive payroll application for streamlined salary management and reporting.</p>
+      <a href="https://sr-payroll.vercel.app" target="_blank">Explore Project</a>
+    </div>
 
-  <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s">
-    <i class="fas fa-utensils"></i>
-    <h3>SR Restaurant</h3>
-    <p>Full-stack restaurant management system for orders, menus, and table tracking.</p>
-    <a href="https://sr-restaurant.lovable.app" target="_blank">Explore Project</a>
-  </div>
+    <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s">
+      <i class="fas fa-utensils"></i>
+      <h3>SR Restaurant</h3>
+      <p>Full-stack restaurant management system for orders, menus, and table tracking.</p>
+      <a href="https://sr-restaurant.lovable.app" target="_blank">Explore Project</a>
+    </div>
 
-  <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
-    <i class="fas fa-car"></i>
-    <h3>SR Garage</h3>
-    <p>Management application for garage operations, vehicle tracking, and service history.</p>
-    <a href="https://sr-garage.org" target="_blank">Explore Project</a>
-  </div>
+    <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
+      <i class="fas fa-car"></i>
+      <h3>SR Garage</h3>
+      <p>Management application for garage operations, vehicle tracking, and service history.</p>
+      <a href="https://sr-garage.org" target="_blank">Explore Project</a>
+    </div>
 
-  <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.3s">
-    <i class="fas fa-drafting-compass"></i>
-    <h3>SR Engineering</h3>
-    <p>An engineering management tool for project workflows and technical data tracking.</p>
-    <a href="https://sr-engineering.vercel.app" target="_blank">Explore Project</a>
-  </div>
+    <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.3s">
+      <i class="fas fa-drafting-compass"></i>
+      <h3>SR Engineering</h3>
+      <p>An engineering management tool for project workflows and technical data tracking.</p>
+      <a href="https://sr-engineering.vercel.app" target="_blank">Explore Project</a>
+    </div>
 
-  <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
-    <i class="fas fa-drumstick-bite"></i>
-    <h3>SR Butchery</h3>
-    <p>Specialized inventory and sales management system for butchery businesses.</p>
-    <a href="https://sr-butchery.vercel.app/login" target="_blank">Explore Project</a>
-  </div>
+    <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
+      <i class="fas fa-drumstick-bite"></i>
+      <h3>SR Butchery</h3>
+      <p>Specialized inventory and sales management system for butchery businesses.</p>
+      <a href="https://sr-butchery.vercel.app/login" target="_blank">Explore Project</a>
+    </div>
 
-  <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.6s">
-    <i class="fas fa-building"></i>
-    <h3>GEW LTD</h3>
-    <p>Professional web design and corporate branding project.</p>
-    <a href="https://www.gewltd.com/" target="_blank">View Project</a>
-  </div>
+    <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.6s">
+      <i class="fas fa-building"></i>
+      <h3>GEW LTD</h3>
+      <p>Professional web design and corporate branding project.</p>
+      <a href="https://www.gewltd.com/" target="_blank">View Project</a>
+    </div>
 
-  <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.7s">
-    <i class="fas fa-map-marked-alt"></i>
-    <h3>Mapping System</h3>
-    <p>An innovative system for visualizing and analyzing geographical data.</p>
-    <a href="Map.html">View Map</a>
-  </div>
+    <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.7s">
+      <i class="fas fa-map-marked-alt"></i>
+      <h3>Mapping System</h3>
+      <p>An innovative system for visualizing and analyzing geographical data.</p>
+      <a href="Map.html">View Map</a>
+    </div>
 
-  <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.8s">
-    <i class="fas fa-shopping-cart"></i>
-    <h3>SR Market</h3>
-    <p>Comprehensive e-commerce marketplace platform for online sales and inventory management.</p>
-    <a href="https://sr-market.org" target="_blank">Explore Project</a>
-  </div>
+    <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.8s">
+      <i class="fas fa-shopping-cart"></i>
+      <h3>SR Market</h3>
+      <p>Comprehensive e-commerce marketplace platform for online sales and inventory management.</p>
+      <a href="https://sr-market.org" target="_blank">Explore Project</a>
+    </div>
 
-  <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.9s">
-    <i class="fas fa-gamepad"></i>
-    <h3>Gang Life Sim</h3>
-    <p>An immersive life simulation game set in an urban gangster environment.</p>
-    <a href="https://gang-life-sim--shehzadshahrukh.replit.app" target="_blank">Play Game</a>
-  </div>
+    <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.9s">
+      <i class="fas fa-gamepad"></i>
+      <h3>Gang Life Sim</h3>
+      <p>An immersive life simulation game set in an urban gangster environment.</p>
+      <a href="https://gang-life-sim--shehzadshahrukh.replit.app" target="_blank">Play Game</a>
+    </div>
 
-</section>
+    <!-- GitHub Projects -->
+    <div class="project-card github-link animate__animated animate__fadeInUp" style="animation-delay: 1.0s">
+      <i class="fab fa-github"></i>
+      <h3>Nanoclaw</h3>
+      <p>A lightweight alternative to OpenClaw that runs in containers for security. Connects to WhatsApp, Telegram, Slack, Discord, Gmail and other messaging apps with memory and scheduled jobs.</p>
+      <p class="project-status">🔗 Forked from OpenClaw</p>
+      <a href="https://github.com/ssnajmal/nanoclaw" target="_blank">View on GitHub</a>
+    </div>
+
+    <div class="project-card github-link animate__animated animate__fadeInUp" style="animation-delay: 1.1s">
+      <i class="fab fa-github"></i>
+      <h3>Trade Risk Manager</h3>
+      <p>Risk management solution for trading operations. Built with modern AI integration for analysis and decision support.</p>
+      <p class="project-status">📊 In Development</p>
+      <a href="https://github.com/ssnajmal/tradeRiskManager" target="_blank">View on GitHub</a>
+    </div>
+
+    <div class="project-card github-link animate__animated animate__fadeInUp" style="animation-delay: 1.2s">
+      <i class="fab fa-github"></i>
+      <h3>Portfolio Site</h3>
+      <p>Personal portfolio and content creation hub. Showcasing projects, blog posts, and web design components.</p>
+      <p class="project-status">🎨 HTML/CSS</p>
+      <a href="https://github.com/ssnajmal/ssnajmal.github.io" target="_blank">View on GitHub</a>
+    </div>
+
+  </section>
 
   <!-- Kaleidoscope Background -->
   <canvas id="kaleidoscope-bg"></canvas>
@@ -403,6 +442,7 @@
     <p>
       &copy; 2024 Shahrukh Shehzad &mdash; 
       Built with <i class="fas fa-heart" style="color: #ff4d4d;"></i> | 
+      <a href="https://github.com/ssnajmal" target="_blank"><i class="fab fa-github"></i> GitHub</a> | 
       <a href="index.html">Home</a>
     </p>
   </footer>
@@ -549,5 +589,3 @@
 </body>
 
 </html>
-
-
